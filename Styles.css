@@ -1,0 +1,241 @@
+﻿/* 
+   The below CSS file was built using samples + techniques described by Rachel Andrew in her book:
+   The CSS Anthology: 101 Essential Tips, Tricks & Hacks
+*/
+
+/* Overall Page */
+
+body {
+	margin: 0;
+	background-color: #FFFFFF;
+	color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	border-top: 2px solid #1E82CC;
+}
+
+.Image-Footer
+{
+	background-color: #1E82CC;
+width: 290px;
+height: 100px;
+}
+	.Image-Footer p
+	{
+		color:#FFFFFF;
+		text-align:center;
+	}
+
+
+
+footer {
+position: relative;
+z-index: 1;
+height: 30px;
+clear: left;
+border-top: 3px solid #1E82CC;
+text-align: center;
+background-color:#1E82CC;
+        }
+	footer p
+	{
+		color: #FFFFFF;
+		margin-top:5px;
+	}
+
+.Important 
+{ 
+     font-size: large; 
+     color: Red; 
+}
+
+/* Header Section */
+
+#header {
+	border-top: 3px solid #1E82CC;
+	border-bottom: 1px dotted #1E82CC;
+	height: 3em;
+}
+#header .title {
+	font: 190% Arial, Helvetica, Georgia, "Times New Roman", Times, serif;
+	color: black;
+	background-color: transparent;
+	float: left;
+	margin-right: 2em;
+	margin-top: 0.3em;
+	margin-left: .8em;
+}
+
+#header a:link, a:visited  {
+	color: #B51032;
+}
+
+/* Navigation */
+
+#navigation {
+	width: 200px;
+	top: 5em;
+	left: 1em;
+	width: 13em;	
+	position:absolute;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:90%;
+}
+#navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#navigation li {
+	border-bottom: 1px solid #006699;
+}
+#navigation li a
+{
+	display: block;
+	padding: 5px 5px 5px 0.5em;
+	border-left: 12px solid #006699;
+	border-right: 1px solid #006699;
+	background-color: #1E82CC;
+	color: #FFFFFF;
+	text-decoration: none;
+	border-right-color: #006699;
+	border-left-color: #006699;
+}
+#navigation li a:hover {
+	background-color: #006699;
+	color: #FFFFFF;
+}
+#navigation ul ul {
+	margin-left: 12px;
+}
+#navigation ul ul li {
+	border-bottom: 1px solid #006699;
+	margin:0;
+	background-color: #1E82CC;
+	color: #1E82CC;
+}
+#navigation ul ul a:link, #navigation ul ul a:visited {
+	background-color: #1E82CC;
+	color: #FFFFFF;
+}
+#navigation ul ul a:hover {
+	background-color: #006699;
+	color: #FFFFFF;
+}
+#header .breadcrumb {
+	font: 90% Arial, Helvetica, Georgia, "Times New Roman", Times, serif;
+	color: black;
+	background-color: transparent;
+	float: right;
+	margin-right: 2em;
+	margin-top: 0.8em;
+	font-weight:bold;
+}
+
+
+/* Main Content */
+
+#content 
+{
+	margin-top:1em;
+	margin-left: 16em;
+	margin-right: 2em;
+	min-height: 490px;
+}
+h1 {
+	font: 150% Arial, Helvetica, Georgia, "Times New Roman", Times, serif;
+}
+#content p {
+	font-size: 100%;
+	line-height: 1.6em; 
+}
+.btn-fix
+{
+	margin-top: -10px;
+}
+#content ul {
+	font-size: 80%;
+	line-height: 1.6em; 
+}
+
+
+
+/* Home Page CSS */
+.Home-Image
+{
+	float: left;
+}
+
+.Home-Login
+{
+	float: right;
+margin-right: 303px;
+margin-top: 74px;
+}
+
+
+.User-Login-Info
+{
+	float:right;
+}
+	.User-Login-Info p
+	{
+		margin-top:10px;
+	}
+
+
+.my-nav ul ul {
+	display: none !important;
+}
+
+	.my-nav ul li:hover > ul {
+		display: block !important;
+	}
+	.my-nav ul {
+	padding: 0 20px !important;
+	list-style: none;
+	position: relative;
+	display: inline-table !important;
+	
+}
+	.my-nav ul:after {
+		content: "" !important; clear: both !important; display: block !important;
+	}
+
+	.my-nav ul li {
+	float: left !important;
+}
+	.my-nav ul li:hover {
+		background: #4b545f !important;
+		background: linear-gradient(top, #4f5964 0%, #5f6975 40%) !important;
+		background: -moz-linear-gradient(top, #4f5964 0%, #5f6975 40%) !important;
+		background: -webkit-linear-gradient(top, #4f5964 0%,#5f6975 40% ) !important;
+	}
+		.my-nav ul li:hover a {
+			color: #fff !important;
+			
+		}
+	
+	.my-nav ul li a {
+		display: block !important;
+
+		color: #757575 !important; text-decoration: none !important;
+	}
+
+	.my-nav ul ul {
+	background: #5f6975 !important; border-radius: 0px !important; padding: 0 !important;
+	position: absolute !important; top: 100% !important; margin-left: 0px !important;
+}
+	.my-nav ul ul li {
+		float: none !important; 
+		border-top: 1px solid #6b727c !important;
+		border-bottom: 1px solid #575f6a !important;
+		position: relative !important;
+	}
+		.my-nav ul ul li a {
+			padding: 10px 40px !important;
+			color: #fff !important;
+			width: 140px !important;
+		}	
+			.my-nav ul ul li a:hover {
+				background: #4b545f !important;
+			}

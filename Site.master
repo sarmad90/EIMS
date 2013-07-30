@@ -1,0 +1,136 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
+
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>Forms Authentication, Authorization, and User Accounts</title>
+    <link href="Styles.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="container">
+
+        <form id="form1" runat="server">
+        <div class="navbar">
+  <div class="navbar-inner my-nav">
+      <asp:LinkButton ID="LinkButton6" runat="server" CssClass="brand" PostBackUrl="~/Home.aspx">EIMS</asp:LinkButton>
+    <ul class="nav">
+      <li class="active"></li>
+      <li><asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Public/Admission.aspx">Admissions</asp:LinkButton></li>
+      <li><asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/Public/Attendance.aspx">Attendance</asp:LinkButton></li>
+      <li><asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/Public/Examination.aspx">Examination</asp:LinkButton></li>
+      <li><asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/Public/Fee.aspx">Fee Information</asp:LinkButton></li>
+      <li><asp:LinkButton ID="LinkButton5" runat="server" PostBackUrl="~/Public/TimeTable.aspx">Time Table</asp:LinkButton></li>
+      <li>
+          <asp:LinkButton ID="LinkButton8" runat="server" PostBackUrl="~/Public/Departments.aspx">Departments</asp:LinkButton>
+          <ul>
+              <li><asp:LinkButton ID="LinkButton9" runat="server" PostBackUrl="~/Public/ComputerScience.aspx">Computer Science</asp:LinkButton></li>
+              <li><asp:LinkButton ID="LinkButton10" runat="server" PostBackUrl="~/Public/CivilEngineering.aspx">Civil Engineering</asp:LinkButton></li>
+              <li><asp:LinkButton ID="LinkButton11" runat="server" PostBackUrl="~/Public/ElectronicsEngineering.aspx">Electronics Engineering</asp:LinkButton></li>
+          </ul>
+      </li>
+      <li>
+        <asp:LoginView ID="LoginView2" runat="server">
+            <AnonymousTemplate>
+
+            </AnonymousTemplate>
+            <RoleGroups>
+                <asp:RoleGroup Roles="Administrator">
+                    <ContentTemplate>
+                        <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/Administration/AdminHome.aspx">Admin</asp:LinkButton>
+                        <ul>
+                            <li><asp:LinkButton ID="LinkButton11" runat="server" PostBackUrl="~/Administration/Parents/AddParent.aspx">Add a Parent</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="LinkButton12" runat="server" PostBackUrl="~/Administration/Students/AddStudent.aspx">Add a Student</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="LinkButton17" runat="server" PostBackUrl="~/Administration/Teachers/AddTeacher.aspx">Add a Teacher</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="LinkButton13" runat="server" PostBackUrl="~/Administration/Parents/AllParents.aspx">Parents</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="LinkButton14" runat="server" PostBackUrl="~/Administration/Students/AllStudents.aspx">Students</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="LinkButton18" runat="server" PostBackUrl="~/Administration/Teachers/AllTeachers.aspx">Teachers</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="LinkButton15" runat="server" PostBackUrl="~/Administration/ManageUsers.aspx">Manage Users</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="LinkButton16" runat="server" PostBackUrl="~/Administration/UserInformation.aspx">User Info</asp:LinkButton></li>
+                        </ul>
+                    </ContentTemplate>
+                </asp:RoleGroup>
+            </RoleGroups>
+        </asp:LoginView>
+      </li>
+    </ul>
+      <div class="User-Login-Info">
+          <p>
+                <asp:ContentPlaceHolder ID="LoginContent" runat="server">
+                    <asp:LoginView ID="LoginView1" runat="server">
+                        <LoggedInTemplate>
+                            Welcome back,
+                            <asp:LoginName ID="LoginName1" runat="server" />.
+          <asp:HyperLink ID="lnkUpdateSettings" runat="server" 
+               NavigateUrl="~/Membership/AdditionalUserInfo.aspx">
+               Update Your Settings</asp:HyperLink>
+                        </LoggedInTemplate>
+                        <AnonymousTemplate>
+                            Hello, guest.
+                        </AnonymousTemplate>
+                    </asp:LoginView>
+                    |
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Logout.aspx" />
+                </asp:ContentPlaceHolder>
+              </p>
+            </div>
+  </div>
+            
+</div>
+
+            <div id="header">
+                <span class="breadcrumb">
+                    <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+                    </asp:SiteMapPath>
+                </span>
+            </div>
+        
+            <div id="content">
+                <asp:contentplaceholder id="MainContent" runat="server">
+                  <!-- Page-specific content will go here... -->
+                </asp:contentplaceholder>
+            </div>
+            
+            <div id="navigation">
+                
+                
+                <ul>
+                    <li>
+                        <asp:HyperLink runat="server" ID="lnkHome" NavigateUrl="~/Home.aspx">Home</asp:HyperLink>
+                    </li>  
+                    <asp:Repeater runat="server" ID="menu" DataSourceID="SiteMapDataSource1">
+                        <ItemTemplate>
+                            <li>
+                                <asp:HyperLink ID="lnkMenuItem" runat="server" NavigateUrl='<%# Eval("Url") %>'><%# Eval("Title") %></asp:HyperLink>
+                                
+                                <asp:Repeater ID="submenu" runat="server" DataSource="<%# ((SiteMapNode) Container.DataItem).ChildNodes %>">
+                                    <HeaderTemplate>
+                                        <ul>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <li>
+                                            <asp:HyperLink ID="lnkMenuItem" runat="server" NavigateUrl='<%# Eval("Url") %>'><%# Eval("Title") %></asp:HyperLink>
+                                        </li>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        </ul>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                            </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </ul>
+
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
+            </div>
+        </form>
+    </div>
+    <footer><p>Educational Institute Management System, All Rights Reserved 2013.</p></footer>
+</body>
+</html>

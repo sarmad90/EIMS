@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="~/Home.aspx" title="Home">
+      <siteMapNode url="~/Membership/Guestbook.aspx" title="Guestbook" />
+        <siteMapNode title="Membership">
+            <siteMapNode url="~/Membership/CreatingUserAccounts.aspx" title="Creating User Accounts" />
+            <siteMapNode url="~/Membership/UserBasedAuthorization.aspx" title="User-Based Authorization" />
+            <siteMapNode url="~/Membership/AdditionalUserInfo.aspx" title="Storing Additional User Information" />
+        </siteMapNode>
+    <siteMapNode title="Roles">
+ <siteMapNode url="~/Roles/ManageRoles.aspx" title="Manage Roles"/>
+ <siteMapNode url="~/Roles/UsersAndRoles.aspx" title="Users and Roles" />
+ <siteMapNode url="~/Roles/CreateUserWizardWithRoles.aspx" title="Create Account (with Roles)" />
+ <siteMapNode url="~/Roles/RoleBasedAuthorization.aspx" title="Role-Based Authorization" />
+</siteMapNode>
+      <siteMapNode title="User Administration" url="~/Administration/ManageUsers.aspx" />
+    </siteMapNode>
+  
+</siteMap>
