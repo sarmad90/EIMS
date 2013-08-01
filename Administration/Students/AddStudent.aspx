@@ -51,7 +51,7 @@
                                 <asp:Label ID="DepartmentLabel" runat="server" AssociatedControlID="Department">Department:</asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="Department" runat="server"></asp:TextBox>
+                                <asp:DropDownList ID="Department" runat="server"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="Department" ErrorMessage="Department is required." ToolTip="Department is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
                             </td>
                         </tr>
@@ -60,7 +60,7 @@
                                 <asp:Label ID="BatchLabel" runat="server" AssociatedControlID="Batch">Batch:</asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="Batch" runat="server"></asp:TextBox>
+                                <asp:DropDownList ID="Batch" runat="server"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="Batch" ErrorMessage="Batch is required." ToolTip="Batch is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
                             </td>
                         </tr>
@@ -135,5 +135,7 @@
             </asp:CompleteWizardStep>
         </WizardSteps>
     </asp:CreateUserWizard>
+    <asp:SqlDataSource ID="DepartmentsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="SELECT [DepartmentId], [DepartmentName] FROM [Departments]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="BatchesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="SELECT [BatchId], [BatchName] FROM [Batches]"></asp:SqlDataSource>
 </asp:Content>
 

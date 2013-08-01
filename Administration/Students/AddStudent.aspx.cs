@@ -13,7 +13,18 @@ public partial class Administration_AddStudent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        DropDownList Department = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Department") as DropDownList;
+        Department.DataSource = DepartmentsDataSource;
+        Department.DataValueField = "DepartmentId";
+        Department.DataTextField = "DepartmentName";
+        Department.DataBind();
+        DropDownList Batch = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Batch") as DropDownList;
+        Department.DataSource = DepartmentsDataSource;
+        Department.DataValueField = "BatchId";
+        Department.DataTextField = "BatchName";
+        Department.DataBind();
 
+        
     }
     protected void AddNewStudent_CreatedUser(object sender, EventArgs e)
     {
@@ -68,8 +79,8 @@ public partial class Administration_AddStudent : System.Web.UI.Page
             //TextBox FirstName = CreateUserWizardStep1.FindControl("FirstName") as TextBox;
             TextBox LastName = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("LastName") as TextBox;
             TextBox Contact = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Contact") as TextBox;
-            TextBox Department = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Department") as TextBox;
-            TextBox Batch = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Batch") as TextBox;
+            DropDownList Department = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Department") as DropDownList;
+            DropDownList Batch = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Batch") as DropDownList;
             TextBox RollNum = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("RollNum") as TextBox;
             //Insert a new record into student profiles
             string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
