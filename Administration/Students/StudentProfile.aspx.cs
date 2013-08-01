@@ -40,7 +40,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
                     CreateAssociationPanel.Visible = false;
                     AssociationMessage.Text = "You already have a parent";
                     MembershipUser parent = Membership.GetUser(drvSql["ParentId"]);
-                    ParentLink.NavigateUrl = "~/Administration/ParentProfile.aspx?id=" + parent.UserName.ToString();
+                    ParentLink.NavigateUrl = "~/Administration/Parents/ParentProfile.aspx?id=" + parent.UserName.ToString();
                     ParentLink.Text = parent.Email + "(" + parent.UserName + ")";
                 }
             }
