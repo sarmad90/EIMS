@@ -27,15 +27,16 @@ public partial class Administration_AddTeachers : System.Web.UI.Page
             //TemplateControl CustStep = CreateUserWizardStep1.ContentTemplate as TemplateControl;
             TextBox FirstName = AddNewTeacher.CreateUserStep.ContentTemplateContainer.FindControl("FirstName") as TextBox;
             // Programmatically reference the TextBox controls
-            //TextBox FirstName = CreateUserWizardStep1.FindControl("FirstName") as TextBox;
+            // TextBox FirstName = CreateUserWizardStep1.FindControl("FirstName") as TextBox;
             TextBox LastName = AddNewTeacher.CreateUserStep.ContentTemplateContainer.FindControl("LastName") as TextBox;
+            DropDownList Gender = AddNewTeacher.CreateUserStep.ContentTemplateContainer.FindControl("Gender") as DropDownList;
             TextBox Contact = AddNewTeacher.CreateUserStep.ContentTemplateContainer.FindControl("Contact") as TextBox;
             TextBox Education = AddNewTeacher.CreateUserStep.ContentTemplateContainer.FindControl("Education") as TextBox;
             TextBox Designation = AddNewTeacher.CreateUserStep.ContentTemplateContainer.FindControl("Designation") as TextBox;
-            //Insert a new record into student profiles
+            // Insert a new record into student profiles
             string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
             //string insertSql = "INSERT INTO StudentProfiles(FirstName, LastName, Contact, Department, Batch, RollNo) VALUES(@FirstName, @LastName, @Contact, @Department, @Batch, @RollNo)";
-            string insertSql = "INSERT INTO TeacherProfiles(TeacherId, FirstName, LastName, Contact, Education, Designation) VALUES(@UserId, @FirstName, @LastName, @Contact, @Education, @Designation)";
+            string insertSql = "INSERT INTO TeacherProfiles(TeacherId, FirstName, LastName, Contact, Education, Designation, Gender) VALUES(@UserId, @FirstName, @LastName, @Contact, @Education, @Designation, @Gender)";
 
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
@@ -46,6 +47,7 @@ public partial class Administration_AddTeachers : System.Web.UI.Page
                 myCommand.Parameters.AddWithValue("@Contact", Contact.Text.Trim());
                 myCommand.Parameters.AddWithValue("@Education", Education.Text.Trim());
                 myCommand.Parameters.AddWithValue("@Designation", Designation.Text.Trim());
+                myCommand.Parameters.AddWithValue("@Gender", Gender.SelectedItem.Text);
                 myCommand.Parameters.AddWithValue("@UserId", newUserId);
                 myCommand.ExecuteNonQuery();
                 myConnection.Close();

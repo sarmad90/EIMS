@@ -13,18 +13,19 @@ public partial class Administration_AddStudent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        DropDownList Department = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Department") as DropDownList;
-        Department.DataSource = DepartmentsDataSource;
-        Department.DataValueField = "DepartmentId";
-        Department.DataTextField = "DepartmentName";
-        Department.DataBind();
-        DropDownList Batch = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Batch") as DropDownList;
-        Department.DataSource = DepartmentsDataSource;
-        Department.DataValueField = "BatchId";
-        Department.DataTextField = "BatchName";
-        Department.DataBind();
-
-        
+        if (!IsPostBack)
+        {
+            DropDownList Department = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Department") as DropDownList;
+            Department.DataSource = DepartmentsDataSource;
+            Department.DataValueField = "DepartmentId";
+            Department.DataTextField = "DepartmentName";
+            Department.DataBind();
+            DropDownList Batch = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Batch") as DropDownList;
+            Batch.DataSource = BatchesDataSource;
+            Batch.DataValueField = "BatchId";
+            Batch.DataTextField = "BatchName";
+            Batch.DataBind();
+        }
     }
     protected void AddNewStudent_CreatedUser(object sender, EventArgs e)
     {
@@ -81,11 +82,13 @@ public partial class Administration_AddStudent : System.Web.UI.Page
             TextBox Contact = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Contact") as TextBox;
             DropDownList Department = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Department") as DropDownList;
             DropDownList Batch = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Batch") as DropDownList;
+            DropDownList Gender = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Gender") as DropDownList;
             TextBox RollNum = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("RollNum") as TextBox;
+            TextBox Address = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Address") as TextBox;
             //Insert a new record into student profiles
             string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
             //string insertSql = "INSERT INTO StudentProfiles(FirstName, LastName, Contact, Department, Batch, RollNo) VALUES(@FirstName, @LastName, @Contact, @Department, @Batch, @RollNo)";
-            string insertSql = "INSERT INTO StudentProfiles(StudentId, FirstName, LastName, Contact, Department, Batch, RollNo) VALUES(@UserId, @FirstName, @LastName, @Contact, @Department, @Batch, @RollNo)";
+            string insertSql = "INSERT INTO StudentProfiles(StudentId, FirstName, LastName, Contact, DepartmentId, BatchId, RollNo, Gender, Address) VALUES(@UserId, @FirstName, @LastName, @Contact, @Department, @Batch, @RollNo, @Gender, @Address)";
 
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
@@ -94,9 +97,21 @@ public partial class Administration_AddStudent : System.Web.UI.Page
                 myCommand.Parameters.AddWithValue("@FirstName", FirstName.Text.Trim());
                 myCommand.Parameters.AddWithValue("@LastName", LastName.Text.Trim());
                 myCommand.Parameters.AddWithValue("@Contact", Contact.Text.Trim());
-                myCommand.Parameters.AddWithValue("@Department", Department.Text.Trim());
-                myCommand.Parameters.AddWithValue("@Batch", Batch.Text.Trim());
-                myCommand.Parameters.AddWithValue("@RollNo", RollNum.Text.Trim());
+                myCommand.Parameters.AddWithValue("@Department", Department.SelectedItem.Value);
+                myCommand.Parameters.AddWithValue("@Batch", Batch.SelectedItem.Value);
+                myCommand.Parameters.AddWithValue("@Gender", Gender.SelectedItem.Value.ToString());
+                string rollNumber="";
+                DataView dvSql = (DataView)DepartmentsDataSource.Select(DataSourceSelectArguments.Empty);
+                foreach (DataRowView drvSql in dvSql)
+                {
+                    if(drvSql["DepartmentName"].ToString()==Department.SelectedItem.Text)
+                    {
+                        rollNumber = drvSql["DepartmentInitials"].ToString();
+                    }
+                }
+                rollNumber = rollNumber + "-" + Batch.SelectedItem.Text + "-" + RollNum.Text;
+                myCommand.Parameters.AddWithValue("@RollNo", rollNumber);
+                myCommand.Parameters.AddWithValue("@Address", Address.Text.Trim());
                 myCommand.Parameters.AddWithValue("@UserId", newUserId);
                 myCommand.ExecuteNonQuery();
                 myConnection.Close();

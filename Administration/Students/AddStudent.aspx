@@ -33,7 +33,7 @@
                                 <asp:Label ID="LastNameLabel" runat="server" AssociatedControlID="LastName">Last Name:</asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="LastName" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="LastName" runat="server" required="true"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="LastName" ErrorMessage="Last Name is required." ToolTip="Last Name is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
                             </td>
                         </tr>
@@ -44,6 +44,18 @@
                             <td>
                                 <asp:TextBox ID="Contact" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Contact" ErrorMessage="Contact No. is required." ToolTip="Contact No. is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <asp:Label ID="Label1" runat="server" AssociatedControlID="Gender">Gender:</asp:Label>
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="Gender" runat="server">
+                                    <asp:ListItem Selected="True">Male</asp:ListItem>
+                                    <asp:ListItem>Female</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="Gender" ErrorMessage="Gender is required." ToolTip="Gender is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
                             </td>
                         </tr>
                          <tr>
@@ -71,6 +83,15 @@
                             <td>
                                 <asp:TextBox ID="RollNum" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="RollNum" ErrorMessage="Roll No. is required." ToolTip="Roll No. is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <asp:Label ID="Label2" runat="server" AssociatedControlID="Address">Address :</asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Address" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="Address" ErrorMessage="Address is required." ToolTip="Address is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -135,7 +156,7 @@
             </asp:CompleteWizardStep>
         </WizardSteps>
     </asp:CreateUserWizard>
-    <asp:SqlDataSource ID="DepartmentsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="SELECT [DepartmentId], [DepartmentName] FROM [Departments]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="DepartmentsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="SELECT [DepartmentId], [DepartmentName], [DepartmentInitials] FROM [Departments]"></asp:SqlDataSource>
     <asp:SqlDataSource ID="BatchesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="SELECT [BatchId], [BatchName] FROM [Batches]"></asp:SqlDataSource>
 </asp:Content>
 

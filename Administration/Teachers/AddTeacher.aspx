@@ -38,6 +38,18 @@
                         </tr>
                         <tr>
                             <td align="right">
+                                <asp:Label ID="Label1" runat="server" AssociatedControlID="Gender">Gender:</asp:Label>
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="Gender" runat="server">
+                                    <asp:ListItem>Female</asp:ListItem>
+                                    <asp:ListItem Selected="True">Male</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="Gender" ErrorMessage="Gender is required." ToolTip="Gender is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
                                 <asp:Label ID="ContactLabel" runat="server" AssociatedControlID="Contact">Contact No.:</asp:Label>
                             </td>
                             <td>
