@@ -4,7 +4,7 @@
     <asp:Repeater ID="Repeater1" runat="server">
         <HeaderTemplate>
 
-            <p>All Students</p>
+            <p>Batches</p>
             <ul>
         </HeaderTemplate>
         

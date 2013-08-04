@@ -9,6 +9,7 @@ Etiam dui tellus, bibendum vel leo ac, molestie porta mauris. Cras vel facilisis
     <p><asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/Administration/AddParent.aspx">Add A Parent</asp:LinkButton></p>
     <p><a href="AllStudents.aspx">AllStudents</a></p>
     <p><a href="AllParents.aspx">AllParents</a></p>
+    <p><a href="Classes/Batches.aspx">Batches</a></p>
 </asp:Content>
 
 
