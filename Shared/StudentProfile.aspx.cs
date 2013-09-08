@@ -13,49 +13,65 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.QueryString["id"] != null)
+      string userName;
+      if (Request.QueryString["id"] != null)
+      {
+        userName = Request.QueryString["id"].ToString();        
+      }
+      else
+      {
+        userName = Session["UserName"].ToString();
+      }
+      StudentUserName.Text = userName;
+      DataView dvSql = (DataView)StudentDataSource.Select(DataSourceSelectArguments.Empty);
+      foreach (DataRowView drvSql in dvSql)
+      {
+        StudentName.Text = drvSql["Name"].ToString();
+        StudentDepartment.Text = drvSql["DepartmentName"].ToString();
+        StudentBatch.Text = drvSql["BatchName"].ToString();
+        StudentContact.Text = drvSql["Contact"].ToString();
+        StudentRollNum.Text = drvSql["RollNo"].ToString();
+        StudentEmail.Text = drvSql["Email"].ToString();
+      }
+      DataView dvSql2 = (DataView)AssociationDataSource.Select(DataSourceSelectArguments.Empty);
+      foreach (DataRowView drvSql in dvSql2)
+      {
+        if (drvSql["ParentId"].ToString() != "")
         {
-            
-            //MembershipUser student = Membership.GetUser(Request.QueryString["id"].ToString());
-            //StudentEmail.Text = student.Email.ToString();
-            //StudentUserName.Text = student.UserName.ToString();
-            StudentUserName.Text = Request.QueryString["id"].ToString();
-            DataView dvSql = (DataView)StudentDataSource.Select(DataSourceSelectArguments.Empty);
-            foreach (DataRowView drvSql in dvSql)
-            {
-                StudentName.Text = drvSql["Name"].ToString();
-                StudentDepartment.Text = drvSql["DepartmentName"].ToString();
-                StudentBatch.Text = drvSql["BatchName"].ToString();
-                StudentContact.Text = drvSql["Contact"].ToString();
-                StudentRollNum.Text = drvSql["RollNo"].ToString();
-                StudentEmail.Text = drvSql["Email"].ToString();
-            }
-            DataView dvSql2 = (DataView)AssociationDataSource.Select(DataSourceSelectArguments.Empty);
-            foreach (DataRowView drvSql in dvSql2)
-            {
-                if (drvSql["ParentId"].ToString() != "")
-                {
-                    ShowAssociationPanel.Visible = true;
-                    CreateAssociationPanel.Visible = false;
-                    AssociationMessage.Text = "You already have a parent";
-                    MembershipUser parent = Membership.GetUser(drvSql["ParentId"]);
-                    ParentLink.NavigateUrl = "~/Administration/Parents/ParentProfile.aspx?id=" + parent.UserName.ToString();
-                    ParentLink.Text = parent.Email + "(" + parent.UserName + ")";
-                }
-            }
-
+          ShowAssociationPanel.Visible = true;
+          CreateAssociationPanel.Visible = false;
+          AssociationMessage.Text = "You have a parent account";
+          MembershipUser parent = Membership.GetUser(drvSql["ParentId"]);
+          ParentLink.NavigateUrl = "~/Administration/Parents/ParentProfile.aspx?id=" + parent.UserName.ToString();
+          ParentLink.Text = parent.Email + "(" + parent.UserName + ")";
         }
+      }
+
     }
     protected void StudentDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
-      MembershipUser student = Membership.GetUser(Request.QueryString["id"].ToString());
+      // Checks for the user name in the query string then assigns it the datasource parameter
+      MembershipUser student;
+      if (Request.QueryString["id"] != null)
+      {
+        student = Membership.GetUser(Request.QueryString["id"].ToString());
+      }
+      // if user name is not present in the query string then look for it in the session then assigns it to the datasource parameter
+      else
+      {
+        student = Membership.GetUser(Session["UserName"].ToString());
+      }
+      
+      // retrieves the user key from the user instance
       Guid studentId = (Guid)student.ProviderUserKey;
+
       //assign the currently logged on user's user id to the @userid parameter
       e.Command.Parameters["@StudentId"].Value = studentId;
       
 
     }
 
+  // Search Parent Button Code
     protected void Button1_Click(object sender, EventArgs e)
     {
         string parentUserName = Membership.GetUserNameByEmail(ParentEmail.Text);
@@ -94,7 +110,16 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
     }
     protected void AssociationDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
-        MembershipUser student = Membership.GetUser(Request.QueryString["id"].ToString());
+      MembershipUser student;
+      if (Request.QueryString["id"] != null)
+      {
+        student = Membership.GetUser(Request.QueryString["id"].ToString());
+      }
+      else
+      {
+        student = Membership.GetUser(Session["UserName"].ToString());
+      }
+      
         Guid studentId = (Guid)student.ProviderUserKey;
         //assign the currently logged on user's user id to the @userid parameter
         e.Command.Parameters["@StudentId"].Value = studentId;

@@ -1,6 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="StudentProfile.aspx.cs" Inherits="Administration_StudentProfile" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+
+  <ul class="nav nav-pills">  
+  <li class="active">
+    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">My Profile</asp:HyperLink>
+  </li>
+  <li>
+    <asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/Public/Departments.aspx">Departments</asp:LinkButton></li>
+  <li><a href="#">...</a></li>
+</ul>
+
     <div class="row">
         <div class="span3 offset1">
             <asp:Label ID="StudentName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
