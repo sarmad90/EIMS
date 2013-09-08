@@ -14,6 +14,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
       string userName;
+    //setting the userName variable based on query string or user name value in the session
       if (Request.QueryString["id"] != null)
       {
         userName = Request.QueryString["id"].ToString();        
@@ -22,6 +23,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
       {
         userName = Session["UserName"].ToString();
       }
+    //iterating through the data view and setting the fields in the form
       StudentUserName.Text = userName;
       DataView dvSql = (DataView)StudentDataSource.Select(DataSourceSelectArguments.Empty);
       foreach (DataRowView drvSql in dvSql)
@@ -33,9 +35,11 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
         StudentRollNum.Text = drvSql["RollNo"].ToString();
         StudentEmail.Text = drvSql["Email"].ToString();
       }
+    //iterating through the parent association data view to show the parent if found
       DataView dvSql2 = (DataView)AssociationDataSource.Select(DataSourceSelectArguments.Empty);
       foreach (DataRowView drvSql in dvSql2)
       {
+      //checking if a record is present in the data view, then show the associated parent
         if (drvSql["ParentId"].ToString() != "")
         {
           ShowAssociationPanel.Visible = true;
@@ -104,6 +108,8 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
             ShowAssociationPanel.Visible = true;
             AssociationDetails.Text = row.Cells[2].Text;
             AssociationMessage.Text = "A parent for this student was added";
+            ParentLink.NavigateUrl = "~/Administration/Parents/ParentProfile.aspx?id=" + parent.UserName.ToString();
+            ParentLink.Text = parent.Email + "(" + parent.UserName + ")";
 
         }
 
