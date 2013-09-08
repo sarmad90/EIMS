@@ -3,7 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="row">
         <div class="span3 offset1">
-            <asp:Label ID="StudentName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>&nbsp;<asp:Label ID="StudentLastName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+            <asp:Label ID="StudentName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
         </div> 
     </div>
     <div class="row">&nbsp;</div>
@@ -12,8 +12,7 @@
             <table class="table table-striped">
                 <tr>
                     <td> UserName:</td>
-                    <td>
-                        <asp:Label ID="StudentUserName" runat="server" Text=""></asp:Label></td>
+                    <td><asp:Label ID="StudentUserName" runat="server" Text=""></asp:Label></td>
                 </tr>
                 <tr>
                     <td> Batch:</td>
@@ -40,7 +39,7 @@
     </div>
     <div class="row">
         <div class="span2 offset1">
-            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn" PostBackUrl="~/Administration/AllStudents.aspx">Back</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn" PostBackUrl="~/Shared/AllStudents.aspx">Back</asp:LinkButton>
         </div>
     </div>
     <div class="row"> &nbsp;</div>
@@ -77,10 +76,14 @@
         </SelectParameters>
     </asp:SqlDataSource>
     
-    <asp:SqlDataSource ID="StudentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentDataSource_Selecting" SelectCommand="SELECT aspnet_Membership.Email, StudentProfiles.Department, StudentProfiles.Batch, StudentProfiles.FirstName, StudentProfiles.LastName, StudentProfiles.Contact, StudentProfiles.RollNo, StudentProfiles.Contact
+    <asp:SqlDataSource ID="StudentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentDataSource_Selecting" SelectCommand="SELECT aspnet_Membership.Email, Departments.DepartmentName, Batches.BatchName,
+(StudentProfiles.FirstName+' '+ StudentProfiles.LastName) as Name, StudentProfiles.Contact,
+StudentProfiles.RollNo, StudentProfiles.Contact
 FROM StudentProfiles
-INNER JOIN aspnet_Membership
-ON aspnet_Membership.UserId=StudentProfiles.StudentId WHERE (StudentProfiles.StudentId = @StudentId);">
+INNER JOIN Batches ON Batches.BatchId=StudentProfiles.BatchId
+INNER JOIN Departments ON Departments.DepartmentId=StudentProfiles.DepartmentId
+INNER JOIN aspnet_Membership ON aspnet_Membership.UserId=StudentProfiles.StudentId 
+WHERE (StudentProfiles.StudentId = @StudentId);">
         <SelectParameters>
             <asp:Parameter Name="StudentId" />
         </SelectParameters>

@@ -4,13 +4,13 @@
     <asp:Repeater ID="Repeater1" runat="server">
         <HeaderTemplate>
 
-            <p>Batches</p>
+            <p>Students</p>
             <ul>
         </HeaderTemplate>
         
         <ItemTemplate>
             <li>
-                <asp:HyperLink ID="lnkMenuItem" runat="server" NavigateUrl='<%# "~/Administration/Students/StudentProfile.aspx?id=" + Container.DataItem.ToString() %>'><%# Container.DataItem %></asp:HyperLink>
+                <asp:HyperLink ID="lnkMenuItem" runat="server" NavigateUrl='<%# "~/Shared/StudentProfile.aspx?id=" + Container.DataItem.ToString() %>'><%# Container.DataItem %></asp:HyperLink>
             </li>
         </ItemTemplate>
         <FooterTemplate>

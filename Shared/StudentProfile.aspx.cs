@@ -23,10 +23,9 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
             DataView dvSql = (DataView)StudentDataSource.Select(DataSourceSelectArguments.Empty);
             foreach (DataRowView drvSql in dvSql)
             {
-                StudentName.Text = drvSql["FirstName"].ToString();
-                StudentLastName.Text = drvSql["LastName"].ToString();
-                StudentDepartment.Text = drvSql["Department"].ToString();
-                StudentBatch.Text = drvSql["Batch"].ToString();
+                StudentName.Text = drvSql["Name"].ToString();
+                StudentDepartment.Text = drvSql["DepartmentName"].ToString();
+                StudentBatch.Text = drvSql["BatchName"].ToString();
                 StudentContact.Text = drvSql["Contact"].ToString();
                 StudentRollNum.Text = drvSql["RollNo"].ToString();
                 StudentEmail.Text = drvSql["Email"].ToString();
@@ -49,11 +48,11 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
     }
     protected void StudentDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
-        MembershipUser student = Membership.GetUser(Request.QueryString["id"].ToString());
-        Guid studentId = (Guid)student.ProviderUserKey;
-        //assign the currently logged on user's user id to the @userid parameter
-        e.Command.Parameters["@StudentId"].Value = studentId;
-        //StudentName.Text = Request.QueryString["id"].ToString();
+      MembershipUser student = Membership.GetUser(Request.QueryString["id"].ToString());
+      Guid studentId = (Guid)student.ProviderUserKey;
+      //assign the currently logged on user's user id to the @userid parameter
+      e.Command.Parameters["@StudentId"].Value = studentId;
+      
 
     }
 

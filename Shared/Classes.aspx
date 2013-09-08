@@ -9,7 +9,7 @@
         
         <ItemTemplate>
             <p>
-                <asp:HyperLink ID="lnkMenuItem" runat="server" NavigateUrl='<%# "~/Administration/Classes/Class.aspx?id=" + Eval("ClassId") %>'><%# Eval("CourseName") + " - " + Eval("BatchName") + " - Section " + Eval("SectionName") + " - " + Eval("SemesterName") + "Semester" + " - " + Eval("DepartmentName") + "Department" + " - Teacher: " + Eval("TeacherName")  %></asp:HyperLink>
+                <asp:HyperLink ID="lnkMenuItem" runat="server" NavigateUrl='<%# "~/Shared/Class.aspx?id=" + Eval("ClassId") %>'><%# Eval("CourseName") + " - " + Eval("BatchName") + " - Section " + Eval("SectionName") + " - " + Eval("SemesterName") + "Semester" + " - " + Eval("DepartmentName") + "Department" + " - Teacher: " + Eval("TeacherName")  %></asp:HyperLink>
             </p>
         </ItemTemplate>
         <FooterTemplate>

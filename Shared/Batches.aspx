@@ -8,7 +8,7 @@
         
         <ItemTemplate>
             <p>
-                <asp:HyperLink ID="lnkMenuItem" runat="server" NavigateUrl='<%# "~/Administration/Classes/Classes.aspx?batch=" + Eval("BatchName") %>'><%# Eval("BatchName") %></asp:HyperLink>
+                <asp:HyperLink ID="lnkMenuItem" runat="server" NavigateUrl='<%# "~/Shared/Classes.aspx?batch=" + Eval("BatchName") %>'><%# Eval("BatchName") %></asp:HyperLink>
             </p>
         </ItemTemplate>
         <FooterTemplate>
