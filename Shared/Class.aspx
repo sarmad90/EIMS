@@ -117,7 +117,7 @@ WHERE ClassStudents.ClassId=@ClassId" OnSelecting="ClassStudentsDataSource_Selec
         <asp:Parameter Name="ClassId" />
       </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="ClassDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="select Classes.ClassId,Courses.CourseName,Sections.SectionName,(TeacherProfiles.FirstName + ' ' + TeacherProfiles.LastName) as TeacherName, Batches.BatchName, Semesters.SemesterName,Departments.DepartmentName,Classes.CreditHours from Classes
+    <asp:SqlDataSource ID="ClassDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="select Classes.ClassId,Courses.CourseName,Sections.SectionName,(TeacherProfiles.FirstName + ' ' + TeacherProfiles.LastName) as TeacherName, Batches.BatchName, Semesters.SemesterName,Departments.DepartmentName,Classes.CreditHours, Classes.BatchId, Classes.DepartmentId from Classes
 INNER JOIN TeacherProfiles ON Classes.TeacherId=TeacherProfiles.TeacherId
 INNER JOIN Courses ON Classes.CourseId=Courses.CourseId
 INNER JOIN Sections ON Classes.SectionId=Sections.SectionId

@@ -43,11 +43,15 @@ public partial class Administration_Classes_Class : System.Web.UI.Page
     }
     protected void StudentsDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
+      DataView dvSql = (DataView)ClassDataSource.Select(DataSourceSelectArguments.Empty);
+      foreach (DataRowView drvSql in dvSql)
+      {
+        e.Command.Parameters["@BatchId"].Value = drvSql["BatchId"];
+        e.Command.Parameters["@DepartmentId"].Value = drvSql["DepartmentId"];
+      }
 
 
-
-      e.Command.Parameters["@BatchId"].Value = 4;
-      e.Command.Parameters["@DepartmentId"].Value = 1;
+      
       e.Command.Parameters["@ClassId"].Value = Request.QueryString["id"];
     }
     protected void AddStudentsButton_Click(object sender, EventArgs e)
@@ -79,9 +83,6 @@ public partial class Administration_Classes_Class : System.Web.UI.Page
                 myCommand.Parameters.AddWithValue("@StudentId", studentId);
                 myCommand.Parameters.AddWithValue("@ClassId", Request.QueryString["id"]);
                 myCommand.ExecuteNonQuery();
-                Session["Notice"] = "Selected students have been added to the class";
-                Response.Redirect("~/Shared/Class.aspx?id=" + Request.QueryString["id"]);
-
               }
             }
           }
@@ -89,6 +90,8 @@ public partial class Administration_Classes_Class : System.Web.UI.Page
           
         }
       }
+      Session["Notice"] = "Selected students have been added to the class";
+      Response.Redirect("~/Shared/Class.aspx?id=" + Request.QueryString["id"]);
     }
     protected void ClassStudentsDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
