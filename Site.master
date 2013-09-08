@@ -52,8 +52,8 @@
                             <li><asp:LinkButton ID="LinkButton12" runat="server" PostBackUrl="~/Administration/Students/AddStudent.aspx">Add a Student</asp:LinkButton></li>
                             <li><asp:LinkButton ID="LinkButton17" runat="server" PostBackUrl="~/Administration/Teachers/AddTeacher.aspx">Add a Teacher</asp:LinkButton></li>
                             <li><asp:LinkButton ID="LinkButton13" runat="server" PostBackUrl="~/Administration/Parents/AllParents.aspx">Parents</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="LinkButton14" runat="server" PostBackUrl="~/Administration/Students/AllStudents.aspx">Students</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="LinkButton18" runat="server" PostBackUrl="~/Administration/Teachers/AllTeachers.aspx">Teachers</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="LinkButton14" runat="server" PostBackUrl="~/Shared/AllStudents.aspx">Students</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="LinkButton18" runat="server" PostBackUrl="~/Shared/AllTeachers.aspx">Teachers</asp:LinkButton></li>
                             <li><asp:LinkButton ID="LinkButton15" runat="server" PostBackUrl="~/Administration/ManageUsers.aspx">Manage Users</asp:LinkButton></li>
                             <li><asp:LinkButton ID="LinkButton16" runat="server" PostBackUrl="~/Administration/UserInformation.aspx">User Info</asp:LinkButton></li>
                         </ul>

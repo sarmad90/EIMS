@@ -21,8 +21,8 @@ INNER JOIN TeacherProfiles ON Classes.TeacherId=TeacherProfiles.TeacherId
 INNER JOIN Courses ON Classes.CourseId=Courses.CourseId
 INNER JOIN Sections ON Classes.SectionId=Sections.SectionId
 INNER JOIN Batches ON Classes.BatchId=Batches.BatchId
-INNER JOIN Semesters ON Batches.SemesterId=Semesters.SemesterId
-INNER JOIN Departments ON Courses.DepartmentId=Departments.DepartmentId
+INNER JOIN Semesters ON Classes.SemesterId=Semesters.SemesterId
+INNER JOIN Departments ON Classes.DepartmentId=Departments.DepartmentId
 WHERE Batches.BatchName = @Batch">
         <SelectParameters>
             <asp:Parameter Name="Batch" />

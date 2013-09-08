@@ -30,12 +30,20 @@ public partial class Administration_Classes_AddAClass : System.Web.UI.Page
             Teacher.DataValueField = "TeacherId";
             Teacher.DataTextField = "TeacherName";
             Teacher.DataBind();
+            Department.DataSource = DepartmentsDataSource;
+            Department.DataValueField = "DepartmentId";
+            Department.DataTextField = "DepartmentName";
+            Department.DataBind();
+            Semester.DataSource = SemestersDataSource;
+            Semester.DataValueField = "SemesterId";
+            Semester.DataTextField = "SemesterName";
+            Semester.DataBind();
         }
     }
     protected void CreateClass_Click(object sender, EventArgs e)
     {
         string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
-        string insertSql = "INSERT INTO Classes(TeacherId, CourseId, BatchId, SectionId) VALUES(@TeacherId, @CourseId, @BatchId, @SectionId)";
+        string insertSql = "INSERT INTO Classes(TeacherId, CourseId, BatchId, SectionId, DepartmentId, SemesterId, CreditHours) VALUES(@TeacherId, @CourseId, @BatchId, @SectionId, @DepartmentId, @SemesterId, @CreditHours)";
         using (SqlConnection myConnection = new SqlConnection(connectionString))
         {
             myConnection.Open();
@@ -44,6 +52,9 @@ public partial class Administration_Classes_AddAClass : System.Web.UI.Page
             myCommand.Parameters.AddWithValue("@CourseId", Course.SelectedItem.Value);
             myCommand.Parameters.AddWithValue("@BatchId", Batch.SelectedItem.Value);
             myCommand.Parameters.AddWithValue("@SectionId", Section.SelectedItem.Value);
+            myCommand.Parameters.AddWithValue("@DepartmentId", Department.SelectedItem.Value);
+            myCommand.Parameters.AddWithValue("@SemesterId", Semester.SelectedItem.Value);
+            myCommand.Parameters.AddWithValue("@CreditHours", CreditHours.SelectedItem.Value);
             myCommand.ExecuteNonQuery();
             myConnection.Close();
             Session["Notice"]="A class has been added";

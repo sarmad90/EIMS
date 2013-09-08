@@ -25,6 +25,7 @@ public partial class Administration_Classes_Class : System.Web.UI.Page
             Department.Text = drvSql["DepartmentName"].ToString();
             Section.Text = drvSql["SectionName"].ToString();
             Semester.Text = drvSql["SemesterName"].ToString();
+            CreditHours.Text = drvSql["CreditHours"].ToString();
           }
           AddStudents.DataSource = StudentsDataSource;
           AddStudents.DataBind();

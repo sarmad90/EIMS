@@ -30,6 +30,10 @@
                     <td> Semester:</td>
                     <td><asp:Label ID="Semester" runat="server" Text=""></asp:Label></td>
                 </tr>
+                <tr>
+                    <td> Credit Hours:</td>
+                    <td><asp:Label ID="CreditHours" runat="server" Text=""></asp:Label></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -113,13 +117,13 @@ WHERE ClassStudents.ClassId=@ClassId" OnSelecting="ClassStudentsDataSource_Selec
         <asp:Parameter Name="ClassId" />
       </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="ClassDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="select Classes.ClassId,Courses.CourseName,Sections.SectionName,(TeacherProfiles.FirstName + ' ' + TeacherProfiles.LastName) as TeacherName, Batches.BatchName, Semesters.SemesterName,Departments.DepartmentName from Classes
+    <asp:SqlDataSource ID="ClassDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="select Classes.ClassId,Courses.CourseName,Sections.SectionName,(TeacherProfiles.FirstName + ' ' + TeacherProfiles.LastName) as TeacherName, Batches.BatchName, Semesters.SemesterName,Departments.DepartmentName,Classes.CreditHours from Classes
 INNER JOIN TeacherProfiles ON Classes.TeacherId=TeacherProfiles.TeacherId
 INNER JOIN Courses ON Classes.CourseId=Courses.CourseId
 INNER JOIN Sections ON Classes.SectionId=Sections.SectionId
 INNER JOIN Batches ON Classes.BatchId=Batches.BatchId
-INNER JOIN Semesters ON Batches.SemesterId=Semesters.SemesterId
-INNER JOIN Departments ON Courses.DepartmentId=Departments.DepartmentId
+INNER JOIN Semesters ON Classes.SemesterId=Semesters.SemesterId
+INNER JOIN Departments ON Classes.DepartmentId=Departments.DepartmentId
 WHERE Classes.ClassId = @ClassId" OnSelecting="ClassDataSource_Selecting">
         <SelectParameters>
             <asp:Parameter Name="ClassId" />
