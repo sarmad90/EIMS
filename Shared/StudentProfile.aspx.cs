@@ -21,7 +21,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
       }
       else
       {
-        userName = Session["UserName"].ToString();
+        userName = User.Identity.Name;
       }
     //iterating through the data view and setting the fields in the form
       StudentUserName.Text = userName;
@@ -50,7 +50,10 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
           ParentLink.Text = parent.Email + "(" + parent.UserName + ")";
         }
       }
-
+      if (!Roles.IsUserInRole("Administrator"))
+      {
+        CreateAssociationPanel.Visible = false;
+      }
     }
     protected void StudentDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
@@ -63,7 +66,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
       // if user name is not present in the query string then look for it in the session then assigns it to the datasource parameter
       else
       {
-        student = Membership.GetUser(Session["UserName"].ToString());
+        student = Membership.GetUser(User.Identity.Name);
       }
       
       // retrieves the user key from the user instance
@@ -87,6 +90,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
     protected void ParentAssociation_SelectedIndexChanged(object sender, EventArgs e)
     {
         GridViewRow row = ParentAssociation.SelectedRow;
+      //setting a parent instance from the parent Id colum from the row
         MembershipUser parent = Membership.GetUser(row.Cells[2].Text);
         Guid parentId = (Guid)parent.ProviderUserKey;
 
@@ -94,7 +98,8 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
         Guid studentId = (Guid)student.ProviderUserKey;
 
         string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
-        //string insertSql = "INSERT INTO StudentProfiles(FirstName, LastName, Contact, Department, Batch, RollNo) VALUES(@FirstName, @LastName, @Contact, @Department, @Batch, @RollNo)";
+
+      //string insertSql = "INSERT INTO StudentProfiles(FirstName, LastName, Contact, Department, Batch, RollNo) VALUES(@FirstName, @LastName, @Contact, @Department, @Batch, @RollNo)";
         string insertSql = "INSERT INTO associations (StudentId,ParentId) VALUES (@StudentId, @ParentId)";
 
         using (SqlConnection myConnection = new SqlConnection(connectionString))
@@ -114,16 +119,19 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
         }
 
     }
+
+  //Finding the parent on the page load event
     protected void AssociationDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
       MembershipUser student;
+      //setting a user instance based on query string or session variable
       if (Request.QueryString["id"] != null)
       {
         student = Membership.GetUser(Request.QueryString["id"].ToString());
       }
       else
       {
-        student = Membership.GetUser(Session["UserName"].ToString());
+        student = Membership.GetUser(User.Identity.Name);
       }
       
         Guid studentId = (Guid)student.ProviderUserKey;

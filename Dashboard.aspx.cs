@@ -10,8 +10,6 @@ public partial class Dashboard : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-      string userName = User.Identity.Name;
-      Session["UserName"] = userName;
-      Label1.Text = Session["UserName"].ToString();
+      Label1.Text = User.Identity.Name;
     }
 }
