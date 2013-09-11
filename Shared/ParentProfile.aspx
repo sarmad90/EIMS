@@ -32,7 +32,7 @@
     </div>
     <div class="row">
         <div class="span2 offset1">
-            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn" PostBackUrl="~/Administration/Parents/AllParents.aspx">Back</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
             <asp:SqlDataSource ID="ParentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="ParentDataSource_Selecting" SelectCommand="SELECT aspnet_Membership.Email, ParentProfiles.Address, ParentProfiles.FirstName, ParentProfiles.LastName, ParentProfiles.Contact, ParentProfiles.Contact
 FROM ParentProfiles
 INNER JOIN aspnet_Membership
