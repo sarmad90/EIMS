@@ -113,12 +113,10 @@
                   <asp:RoleGroup Roles="Teacher">
                     <ContentTemplate>
                       <ul class="nav nav-pills">  
-                        <li class="active">
-                          <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Shared/TeacherProfile.aspx">My Profile</asp:HyperLink>
-                        </li>
-                        <li>
-                          <asp:LinkButton ID="LinkButton19" runat="server" PostBackUrl="~/Public/Departments.aspx">Departments</asp:LinkButton></li>
-                        <li><a href="#">...</a></li>
+                        <li class="active"><asp:HyperLink ID="HyperLink111232" runat="server" NavigateUrl="~/Dashboard.aspx">Dashboard</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink23" runat="server" NavigateUrl="~/Shared/TeacherProfile.aspx">Profile</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink21" runat="server" NavigateUrl="~/Shared/TeacherProfile.aspx">Classes</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink22" runat="server" NavigateUrl="~/Shared/TeacherProfile.aspx">Quiz & Assignments</asp:HyperLink></li>
                       </ul>
                     </ContentTemplate>
                   </asp:RoleGroup>
