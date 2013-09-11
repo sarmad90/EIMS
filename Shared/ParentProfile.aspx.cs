@@ -11,13 +11,17 @@ public partial class Administration_ParentProfile : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.QueryString["id"] != null)
-        {
-
-            //MembershipUser student = Membership.GetUser(Request.QueryString["id"].ToString());
-            //StudentEmail.Text = student.Email.ToString();
-            //StudentUserName.Text = student.UserName.ToString();
-            ParentUserName.Text = Request.QueryString["id"].ToString();
+      string userName;
+      //setting the userName variable based on query string or user name value in the session
+      if (Request.QueryString["id"] != null)
+      {
+        userName = Request.QueryString["id"].ToString();
+      }
+      else
+      {
+        userName = User.Identity.Name;
+      }
+          ParentUserName.Text = userName;
             DataView dvSql = (DataView)ParentDataSource.Select(DataSourceSelectArguments.Empty);
             foreach (DataRowView drvSql in dvSql)
             {
@@ -27,14 +31,22 @@ public partial class Administration_ParentProfile : System.Web.UI.Page
                 ParentContact.Text = drvSql["Contact"].ToString();
                 ParentEmail.Text = drvSql["Email"].ToString();
             }
-
-        }
     }
+
     protected void ParentDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
-        MembershipUser parent = Membership.GetUser(Request.QueryString["id"].ToString());
-        Guid parentId = (Guid)parent.ProviderUserKey;
-        //assign the currently logged on user's user id to the @userid parameter
-        e.Command.Parameters["@ParentId"].Value = parentId;
+      MembershipUser parent;
+      if (Request.QueryString["id"] != null)
+      {
+        parent = Membership.GetUser(Request.QueryString["id"].ToString());
+      }
+      // if user name is not present in the query string then look for it in the session then assigns it to the datasource parameter
+      else
+      {
+        parent = Membership.GetUser(User.Identity.Name);
+      }
+      Guid parentId = (Guid)parent.ProviderUserKey;
+      //assign the currently logged on user's user id to the @userid parameter
+      e.Command.Parameters["@ParentId"].Value = parentId;
     }
 }
