@@ -107,6 +107,60 @@
                         <asp:Label ID="ErrorMessage" runat="server" Text=""></asp:Label>
                     </div>
                 </asp:Panel>
+              <!-- Page wise pills navigation-->
+              <asp:LoginView ID="LoginView3" runat="server">
+                <RoleGroups>
+                  <asp:RoleGroup Roles="Teacher">
+                    <ContentTemplate>
+                      <ul class="nav nav-pills">  
+                        <li class="active">
+                          <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Shared/TeacherProfile.aspx">My Profile</asp:HyperLink>
+                        </li>
+                        <li>
+                          <asp:LinkButton ID="LinkButton19" runat="server" PostBackUrl="~/Public/Departments.aspx">Departments</asp:LinkButton></li>
+                        <li><a href="#">...</a></li>
+                      </ul>
+                    </ContentTemplate>
+                  </asp:RoleGroup>
+                  <asp:RoleGroup Roles="Administrator">
+                    <ContentTemplate>
+                      <ul class="nav nav-pills">  
+                        <li class="active">
+                          <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">My Profile</asp:HyperLink>
+                        </li>
+                        <li>
+                          <asp:LinkButton ID="LinkButton19" runat="server" PostBackUrl="~/Public/Departments.aspx">Departments</asp:LinkButton></li>
+                        <li><a href="#">...</a></li>
+                      </ul>
+                    </ContentTemplate>
+                  </asp:RoleGroup>
+                  <asp:RoleGroup Roles="Parent">
+                    <ContentTemplate>
+                      <ul class="nav nav-pills">  
+                        <li class="active">
+                          <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Shared/ParentProfile.aspx">My Profile</asp:HyperLink>
+                        </li>
+                        <li>
+                          <asp:LinkButton ID="LinkButton19" runat="server" PostBackUrl="~/Public/Departments.aspx">Departments</asp:LinkButton></li>
+                        <li><a href="#">...</a></li>
+                      </ul>
+                    </ContentTemplate>
+                  </asp:RoleGroup>
+                  <asp:RoleGroup Roles="Student">
+                    <ContentTemplate>
+                      <ul class="nav nav-pills">  
+                        <li class="active">
+                          <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">My Profile</asp:HyperLink>
+                        </li>
+                        <li>
+                          <asp:LinkButton ID="LinkButton19" runat="server" PostBackUrl="~/Public/Departments.aspx">Departments</asp:LinkButton></li>
+                        <li><a href="#">...</a></li>
+                      </ul>
+                    </ContentTemplate>
+                  </asp:RoleGroup>
+                </RoleGroups>
+              </asp:LoginView>
+              <!-- END OF -- Page wise pills navigation-->
                 <asp:contentplaceholder id="MainContent" runat="server">
                   <!-- Page-specific content will go here... -->
                 </asp:contentplaceholder>

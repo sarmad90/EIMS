@@ -46,7 +46,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
           CreateAssociationPanel.Visible = false;
           AssociationMessage.Text = "You have a parent account";
           MembershipUser parent = Membership.GetUser(drvSql["ParentId"]);
-          ParentLink.NavigateUrl = "~/Administration/Parents/ParentProfile.aspx?id=" + parent.UserName.ToString();
+          ParentLink.NavigateUrl = "~/Shared/ParentProfile.aspx?id=" + parent.UserName.ToString();
           ParentLink.Text = parent.Email + "(" + parent.UserName + ")";
         }
       }
@@ -113,7 +113,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
             ShowAssociationPanel.Visible = true;
             AssociationDetails.Text = row.Cells[2].Text;
             AssociationMessage.Text = "A parent for this student was added";
-            ParentLink.NavigateUrl = "~/Administration/Parents/ParentProfile.aspx?id=" + parent.UserName.ToString();
+            ParentLink.NavigateUrl = "~/Shared/ParentProfile.aspx?id=" + parent.UserName.ToString();
             ParentLink.Text = parent.Email + "(" + parent.UserName + ")";
 
         }
