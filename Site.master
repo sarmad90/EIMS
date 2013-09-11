@@ -46,7 +46,7 @@
                 </asp:RoleGroup>
                 <asp:RoleGroup Roles="Administrator">
                     <ContentTemplate>
-                        <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/Administration/AdminHome.aspx">Admin</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/Administration/Dashboard.aspx">Dashboard</asp:LinkButton>
                         <ul>
                             <li><asp:LinkButton ID="LinkButton11" runat="server" PostBackUrl="~/Administration/Parents/AddParent.aspx">Add a Parent</asp:LinkButton></li>
                             <li><asp:LinkButton ID="LinkButton12" runat="server" PostBackUrl="~/Administration/Students/AddStudent.aspx">Add a Student</asp:LinkButton></li>
@@ -125,12 +125,11 @@
                   <asp:RoleGroup Roles="Administrator">
                     <ContentTemplate>
                       <ul class="nav nav-pills">  
-                        <li class="active">
-                          <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">My Profile</asp:HyperLink>
-                        </li>
-                        <li>
-                          <asp:LinkButton ID="LinkButton19" runat="server" PostBackUrl="~/Public/Departments.aspx">Departments</asp:LinkButton></li>
-                        <li><a href="#">...</a></li>
+                        <li class="active"><asp:HyperLink ID="HyperLink1121" runat="server" NavigateUrl="~/Administration/Dashboard.aspx">Dashboard</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink17" runat="server" NavigateUrl="~/Administration/Students/AddStudent.aspx">Register Student</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink18" runat="server" NavigateUrl="~/Administration/Parents/AddParent.aspx">Register Parent</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink19" runat="server" NavigateUrl="~/Administration/Teachers/AddTeacher.aspx">Register Teacher</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink20" runat="server" NavigateUrl="~/Administration/Classes/AddAClass.aspx">Add Class</asp:HyperLink></li>
                       </ul>
                     </ContentTemplate>
                   </asp:RoleGroup>
