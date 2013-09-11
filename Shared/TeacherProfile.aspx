@@ -36,7 +36,7 @@
     </div>
     <div class="row">
         <div class="span2 offset1">
-            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn" PostBackUrl="~/Administration/Teachers/AllTeachers.aspx">Back</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
         </div>
     </div>
     
