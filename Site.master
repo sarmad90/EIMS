@@ -134,12 +134,10 @@
                   <asp:RoleGroup Roles="Parent">
                     <ContentTemplate>
                       <ul class="nav nav-pills">  
-                        <li class="active">
-                          <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Shared/ParentProfile.aspx">My Profile</asp:HyperLink>
-                        </li>
-                        <li>
-                          <asp:LinkButton ID="LinkButton19" runat="server" PostBackUrl="~/Public/Departments.aspx">Departments</asp:LinkButton></li>
-                        <li><a href="#">...</a></li>
+                        <li class="active"><asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Shared/Dashboard.aspx">Dashboard</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink24" runat="server" NavigateUrl="~/Shared/ParentProfile.aspx">Profile</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink25" runat="server" NavigateUrl="~/Shared/ParentProfile.aspx">Children</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink26" runat="server" NavigateUrl="~/Shared/ParentProfile.aspx">Children Stats</asp:HyperLink></li>
                       </ul>
                     </ContentTemplate>
                   </asp:RoleGroup>
