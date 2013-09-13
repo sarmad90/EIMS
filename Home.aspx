@@ -8,14 +8,33 @@
     </asp:Panel>
     
     <asp:Panel runat="Server" ID="AnonymousMessagePanel">
-        <div class="Home-Image">
-        <asp:Image ID="Image1" runat="server" AlternateText="EIMS-Image" ImageUrl="~/img/for-students.jpg" />
-        <div class="Image-Footer"><p style="font-size:30px;">Education made organised.</p></div>
+        <div class="row">
+          <div class="span6">
+            <div id="myCarousel" class="carousel slide">
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+              </ol>
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+                <div class="active item"><asp:Image ID="Image3" runat="server" ImageUrl="~/img/for-students.jpg" Height="300" Width="500" /></div>
+                <div class="item"><asp:Image ID="Image4" runat="server" ImageUrl="~/img/students-around-laptop.jpg" Height="300" Width="500" /></div>
+                <div class="item"><asp:Image ID="Image2" runat="server" ImageUrl="~/img/man-with-laptop2.jpg" Height="300" Width="500" /></div>
+                <div class="item"><asp:Image ID="Image1" runat="server" ImageUrl="~/img/college-students-using-laptop-on-campus-lawn-295x200.jpg" Height="300" Width="500" /></div>
+              </div>
+              <!-- Carousel nav -->
+              <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
             </div>
-        <div class="Home-Login">
-        <asp:Login ID="Login1" runat="server" BackColor="White">
-        </asp:Login>
-            </div>
+            <div class="Image-Footer"><p style="font-size:30px;">Education made organised.</p></div>
+          </div>
+          <div class="span6">
+              <asp:Login ID="Login1" runat="server" BackColor="White" CssClass="Home-Login2">
+              </asp:Login>
+          </div>
+        </div>
     </asp:Panel>
     
     <div style="float:left">

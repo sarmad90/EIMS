@@ -16,8 +16,9 @@ body {
 .Image-Footer
 {
 	background-color: #1E82CC;
-width: 290px;
-height: 100px;
+	width: 460px;
+	height: 100px;
+	margin-top: -20px;
 }
 	.Image-Footer p
 	{
@@ -104,7 +105,7 @@ h1 {
 }
 #content p {
 	font-size: 100%;
-	line-height: 1.6em; 
+	line-height: 3.6em; 
 }
 .btn-fix
 {
@@ -123,11 +124,10 @@ h1 {
 	float: left;
 }
 
-.Home-Login
+.Home-Login2 table
 {
-	float: right;
-margin-right: 303px;
-margin-top: 74px;
+	margin-top: 100px;
+	margin-left: 100px;
 }
 
 
