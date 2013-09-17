@@ -223,7 +223,6 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
           sqlcom.Parameters.AddWithValue("@TotalClasses", TotalClasses.Text);
           sqlcom.Parameters.AddWithValue("@ClassesAttended", ClassesAttended.Text);
           sqlcom.Parameters.AddWithValue("@ClassesMissed", ClassesMissed.Text);
-          // Percentage calculation
           sqlcom.Parameters.AddWithValue("@AttendancePercentage", attendancePercentage);
           int rows = sqlcom.ExecuteNonQuery();
           if (rows > 0)
@@ -268,18 +267,23 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
         GridViewRow row = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
         int index = row.RowIndex;
 
-        TextBox txtName = (TextBox)gvCrud.Rows[index].FindControl("txtNameEdit");
-        DropDownList AttendanceWeekEdit = (DropDownList)gvCrud.Rows[index].FindControl("AttendanceWeekSelectEdit");
-        TextBox txtAddress = (TextBox)gvCrud.Rows[index].FindControl("txtAddressEdit");
+        TextBox TotalClasses = (TextBox)gvCrud.Rows[index].FindControl("TotalClassesEdit");
+        DropDownList AttendanceWeek = (DropDownList)gvCrud.Rows[index].FindControl("AttendanceWeekSelectEdit");
+        TextBox ClassesAttended = (TextBox)gvCrud.Rows[index].FindControl("ClassesAttendedEdit");
+        TextBox ClassesMissed = (TextBox)gvCrud.Rows[index].FindControl("ClassesMissedEdit");
+        float attendancePercentage = (Convert.ToSingle(ClassesAttended.Text) / Convert.ToSingle(TotalClasses.Text)) * 100;
 
         sqlcon.Open();
-
-        using (sqlcom = new SqlCommand("UPDATE_RECORD", sqlcon))
+        using (sqlcom = new SqlCommand("UPDATE Attendance SET AttendanceWeek=@Week,SemesterId=@SemesterId,TotalClasses=@TotalClasses,ClassesAttended=@ClassesAttended,ClassesMissed=@ClassesMissed,AttendancePercentage=@AttendancePercentage WHERE AttendanceId=@ID", sqlcon))
         {
-          sqlcom.CommandType = CommandType.StoredProcedure;
-          sqlcom.Parameters.Add("@NAME", SqlDbType.VarChar).Value = txtName.Text.Trim();
-          sqlcom.Parameters.Add("@COUNTRY", SqlDbType.VarChar).Value = AttendanceWeekEdit.SelectedValue;
-          sqlcom.Parameters.Add("@ADDRESS", SqlDbType.VarChar).Value = txtAddress.Text.Trim();
+          sqlcom.CommandType = CommandType.Text;
+          sqlcom.Parameters.AddWithValue("@Week", AttendanceWeek.SelectedValue);
+          //TODO semester ID from drop down
+          sqlcom.Parameters.AddWithValue("@SemesterId", 8);
+          sqlcom.Parameters.AddWithValue("@TotalClasses", TotalClasses.Text);
+          sqlcom.Parameters.AddWithValue("@ClassesAttended", ClassesAttended.Text);
+          sqlcom.Parameters.AddWithValue("@ClassesMissed", ClassesMissed.Text);
+          sqlcom.Parameters.AddWithValue("@AttendancePercentage", attendancePercentage);
 
           sqlcom.Parameters.Add("@ID", SqlDbType.BigInt).Value = id;
           int rows = sqlcom.ExecuteNonQuery();
@@ -299,9 +303,9 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
 
       sqlcon.Open();
 
-      using (sqlcom = new SqlCommand("DELETE_RECORD", sqlcon))
+      using (sqlcom = new SqlCommand("delete from Attendance where AttendanceId=@ID", sqlcon))
       {
-        sqlcom.CommandType = CommandType.StoredProcedure;
+        sqlcom.CommandType = CommandType.Text;
         sqlcom.Parameters.Add("@ID", SqlDbType.BigInt).Value = id;
         int rows = sqlcom.ExecuteNonQuery();
         if (rows > 0)
