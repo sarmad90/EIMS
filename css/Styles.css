@@ -197,3 +197,76 @@ h1 {
 			.my-nav ul ul li a:hover {
 				background: #4b545f !important;
 			}
+
+/* CRUD CSS */
+.GridView
+{
+    width: 800px;
+}
+
+.Header-Class
+{
+    background: #045fa0;
+    color: #FFF;
+    border: 1px solid #045fa0;
+}
+
+    .Header-Class th
+    {
+        padding: 10px;
+        text-align: center;
+    }
+
+.Row-Class
+{
+    background: #FFFFFF;
+    color: #54005e;
+}
+
+    .Row-Class td
+    {
+        text-align: center;
+        border: 1px solid #EEE;
+    }
+
+.Alternet-Row-Class
+{
+    background: #F6F6F6;
+    color: #000;
+}
+
+    .Alternet-Row-Class TD
+    {
+        text-align: center;
+        border: 1px solid #EEE;
+    }
+
+.Footer-Class
+{
+    background: #CCC;
+    -moz-border-radius: 0px 0px 0px 0px;
+    -webkit-border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+}
+
+    .Footer-Class TD
+    {
+        padding: 5px;
+        text-align: center;
+        border: 1PX solid #CCC;
+    }
+
+
+select
+{
+    padding: 5px;
+    border: 1px solid #54005e;
+    width: 40px;
+}
+    input[type='submit']:hover, input[type='button']:hover
+    {
+        background: #0074c7;
+        color: #FFF;
+    }
+
+/* END OF CRUD CSS*/

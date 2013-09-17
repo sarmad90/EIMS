@@ -17,7 +17,7 @@ public class EimsHelper
     
 	}
 
-  public static bool SendMail(string recipient, string subject, string body)
+  public static void SendMail(string recipient, string subject, string body)
   {
     //string recipient = Email.Text;
     string from = "noreply@eims.com";
@@ -29,7 +29,6 @@ public class EimsHelper
     objsmtp.EnableSsl = true;
     objsmtp.Credentials = objNC;
     objsmtp.Send(objMail);
-    return true;
   }
 
 }

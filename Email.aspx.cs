@@ -6,46 +6,165 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
 using System.Net;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 public partial class Email : System.Web.UI.Page
 {
+  private SqlConnection sqlcon;
+  private SqlCommand sqlcom;
+  private SqlDataAdapter sqladp;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+      string connection = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
+      sqlcon = new SqlConnection(connection);
+      if (!IsPostBack)
+      {
+        BindGrid();
+      }
 
     }
-    protected void Button1_Click(object sender, EventArgs e)
+
+    private void BindGrid()
     {
-      string recipient = "sssabih@comstar.com.pk";
-      string from = "noreply@eims.com";
-      string subject = "Welcome to Educational Institute Management System";
-      string body = "Hi Mr.abc you are now a registered user";
-      MailMessage objMail = new MailMessage(from, recipient , subject, body);
-      NetworkCredential objNC = new NetworkCredential("noreply.eims@live.com", "admin123");
-      SmtpClient objsmtp = new SmtpClient("smtp.live.com", 587); // for hotmail
-      objsmtp.EnableSsl = true;
-      objsmtp.Credentials = objNC;
-      objsmtp.Send(objMail);
+      using (sqlcom = new SqlCommand("select * from departments", sqlcon))
+      {
+        sqladp = new SqlDataAdapter(sqlcom);
+        DataSet ds = new DataSet();
+        sqladp.Fill(ds);
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+          gvCrud.DataSource = ds;
+          gvCrud.DataBind();
+        }
+        else
+        {
+          FirstGridViewRow();
+        }
+      }
+    }
 
+    private void FirstGridViewRow()
+    {
+      DataTable dt = new DataTable();
+      DataRow dr = null;
+      dt.Columns.Add(new DataColumn("DepartmentId", typeof(int)));
+      dt.Columns.Add(new DataColumn("DepartmentName", typeof(string)));
+      dt.Columns.Add(new DataColumn("DepartmentInitials", typeof(string)));
+      //dt.Columns.Add(new DataColumn("ADDRESS", typeof(string)));
+      dr = dt.NewRow();
+      dr[0] = 1;
+      dr[1] = string.Empty;
+      dr[2] = string.Empty;
+      dr[3] = string.Empty;
+      dt.Rows.Add(dr);
 
-    //  MailAddress from = new MailAddress("ben@contoso.com", "Ben Miller");
-    //  MailAddress to = new MailAddress("sssabih@comstar.com.pk", "Jane Clayton");
-    //  MailMessage message = new MailMessage(from, to);
-    //  // message.Subject = "Using the SmtpClient class.";
-    //  message.Subject = "Using the SmtpClient class.";
-    //  message.Body = @"Using this feature, you can send an e-mail message from an application very easily.";
-    //  // Add a carbon copy recipient.
-    //  MailAddress copy = new MailAddress("Notification_List@contoso.com");
-    //  message.CC.Add(copy);
-    //  SmtpClient client = new SmtpClient("smtp.live.com",587);
-    //  NetworkCredential objNC = new NetworkCredential("sam_sarmad@hotmail.com", "singlesam2490");
-    //  client.Credentials = objNC;
-    //  client.EnableSsl = true;
-    //  // Include credentials if the server requires them.
-    //  //client.Credentials = CredentialCache.DefaultNetworkCredentials;
-    //  Console.WriteLine("Sending an e-mail message to {0} by using the SMTP host {1}.",
-    //     to.Address, client.Host);
-    //    client.Send(message);
-     
+      ViewState["StoreFirstRow"] = dt;
+
+      gvCrud.DataSource = dt;
+      gvCrud.DataBind();
+    }
+
+    protected void btnInsert_Click(object sender, ImageClickEventArgs e)
+    {
+      TextBox txtName = (TextBox)gvCrud.FooterRow.FindControl("txtNameInsert");
+      DropDownList ddlCountry = (DropDownList)gvCrud.FooterRow.FindControl("ddlCountryInsert");
+      TextBox txtAddress = (TextBox)gvCrud.FooterRow.FindControl("txtAddressInsert");
+
+      sqlcon.Open();
+
+      using (sqlcom = new SqlCommand("insert into dbo.Departments VALUES(@DepartmentName,@DepartmentInitials)", sqlcon))
+      {
+        sqlcom.CommandType = CommandType.Text;
+        sqlcom.Parameters.AddWithValue("@DepartmentName",txtName.Text);
+        sqlcom.Parameters.AddWithValue("@DepartmentInitials", ddlCountry.SelectedValue);
+        //sqlcom.Parameters.Add("@ADDRESS", SqlDbType.VarChar).Value = txtAddress.Text.Trim();
+        int rows = sqlcom.ExecuteNonQuery();
+        if (rows > 0)
+        {
+          Response.Write("Record Inserted!");
+          BindGrid();
+        }
+      }
+    }
+
+    protected void gvCrud_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+      if (e.Row.RowState == DataControlRowState.Edit || e.Row.RowState ==
+          (DataControlRowState.Edit | DataControlRowState.Alternate))
+      {
+        DropDownList ddlCountry = (DropDownList)e.Row.FindControl("ddlCountryEdit");
+        ddlCountry.SelectedValue = DataBinder.Eval(e.Row.DataItem, "COUNTRY").ToString();
+      }
+      if (e.Row.RowType == DataControlRowType.DataRow && ViewState["StoreFirstRow"] != null)
+      {
+        ViewState["StoreFirstRow"] = null;
+        e.Row.Visible = false;
+      }
+    }
+    protected void gvCrud_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+      gvCrud.EditIndex = e.NewEditIndex;
+      BindGrid();
+    }
+    protected void gvCrud_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+      gvCrud.EditIndex = -1;
+      BindGrid();
+    }
+
+    protected void gvCrud_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+      if (e.CommandName == "Modify")
+      {
+        long id = Convert.ToInt64(e.CommandArgument);
+        GridViewRow row = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
+        int index = row.RowIndex;
+
+        TextBox txtName = (TextBox)gvCrud.Rows[index].FindControl("txtNameEdit");
+        DropDownList ddlCountry = (DropDownList)gvCrud.Rows[index].FindControl("ddlCountryEdit");
+        TextBox txtAddress = (TextBox)gvCrud.Rows[index].FindControl("txtAddressEdit");
+
+        sqlcon.Open();
+
+        using (sqlcom = new SqlCommand("UPDATE_RECORD", sqlcon))
+        {
+          sqlcom.CommandType = CommandType.StoredProcedure;
+          sqlcom.Parameters.Add("@NAME", SqlDbType.VarChar).Value = txtName.Text.Trim();
+          sqlcom.Parameters.Add("@COUNTRY", SqlDbType.VarChar).Value = ddlCountry.SelectedValue;
+          sqlcom.Parameters.Add("@ADDRESS", SqlDbType.VarChar).Value = txtAddress.Text.Trim();
+
+          sqlcom.Parameters.Add("@ID", SqlDbType.BigInt).Value = id;
+          int rows = sqlcom.ExecuteNonQuery();
+          if (rows > 0)
+          {
+            Response.Write("Record Updated!");
+            gvCrud.EditIndex = -1;
+            BindGrid();
+          }
+        }
+      }
+    }
+
+    protected void gvCrud_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+      long id = int.Parse(gvCrud.DataKeys[e.RowIndex].Value.ToString());
+
+      sqlcon.Open();
+
+      using (sqlcom = new SqlCommand("DELETE_RECORD", sqlcon))
+      {
+        sqlcom.CommandType = CommandType.StoredProcedure;
+        sqlcom.Parameters.Add("@ID", SqlDbType.BigInt).Value = id;
+        int rows = sqlcom.ExecuteNonQuery();
+        if (rows > 0)
+        {
+          Response.Write("Record Deleted!");
+          BindGrid();
+        }
+      }
     }
 
 }

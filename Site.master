@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
     <title>Forms Authentication, Authorization, and User Accounts</title>
-    <link href="Styles.css" rel="stylesheet" type="text/css" />
+    <link href="css/Styles.css" rel="stylesheet" type="text/css" />
     <link href="css/bootstrap-responsive.css" rel="stylesheet" />
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="css/bootstrap.css" rel="stylesheet" />
