@@ -128,7 +128,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
             myCommand.ExecuteNonQuery();
             CreateAssociationPanel.Visible = false;
             ShowAssociationPanel.Visible = true;
-            AssociationDetails.Text = row.Cells[2].Text;
+            //AssociationDetails.Text = row.Cells[2].Text;
             AssociationMessage.Text = "A parent for this student was added";
             ParentLink.NavigateUrl = "~/Shared/ParentProfile.aspx?id=" + parent.UserName.ToString();
             ParentLink.Text = parent.Email + "(" + parent.UserName + ")";

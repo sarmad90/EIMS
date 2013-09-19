@@ -63,6 +63,12 @@
                 <asp:Label ID="CreateAssociationLabel" runat="server" Text=""></asp:Label>
             </div>
                   </asp:Panel>
+      <div class="span6 offset1">
+            <asp:Panel ID="ShowAssociationPanel" runat="server" Visible="False">
+                <asp:Label ID="AssociationMessage" runat="server" Text=""></asp:Label>
+                <asp:HyperLink ID="ParentLink" runat="server">asdasd</asp:HyperLink>
+            </asp:Panel>
+        </div>
       <asp:Panel ID="AttendancePanel" runat="server">
         <div class="span10 offset1">
             <h1>Attendance</h1>
@@ -157,13 +163,6 @@
           </div>
       </asp:Panel>
       <!-- End of Administrator section-->
-        <div class="span6 offset1">
-            <asp:Panel ID="ShowAssociationPanel" runat="server" Visible="False">
-                <asp:Label ID="AssociationDetails" runat="server" Text="SabihUddin"></asp:Label>
-                <asp:Label ID="AssociationMessage" runat="server" Text=""></asp:Label>
-                <asp:HyperLink ID="ParentLink" runat="server">asdasd</asp:HyperLink>
-            </asp:Panel>
-        </div>
     </div>
     
     <asp:SqlDataSource ID="AssociationDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="AssociationDataSource_Selecting" SelectCommand="select ParentId from Associations where (StudentId = @StudentId) ;">
