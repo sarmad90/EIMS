@@ -231,7 +231,7 @@
                 </div>
               </div>
               <div class="form-actions">
-                <asp:Button ID="Button2" runat="server" Text="Add" CssClass="btn btn-primary" />
+                <asp:Button ID="AddResult" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="AddResult_Click" />
               </div>
             </div>
           </div>

@@ -317,4 +317,34 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
     }
 
   //Attendance Code -------------End
+
+  //Result Code ------------Start
+    protected void AddResult_Click(object sender, EventArgs e)
+    {
+      MembershipUser student;
+      if (Request.QueryString["id"] != null)
+      {
+        student = Membership.GetUser(Request.QueryString["id"].ToString());
+      }
+      // if user name is not present in the query string then look for it in the session then assigns it to the datasource parameter
+      else
+      {
+        student = Membership.GetUser(User.Identity.Name);
+      }
+
+      // retrieves the user key from the user instance
+      Guid studentId = (Guid)student.ProviderUserKey;
+      sqlcon.Open();
+      string insertResultQuery = "INSERT INTO Results Output inserted.ResultId VALUES(@SemesterId,@PassingDate,@Status,@GPA,@Attendance,@StudentId)";
+      sqlcom = new SqlCommand(insertResultQuery,sqlcon);
+      sqlcom.Parameters.AddWithValue("@SemesterId", TxtSemester.Text);
+      sqlcom.Parameters.AddWithValue("@PassingDate", PassingDate.SelectedDate);
+      sqlcom.Parameters.AddWithValue("@Status", TxtStatus.Text);
+      sqlcom.Parameters.AddWithValue("@GPA", TxtGPA.Text);
+      sqlcom.Parameters.AddWithValue("@Attendance", TxtAttendance.Text);
+      sqlcom.Parameters.AddWithValue("@StudentId", studentId);
+      Int32 newId = (Int32)sqlcom.ExecuteScalar();
+      StudentUserName.Text = newId.ToString();
+    }
+  //Result Code ---------------End
 }
