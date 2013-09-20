@@ -10,6 +10,8 @@
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
     <div id="container">
@@ -128,6 +130,7 @@
                         <li><asp:HyperLink ID="HyperLink18" runat="server" NavigateUrl="~/Administration/Parents/AddParent.aspx">Register Parent</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink19" runat="server" NavigateUrl="~/Administration/Teachers/AddTeacher.aspx">Register Teacher</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink20" runat="server" NavigateUrl="~/Administration/Classes/AddAClass.aspx">Add Class</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink27" runat="server" NavigateUrl="~/Shared/Batches.aspx">Classes</asp:HyperLink></li>
                       </ul>
                     </ContentTemplate>
                   </asp:RoleGroup>
@@ -181,8 +184,6 @@
         </form>
     </div>
     <footer><p>Educational Institute Management System, All Rights Reserved 2013.</p></footer>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
   <script type="text/javascript">
