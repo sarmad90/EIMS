@@ -6,6 +6,30 @@
       if ($('#MainContent_TxtStatus').val() != "" || $('#MainContent_TxtSemester').val() != "" || $('#MainContent_TxtGPA').val() != "" || $('#MainContent_TxtAttendance').val() != "")
       {
         $(".collapse").collapse();
+        if ($('#MainContent_TxtSubject2').val() == "")
+        {
+          $('.subject_fields_2').hide();
+        }
+        if ($('#MainContent_TxtSubject3').val() == "")
+        {
+          $('.subject_fields_3').hide();
+          $('#MainContent_subject_fields_button_3').hide();
+        }
+        if ($('#MainContent_TxtSubject4').val() == "")
+        {
+          $('.subject_fields_4').hide();
+          $('#MainContent_subject_fields_button_4').hide();
+        }
+        if ($('#MainContent_TxtSubject5').val() == "")
+        {
+          $('.subject_fields_5').hide();
+          $('#MainContent_subject_fields_button_5').hide();
+        }
+        if ($('#MainContent_TxtSubject6').val() == "")
+        {
+          $('.subject_fields_6').hide();
+          $('#MainContent_subject_fields_button_6').hide();
+        }
         if ($('.subject_fields_2').is(':visible'))
         {
           $('#MainContent_subject_fields_button_2').hide();
@@ -151,11 +175,11 @@
                     <div>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <asp:Label ID="Label7" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TextBox4" runat="server" CssClass="input-mini"></asp:TextBox>
+                      <asp:TextBox ID="TxtSubject1" runat="server" CssClass="input-mini"></asp:TextBox>
                       <asp:Label ID="Label8" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TextBox6" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtMarksObtained1" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                       <asp:Label ID="Label9" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TextBox7" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtTotalMarks1" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                     </div>
                   </div>
                 </div>
@@ -165,11 +189,11 @@
                     <span class="subject_fields_2">
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <asp:Label ID="Label10" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TextBox8" runat="server" CssClass="input-mini"></asp:TextBox>
+                      <asp:TextBox ID="TxtSubject2" runat="server" CssClass="input-mini"></asp:TextBox>
                       <asp:Label ID="Label11" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TextBox9" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtMarksObtained2" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                       <asp:Label ID="Label12" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TextBox10" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtTotalMarks2" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                     </span>
                   </div>
                 </div>
@@ -179,11 +203,11 @@
                     <span class="subject_fields_3">
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <asp:Label ID="Label13" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TextBox11" runat="server" CssClass="input-mini"></asp:TextBox>
+                      <asp:TextBox ID="TxtSubject3" runat="server" CssClass="input-mini"></asp:TextBox>
                       <asp:Label ID="Label14" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TextBox12" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtMarksObtained3" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                       <asp:Label ID="Label15" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TextBox13" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtTotalMarks3" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                     </span>
                   </div>
                 </div>
@@ -193,11 +217,11 @@
                     <span class="subject_fields_4">
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <asp:Label ID="Label16" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TextBox1" runat="server" CssClass="input-mini"></asp:TextBox>
+                      <asp:TextBox ID="TxtSubject4" runat="server" CssClass="input-mini"></asp:TextBox>
                       <asp:Label ID="Label17" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TextBox2" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtMarksObtained4" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                       <asp:Label ID="Label18" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TextBox3" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtTotalMarks4" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                     </span>
                   </div>
                 </div>
@@ -207,11 +231,11 @@
                     <span class="subject_fields_5">
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <asp:Label ID="Label19" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TextBox5" runat="server" CssClass="input-mini"></asp:TextBox>
+                      <asp:TextBox ID="TxtSubject5" runat="server" CssClass="input-mini"></asp:TextBox>
                       <asp:Label ID="Label20" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TextBox14" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtMarksObtained5" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                       <asp:Label ID="Label21" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TextBox15" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtTotalMarks5" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                     </span>
                   </div>
                 </div>
@@ -221,11 +245,11 @@
                     <span class="subject_fields_6">
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <asp:Label ID="Label22" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TextBox16" runat="server" CssClass="input-mini"></asp:TextBox>
+                      <asp:TextBox ID="TxtSubject6" runat="server" CssClass="input-mini"></asp:TextBox>
                       <asp:Label ID="Label23" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TextBox17" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtMarksObtained6" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                       <asp:Label ID="Label24" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TextBox18" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      <asp:TextBox ID="TxtTotalMarks6" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
                     </span>
                   </div>
                 </div>
