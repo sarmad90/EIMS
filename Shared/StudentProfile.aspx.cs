@@ -344,7 +344,62 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
       sqlcom.Parameters.AddWithValue("@Attendance", TxtAttendance.Text);
       sqlcom.Parameters.AddWithValue("@StudentId", studentId);
       Int32 newId = (Int32)sqlcom.ExecuteScalar();
-      StudentUserName.Text = newId.ToString();
+      string insertSubjectsQuery = "INSERT INTO Subjects VALUES(@ResultId,@SubjectName,@SubjectTotalMarks,@SubjectMarksObtained)";
+      SqlCommand sqlcom2 = new SqlCommand(insertSubjectsQuery, sqlcon);
+      //sqlcom2.Parameters.AddWithValue("@ResultId", newId);
+      if (TxtSubject1.Text != "")
+      {
+        sqlcom2.Parameters.AddWithValue("@ResultId", newId);
+        sqlcom2.Parameters.AddWithValue("@SubjectName", TxtSubject1.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectTotalMarks", TxtTotalMarks1.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectMarksObtained", TxtMarksObtained1.Text);
+        sqlcom2.ExecuteNonQuery();
+      }
+      if (TxtSubject2.Text != "")
+      {
+        sqlcom2.Parameters.Clear();
+        sqlcom2.Parameters.AddWithValue("@ResultId", newId);
+        sqlcom2.Parameters.AddWithValue("@SubjectName", TxtSubject2.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectTotalMarks", TxtTotalMarks2.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectMarksObtained", TxtMarksObtained2.Text);
+        sqlcom2.ExecuteNonQuery();
+      }
+      if (TxtSubject3.Text != "")
+      {
+        sqlcom2.Parameters.Clear();
+        sqlcom2.Parameters.AddWithValue("@ResultId", newId);
+        sqlcom2.Parameters.AddWithValue("@SubjectName", TxtSubject3.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectTotalMarks", TxtTotalMarks3.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectMarksObtained", TxtMarksObtained3.Text);
+        sqlcom2.ExecuteNonQuery();
+      }
+      if (TxtSubject4.Text != "")
+      {
+        sqlcom2.Parameters.Clear();
+        sqlcom2.Parameters.AddWithValue("@ResultId", newId);
+        sqlcom2.Parameters.AddWithValue("@SubjectName", TxtSubject4.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectTotalMarks", TxtTotalMarks4.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectMarksObtained", TxtMarksObtained4.Text);
+        sqlcom2.ExecuteNonQuery();
+      }
+      if (TxtSubject5.Text != "")
+      {
+        sqlcom2.Parameters.Clear();
+        sqlcom2.Parameters.AddWithValue("@ResultId", newId);
+        sqlcom2.Parameters.AddWithValue("@SubjectName", TxtSubject5.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectTotalMarks", TxtTotalMarks5.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectMarksObtained", TxtMarksObtained5.Text);
+        sqlcom2.ExecuteNonQuery();
+      }
+      if (TxtSubject6.Text != "")
+      {
+        sqlcom2.Parameters.Clear();
+        sqlcom2.Parameters.AddWithValue("@ResultId", newId);
+        sqlcom2.Parameters.AddWithValue("@SubjectName", TxtSubject6.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectTotalMarks", TxtTotalMarks6.Text);
+        sqlcom2.Parameters.AddWithValue("@SubjectMarksObtained", TxtMarksObtained6.Text);
+        sqlcom2.ExecuteNonQuery();
+      }
     }
   //Result Code ---------------End
 }
