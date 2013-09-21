@@ -35,6 +35,61 @@
                     <td><asp:Label ID="CreditHours" runat="server" Text=""></asp:Label></td>
                 </tr>
             </table>
+          <div class="row">
+            <div class="span6">
+                <div class="accordion" id="accordion2">
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                Students in the class
+              </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse in">
+              <div class="accordion-inner">
+                <asp:GridView ID="ClassStudentsGridview" CssClass="table table-hover GridView" runat="server" AutoGenerateColumns="False">
+                  <Columns>
+                    <asp:TemplateField HeaderText="Profile">
+                      <ItemTemplate>
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/Shared/StudentProfile.aspx?id=" + Eval("UserName")   %>'>View Profile</asp:HyperLink>
+                      </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="Name" HeaderText="Name" />
+                    <asp:BoundField DataField="Roll Number" HeaderText="Roll Number" />
+                    <asp:BoundField DataField="Batch" HeaderText="Batch" />
+                    <asp:BoundField DataField="Dept" HeaderText="Dept" />
+                  </Columns>
+                </asp:GridView>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                Add students to the class
+              </a>
+            </div>
+            <div id="collapseTwo" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <asp:GridView ID="AddStudents" runat="server" CssClass="table table-hover" DataKeyNames="Roll Number" AutoGenerateColumns="False">
+                  <Columns>
+                    <asp:TemplateField HeaderText="Select">
+                      <ItemTemplate>
+                        <asp:CheckBox ID="chkSelect" runat="server" /> 
+                      </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="Name" HeaderText="Name" />
+                    <asp:BoundField DataField="Roll Number" HeaderText="Roll Number" />
+                    <asp:BoundField DataField="Batch" HeaderText="Batch" />
+                    <asp:BoundField DataField="Dept" HeaderText="Dept" />
+                  </Columns>
+                </asp:GridView>
+                <asp:Button ID="AddStudentsButton" runat="server" Text="Add Students" CssClass="btn" OnClick="AddStudentsButton_Click" />
+              </div>
+            </div>
+          </div>
+        </div>
+            </div>
+          </div>
         </div>
       <div class="span6">
         <div class="accordion" id="Div1">
@@ -140,61 +195,6 @@
         </div>
       </div>
     </div>
-  <div class="row">
-    <div class="span6 offset1">
-        <div class="accordion" id="accordion2">
-  <div class="accordion-group">
-    <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-        Students in the class
-      </a>
-    </div>
-    <div id="collapseOne" class="accordion-body collapse in">
-      <div class="accordion-inner">
-        <asp:GridView ID="ClassStudentsGridview" CssClass="table table-hover GridView" runat="server" AutoGenerateColumns="False">
-          <Columns>
-            <asp:TemplateField HeaderText="Profile">
-              <ItemTemplate>
-                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/Shared/StudentProfile.aspx?id=" + Eval("UserName")   %>'>View Profile</asp:HyperLink>
-              </ItemTemplate>
-            </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name" />
-            <asp:BoundField DataField="Roll Number" HeaderText="Roll Number" />
-            <asp:BoundField DataField="Batch" HeaderText="Batch" />
-            <asp:BoundField DataField="Dept" HeaderText="Dept" />
-          </Columns>
-        </asp:GridView>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-group">
-    <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        Add students to the class
-      </a>
-    </div>
-    <div id="collapseTwo" class="accordion-body collapse">
-      <div class="accordion-inner">
-        <asp:GridView ID="AddStudents" runat="server" CssClass="table table-hover" DataKeyNames="Roll Number" AutoGenerateColumns="False">
-          <Columns>
-            <asp:TemplateField HeaderText="Select">
-              <ItemTemplate>
-                <asp:CheckBox ID="chkSelect" runat="server" /> 
-              </ItemTemplate>
-            </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name" />
-            <asp:BoundField DataField="Roll Number" HeaderText="Roll Number" />
-            <asp:BoundField DataField="Batch" HeaderText="Batch" />
-            <asp:BoundField DataField="Dept" HeaderText="Dept" />
-          </Columns>
-        </asp:GridView>
-        <asp:Button ID="AddStudentsButton" runat="server" Text="Add Students" CssClass="btn" OnClick="AddStudentsButton_Click" />
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
   <asp:SqlDataSource ID="StudentsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentsDataSource_Selecting" SelectCommand="SELECT (StudentProfiles.FirstName + ' ' + StudentProfiles.LastName) as Name,(StudentProfiles.RollNo) as 'Roll Number',Batches.BatchName as Batch,Departments.DepartmentInitials as Dept, StudentProfiles.StudentId
 FROM StudentProfiles
 INNER JOIN batches ON StudentProfiles.BatchId=Batches.BatchId
