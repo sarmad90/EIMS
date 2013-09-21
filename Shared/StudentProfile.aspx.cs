@@ -16,9 +16,22 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
   private SqlCommand sqlcom;
   private SqlDataAdapter sqladp;
   //End of Attendance Code
+  MembershipUser student;
+  Guid studentId;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+      
+      //setting a user instance based on query string or session variable
+      if (Request.QueryString["id"] != null)
+      {
+        student = Membership.GetUser(Request.QueryString["id"].ToString());
+      }
+      else
+      {
+        student = Membership.GetUser(User.Identity.Name);
+      }
+      studentId = (Guid)student.ProviderUserKey;
       string connection = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
       sqlcon = new SqlConnection(connection);
       if (!IsPostBack)
@@ -73,18 +86,6 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
   //querying student data
     protected void StudentDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
-      // Checks for the user name in the query string then assigns it the datasource parameter
-      MembershipUser student;
-      if (Request.QueryString["id"] != null)
-      {
-        student = Membership.GetUser(Request.QueryString["id"].ToString());
-      }
-      // if user name is not present in the query string then look for it in the session then assigns it to the datasource parameter
-      else
-      {
-        student = Membership.GetUser(User.Identity.Name);
-      }
-      
       // retrieves the user key from the user instance
       Guid studentId = (Guid)student.ProviderUserKey;
 
@@ -111,12 +112,8 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
         MembershipUser parent = Membership.GetUser(row.Cells[2].Text);
         Guid parentId = (Guid)parent.ProviderUserKey;
 
-        MembershipUser student = Membership.GetUser(Request.QueryString["id"].ToString());
-        Guid studentId = (Guid)student.ProviderUserKey;
-
         string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
 
-      //string insertSql = "INSERT INTO StudentProfiles(FirstName, LastName, Contact, Department, Batch, RollNo) VALUES(@FirstName, @LastName, @Contact, @Department, @Batch, @RollNo)";
         string insertSql = "INSERT INTO associations (StudentId,ParentId) VALUES (@StudentId, @ParentId)";
 
         using (SqlConnection myConnection = new SqlConnection(connectionString))
@@ -140,18 +137,6 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
   //Finding the parent on the page load event
     protected void AssociationDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
-      MembershipUser student;
-      //setting a user instance based on query string or session variable
-      if (Request.QueryString["id"] != null)
-      {
-        student = Membership.GetUser(Request.QueryString["id"].ToString());
-      }
-      else
-      {
-        student = Membership.GetUser(User.Identity.Name);
-      }
-      
-        Guid studentId = (Guid)student.ProviderUserKey;
         //assign the currently logged on user's user id to the @userid parameter
         e.Command.Parameters["@StudentId"].Value = studentId;
     }
@@ -159,8 +144,10 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
   //Attendance Code -------------Start
     private void BindGrid()
     {
-      using (sqlcom = new SqlCommand("select * from attendance", sqlcon))
+      using (sqlcom = new SqlCommand("select * from attendance where studentId=@StudentId", sqlcon))
       {
+        
+        sqlcom.Parameters.AddWithValue("@StudentId", studentId);
         sqladp = new SqlDataAdapter(sqlcom);
         DataSet ds = new DataSet();
         sqladp.Fill(ds);
@@ -205,8 +192,6 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
     { 
       if (Request.QueryString["id"] != null)
       {
-        MembershipUser student = Membership.GetUser(Request.QueryString["id"].ToString());
-        Guid studentId = (Guid)student.ProviderUserKey;
         TextBox TotalClasses = (TextBox)gvCrud.FooterRow.FindControl("TotalClassesInsert");
         DropDownList AttendanceWeek = (DropDownList)gvCrud.FooterRow.FindControl("AttendanceWeekSelect");
         TextBox ClassesAttended = (TextBox)gvCrud.FooterRow.FindControl("ClassesAttendedInsert");
@@ -320,20 +305,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
 
   //Result Code ------------Start
     protected void AddResult_Click(object sender, EventArgs e)
-    {
-      MembershipUser student;
-      if (Request.QueryString["id"] != null)
-      {
-        student = Membership.GetUser(Request.QueryString["id"].ToString());
-      }
-      // if user name is not present in the query string then look for it in the session then assigns it to the datasource parameter
-      else
-      {
-        student = Membership.GetUser(User.Identity.Name);
-      }
-
-      // retrieves the user key from the user instance
-      Guid studentId = (Guid)student.ProviderUserKey;
+    {      
       sqlcon.Open();
       string insertResultQuery = "INSERT INTO Results Output inserted.ResultId VALUES(@SemesterId,@PassingDate,@Status,@GPA,@Attendance,@StudentId)";
       sqlcom = new SqlCommand(insertResultQuery,sqlcon);
