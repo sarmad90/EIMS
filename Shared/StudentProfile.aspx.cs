@@ -78,6 +78,8 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
         if (!Roles.IsUserInRole("Administrator"))
         {
           CreateAssociationPanel.Visible = false;
+          ResultsAdminPanel.Visible = false;
+          AttendancePanel.Visible = false;
         }
       }
       

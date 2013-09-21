@@ -39,6 +39,7 @@
           <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
         </div>
       <!-- Results Section Start -->
+      <asp:Panel ID="ResultsAdminPanel" runat="server">
       <div class="span6">
         <div class="accordion" id="accordion2">
           <div class="accordion-group">
@@ -178,6 +179,7 @@
           </div>
         </div>
       </div>
+      </asp:Panel>
       <!-- Results Section End -->
     </div>
     <div class="row"> &nbsp;</div>
