@@ -81,7 +81,7 @@
                 </div>
                 <div class="row">
                   <div class="span2">
-                    <asp:Button ID="AddAssignment" runat="server" Text="Assign" CssClass="btn btn-primary" /></div>
+                    <asp:Button ID="AddAssignment" runat="server" Text="Assign" CssClass="btn btn-primary" OnClick="AddAssignment_Click" /></div>
                 </div>
               </div>
             </div>

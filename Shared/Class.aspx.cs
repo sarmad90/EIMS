@@ -97,4 +97,21 @@ public partial class Administration_Classes_Class : System.Web.UI.Page
     {
       e.Command.Parameters["@ClassId"].Value = Request.QueryString["id"];
     }
+    protected void AddAssignment_Click(object sender, EventArgs e)
+    {
+      string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
+      string insertSql = "insert into assignments values(@ClassId,@Title,@Description,@SubmissionDate,@AssignmentDate,@TotalMarks)";
+      using(SqlConnection sqlConn=new SqlConnection(connectionString))
+      {
+        sqlConn.Open();
+        SqlCommand cmd = new SqlCommand(insertSql, sqlConn);
+        cmd.Parameters.AddWithValue("@ClassId", Request.QueryString["id"]);
+        cmd.Parameters.AddWithValue("@Title", AssignmentTitle.Text);
+        cmd.Parameters.AddWithValue("@Description", AssignmentDescription.Text);
+        cmd.Parameters.AddWithValue("@SubmissionDate", AssignmentSubmissionDate.SelectedDate);
+        cmd.Parameters.AddWithValue("@AssignmentDate", DateTime.Now.Date);
+        cmd.Parameters.AddWithValue("@TotalMarks", AssignmentTotalMarks.Text);
+        cmd.ExecuteNonQuery();
+      }
+    }
 }
