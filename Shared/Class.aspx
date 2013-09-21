@@ -36,6 +36,34 @@
                 </tr>
             </table>
         </div>
+      <div class="span6">
+        <div class="accordion" id="Div1">
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div2">
+                Due Assignments
+              </a>
+            </div>
+            <div id="Div2" class="accordion-body collapse in">
+              <div class="accordion-inner">
+                No Assignment
+              </div>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div3">
+                Add Assignments
+              </a>
+            </div>
+            <div id="Div3" class="accordion-body collapse">
+              <div class="accordion-inner">
+                Anim pariatur cliche...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   <div class="row">
     <div class="span6 offset1">
@@ -43,12 +71,12 @@
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-        Students in the class:
+        Students in the class
       </a>
     </div>
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
-        <asp:GridView ID="ClassStudentsGridview" CssClass="table table-hover" runat="server" AutoGenerateColumns="False">
+        <asp:GridView ID="ClassStudentsGridview" CssClass="table table-hover GridView" runat="server" AutoGenerateColumns="False">
           <Columns>
             <asp:TemplateField HeaderText="Profile">
               <ItemTemplate>
