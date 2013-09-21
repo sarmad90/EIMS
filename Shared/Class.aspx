@@ -87,6 +87,57 @@
             </div>
           </div>
         </div>
+        <!-- Divider between two accordians -->
+        <div class="accordion" id="Div4">
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div4" href="#Div5">
+                Coming Quizzes
+              </a>
+            </div>
+            <div id="Div5" class="accordion-body collapse in">
+              <div class="accordion-inner">
+                No Upcoming Quizzes
+              </div>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div4" href="#Div6">
+                Add Quizzes
+              </a>
+            </div>
+            <div id="Div6" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <p class="text-center"><b>Assignment</b></p>
+                <div class="row">
+                  <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="QuizTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="QuizTotalMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
+                </div>
+                <div class="row">
+                  <div class="span1">Description:  </div>
+                  <div class="span4"><asp:TextBox ID="QuizDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px"></asp:TextBox></div>
+                </div>
+                <div class="row">
+                  <div class="span1">Quiz Date:  </div>
+                  <div class="span1">
+                    <asp:Calendar ID="QuizDate" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                      <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                      <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                      <OtherMonthDayStyle ForeColor="#999999" />
+                      <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                      <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                      <TodayDayStyle BackColor="#CCCCCC" />
+                    </asp:Calendar>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="span2">
+                    <asp:Button ID="AddQuiz" runat="server" Text="Assign" CssClass="btn btn-primary" OnClick="AddQuiz_Click" /></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   <div class="row">

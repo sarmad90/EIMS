@@ -114,4 +114,20 @@ public partial class Administration_Classes_Class : System.Web.UI.Page
         cmd.ExecuteNonQuery();
       }
     }
+    protected void AddQuiz_Click(object sender, EventArgs e)
+    {
+      string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
+      string insertSql = "insert into quizzes values(@ClassId,@Title,@Description,@TotalMarks,@QuizDate)";
+      using (SqlConnection sqlConn = new SqlConnection(connectionString))
+      {
+        sqlConn.Open();
+        SqlCommand cmd = new SqlCommand(insertSql, sqlConn);
+        cmd.Parameters.AddWithValue("@ClassId", Request.QueryString["id"]);
+        cmd.Parameters.AddWithValue("@Title", QuizTitle.Text);
+        cmd.Parameters.AddWithValue("@Description", QuizDescription.Text);
+        cmd.Parameters.AddWithValue("@QuizDate", QuizDate.SelectedDate);
+        cmd.Parameters.AddWithValue("@TotalMarks", QuizTotalMarks.Text);
+        cmd.ExecuteNonQuery();
+      }
+    }
 }
