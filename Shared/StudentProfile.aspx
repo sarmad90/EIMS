@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="StudentProfile.aspx.cs" Inherits="Administration_StudentProfile" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-  <script type="text/javascript" src="/js/StudentProfile.js"></script>
+  <!--<script type="text/javascript" src="/js/StudentProfile.js"></script>-->
     <div class="row">
         <div class="span3 offset1">
             <asp:Label ID="StudentName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
@@ -202,12 +202,76 @@
                 <asp:Label ID="CreateAssociationLabel" runat="server" Text=""></asp:Label>
             </div>
                   </asp:Panel>
-      <div class="span6 offset1">
             <asp:Panel ID="ShowAssociationPanel" runat="server" Visible="False">
+              <div class="span6 offset1">
                 <asp:Label ID="AssociationMessage" runat="server" Text=""></asp:Label>
                 <asp:HyperLink ID="ParentLink" runat="server">asdasd</asp:HyperLink>
+              </div>
             </asp:Panel>
+      <!-- Assignments,Quizzes,Results and Attendance section start -->
+      <asp:Panel ID="NonAdminPanel" runat="server">
+        <div class="span10 offset1">
+          <div class="accordion" id="Div1">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div2">
+                  Attendance
+                </a>
+              </div>
+              <div id="Div2" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                  <p class="text-center"><b>Attendance</b></p>
+                  <asp:GridView ID="StudentAttendanceGrid" CssClass="table-striped table-condensed" runat="server" AutoGenerateColumns="False" DataSourceID="StudentAttendanceDataSource" AllowPaging="True" PageSize="5">
+                    <Columns>
+                      <asp:BoundField DataField="AttendanceWeek" HeaderText="Week" SortExpression="AttendanceWeek" />
+                      <asp:BoundField DataField="SemesterName" HeaderText="Semester" SortExpression="SemesterName" />
+                      <asp:BoundField DataField="TotalClasses" HeaderText="TotalClasses" SortExpression="TotalClasses" />
+                      <asp:BoundField DataField="ClassesAttended" HeaderText="Attended" SortExpression="ClassesAttended" />
+                      <asp:BoundField DataField="ClassesMissed" HeaderText="Missed" SortExpression="ClassesMissed" />
+                      <asp:BoundField DataField="AttendancePercentage" HeaderText="Attendance" SortExpression="AttendancePercentage" DataFormatString="{0:f2}" />
+                    </Columns>
+                  </asp:GridView>
+                  <asp:SqlDataSource ID="StudentAttendanceDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentAttendanceDataSource_Selecting" SelectCommand="SELECT attendance.AttendanceWeek, Semesters.SemesterName, attendance.TotalClasses,
+attendance.ClassesAttended, attendance.ClassesMissed,
+attendance.AttendancePercentage
+FROM Attendance
+INNER JOIN Semesters ON Semesters.SemesterId=Attendance.SemesterId
+WHERE Attendance.StudentId = @StudentId">
+                    <SelectParameters>
+                      <asp:Parameter Name="StudentId" Type="Object" />
+                    </SelectParameters>
+                  </asp:SqlDataSource>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div3">
+                  Results
+                </a>
+              </div>
+              <div id="Div3" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  No Results
+                </div>
+              </div>
+            </div>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div4">
+                  Assignments
+                </a>
+              </div>
+              <div id="Div4" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  No Assignments
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </asp:Panel>
+      <!-- Assignments,Quizzes,Results and Attendance section end -->
       <asp:Panel ID="AttendancePanel" runat="server">
         <div class="span10 offset1">
             <h1>Attendance</h1>

@@ -81,6 +81,10 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
           ResultsAdminPanel.Visible = false;
           AttendancePanel.Visible = false;
         }
+        else
+        {
+          NonAdminPanel.Visible = false;
+        }
       }
       
     }
@@ -376,4 +380,8 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
       }
     }
   //Result Code ---------------End
+    protected void StudentAttendanceDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+    {
+      e.Command.Parameters["@StudentId"].Value = studentId;
+    }
 }

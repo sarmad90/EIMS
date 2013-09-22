@@ -46,7 +46,7 @@
             </div>
             <div id="collapseOne" class="accordion-body collapse in">
               <div class="accordion-inner">
-                <asp:GridView ID="ClassStudentsGridview" CssClass="table table-hover GridView" runat="server" AutoGenerateColumns="False">
+                <asp:GridView ID="ClassStudentsGridview" CssClass="table table-hover" runat="server" AutoGenerateColumns="False">
                   <Columns>
                     <asp:TemplateField HeaderText="Profile">
                       <ItemTemplate>
