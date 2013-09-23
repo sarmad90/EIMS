@@ -58,7 +58,7 @@ public partial class Administration_Classes_AddAClass : System.Web.UI.Page
             myCommand.ExecuteNonQuery();
             myConnection.Close();
             Session["Notice"]="A class has been added";
-            Response.Redirect("~/Administration/AdminHome.aspx");
+            Response.Redirect("~/Administration/Dashboard.aspx");
         }
     }
 }

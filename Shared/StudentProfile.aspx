@@ -299,12 +299,50 @@ WHERE results.StudentId = @StudentId">
             <div class="accordion-group">
               <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div4">
-                  Assignments
+                  Due Assignments
                 </a>
               </div>
               <div id="Div4" class="accordion-body collapse">
                 <div class="accordion-inner">
-                  No Assignments
+                  <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="AssignmentId" DataSourceID="StudentAssignmentDataSource">
+                    <Columns>
+                      <asp:TemplateField><ItemTemplate><asp:HyperLink ID="HyperLink2" runat="server">Details</asp:HyperLink></ItemTemplate></asp:TemplateField>
+                      <asp:BoundField DataField="CourseName" HeaderText="Class" SortExpression="CourseName" />
+                      <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
+                      <asp:BoundField DataField="SubmissionDate" HeaderText="Submission Date" SortExpression="SubmissionDate" DataFormatString="{0:dd MMMM, yyyy}" />
+                      <asp:BoundField DataField="TotalMarks" HeaderText="Total Marks" SortExpression="TotalMarks" />
+                    </Columns>
+                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                    <RowStyle ForeColor="#000066" />
+                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                  </asp:GridView>
+                  <asp:SqlDataSource ID="StudentAssignmentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentAssignmentDataSource_Selecting" SelectCommand="select Assignments.AssignmentId,Classes.CourseId,Courses.CourseName,Assignments.Title,Assignments.SubmissionDate,Assignments.TotalMarks
+from Assignments
+INNER JOIN Classes ON Classes.ClassId = Assignments.ClassId
+INNER JOIN Courses ON Courses.CourseId=Classes.CourseId
+where Assignments.ClassId IN (select Classes.ClassId from Classes where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where ClassStudents.StudentId=@StudentId))">
+                    <SelectParameters>
+                      <asp:Parameter Name="StudentId" />
+                    </SelectParameters>
+                  </asp:SqlDataSource>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div5">
+                  Upcoming Quizzes
+                </a>
+              </div>
+              <div id="Div5" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  No Quizzes
                 </div>
               </div>
             </div>

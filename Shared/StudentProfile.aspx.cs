@@ -389,4 +389,8 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
     {
       e.Command.Parameters["@StudentId"].Value = studentId;
     }
+    protected void StudentAssignmentDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+    {
+      e.Command.Parameters["@StudentId"].Value = studentId;
+    }
 }
