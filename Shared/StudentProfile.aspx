@@ -221,15 +221,24 @@
               <div id="Div2" class="accordion-body collapse in">
                 <div class="accordion-inner">
                   <p class="text-center"><b>Attendance</b></p>
-                  <asp:GridView ID="StudentAttendanceGrid" CssClass="table-striped table-condensed" runat="server" AutoGenerateColumns="False" DataSourceID="StudentAttendanceDataSource" AllowPaging="True" PageSize="5">
+                  <asp:GridView ID="StudentAttendanceGrid" runat="server" AutoGenerateColumns="False" DataSourceID="StudentAttendanceDataSource" AllowPaging="True" PageSize="5" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
                     <Columns>
                       <asp:BoundField DataField="AttendanceWeek" HeaderText="Week" SortExpression="AttendanceWeek" />
                       <asp:BoundField DataField="SemesterName" HeaderText="Semester" SortExpression="SemesterName" />
                       <asp:BoundField DataField="TotalClasses" HeaderText="TotalClasses" SortExpression="TotalClasses" />
                       <asp:BoundField DataField="ClassesAttended" HeaderText="Attended" SortExpression="ClassesAttended" />
                       <asp:BoundField DataField="ClassesMissed" HeaderText="Missed" SortExpression="ClassesMissed" />
-                      <asp:BoundField DataField="AttendancePercentage" HeaderText="Attendance" SortExpression="AttendancePercentage" DataFormatString="{0:f2}" />
+                      <asp:BoundField DataField="AttendancePercentage" HeaderText="Attendance" SortExpression="AttendancePercentage" DataFormatString="{0:f2} %" />
                     </Columns>
+                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                    <RowStyle ForeColor="#000066" />
+                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                    <SortedDescendingHeaderStyle BackColor="#00547E" />
                   </asp:GridView>
                   <asp:SqlDataSource ID="StudentAttendanceDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentAttendanceDataSource_Selecting" SelectCommand="SELECT attendance.AttendanceWeek, Semesters.SemesterName, attendance.TotalClasses,
 attendance.ClassesAttended, attendance.ClassesMissed,
@@ -252,7 +261,38 @@ WHERE Attendance.StudentId = @StudentId">
               </div>
               <div id="Div3" class="accordion-body collapse">
                 <div class="accordion-inner">
-                  No Results
+                  <asp:GridView ID="StudentResultGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="StudentResultDataSource">
+                    <Columns>
+                      <asp:TemplateField>
+                        <ItemTemplate>
+                          <asp:HyperLink ID="HyperLink1" runat="server">Details</asp:HyperLink>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:BoundField DataField="Status" HeaderText="Status" />
+                      <asp:BoundField DataField="SemesterName" HeaderText="Semester" />
+                      <asp:BoundField DataField="PassingDate" HeaderText="Passing Date" DataFormatString="{0:dd MMMM, yyyy}" />
+                      <asp:BoundField DataField="Attendance" DataFormatString="{0:f2} %" HeaderText="Attendance" />
+                      <asp:BoundField DataField="GPA" DataFormatString="{0:f2}" HeaderText="GPA" />
+                    </Columns>
+                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                    <RowStyle ForeColor="#000066" />
+                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                  </asp:GridView>
+                  <asp:SqlDataSource ID="StudentResultDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentResultDataSource_Selecting" SelectCommand="SELECT results.status, semesters.SemesterName, results.passingdate,
+results.attendance, results.gpa
+FROM results
+INNER JOIN Semesters ON Semesters.SemesterId=results.SemesterId
+WHERE results.StudentId = @StudentId">
+                    <SelectParameters>
+                      <asp:Parameter Name="StudentId" />
+                    </SelectParameters>
+                  </asp:SqlDataSource>
                 </div>
               </div>
             </div>

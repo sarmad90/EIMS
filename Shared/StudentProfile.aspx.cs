@@ -380,7 +380,12 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
       }
     }
   //Result Code ---------------End
+
     protected void StudentAttendanceDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+    {
+      e.Command.Parameters["@StudentId"].Value = studentId;
+    }
+    protected void StudentResultDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
       e.Command.Parameters["@StudentId"].Value = studentId;
     }
