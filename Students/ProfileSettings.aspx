@@ -9,9 +9,9 @@
       <div class="row"><div class="span2"><b>Contact Number: </b></div><div class="span3"><asp:TextBox ID="TxtContact" runat="server" required="true"></asp:TextBox></div></div>
       <div class="row"><div class="span2"><b>Email: </b></div><div class="span3"><asp:TextBox ID="TxtEmail" runat="server" required="true"></asp:TextBox></div></div>
       <div class="row"><div class="span2"><b>Address: </b></div><div class="span3"><asp:TextBox ID="TxtAddress" runat="server" required="true"></asp:TextBox></div></div>
-      <div class="row"><div class="span2"><b>Batch: </b></div><div class="span3"><asp:Label ID="LblBatch" runat="server" Text="Label"></asp:Label></div></div>
-      <div class="row"><div class="span2"><b>Department: </b></div><div class="span3"><asp:Label ID="LblDepartment" runat="server" Text="Label"></asp:Label></div></div>
-      <div class="row"><div class="span2"><b>Roll Number: </b></div><div class="span3"><asp:Label ID="LblRollNum" runat="server" Text="Label"></asp:Label></div></div>
+      <div class="row"><div class="span2"><b>Batch: </b></div><div class="span3"><asp:TextBox ID="TxtBatch" runat="server" ReadOnly="True"></asp:TextBox></div></div>
+      <div class="row"><div class="span2"><b>Department: </b></div><div class="span3"><asp:TextBox ID="TxtDepartment" runat="server" ReadOnly="True"></asp:TextBox></div></div>
+      <div class="row"><div class="span2"><b>Roll Number: </b></div><div class="span3"><asp:TextBox ID="TxtRollNum" runat="server" ReadOnly="True"></asp:TextBox></div></div>
       <div class="row"><div class="span2"><b>Gender: </b></div><div class="span3"><asp:DropDownList ID="DDGender" runat="server">
         <asp:ListItem Selected="True">Male</asp:ListItem>
         <asp:ListItem>Female</asp:ListItem>

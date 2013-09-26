@@ -21,9 +21,9 @@ public partial class Students_ProfileSettings : System.Web.UI.Page
         TxtContact.Text = dvr["Contact"].ToString();
         TxtEmail.Text = dvr["Email"].ToString();
         TxtAddress.Text = dvr["Address"].ToString();
-        LblBatch.Text = dvr["BatchName"].ToString();
-        LblDepartment.Text = dvr["DepartmentName"].ToString();
-        LblRollNum.Text = dvr["RollNo"].ToString();
+        TxtBatch.Text = dvr["BatchName"].ToString();
+        TxtDepartment.Text = dvr["DepartmentName"].ToString();
+        TxtRollNum.Text = dvr["RollNo"].ToString();
         if (dvr["Gender"].ToString()=="Female")
         {
           DDGender.SelectedIndex = 1;
@@ -42,9 +42,33 @@ public partial class Students_ProfileSettings : System.Web.UI.Page
     }
     protected void UpdateProfile_Click(object sender, EventArgs e)
     {
+      MembershipUser student = Membership.GetUser(User.Identity.Name);
+      Guid studentId = (Guid)student.ProviderUserKey;
+      string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
+
+      string updateSql = "update StudentProfiles set FirstName=@FirstName,LastName=@LastName,Contact=@Contact,Address=@Address,Gender=@Gender,Avatar=@Avatar where StudentId=@StudentId";
+
+      using (SqlConnection myConnection = new SqlConnection(connectionString))
+      {
+        myConnection.Open();
+        SqlCommand myCommand = new SqlCommand(updateSql, myConnection);
+        myCommand.Parameters.AddWithValue("@StudentId", studentId);
+        myCommand.Parameters.AddWithValue("@FirstName", TxtFirstName.Text);
+        myCommand.Parameters.AddWithValue("@LastName", TxtLastName.Text);
+        myCommand.Parameters.AddWithValue("@Contact", TxtContact.Text);
+        myCommand.Parameters.AddWithValue("@Address", TxtAddress.Text);
+        myCommand.Parameters.AddWithValue("@Gender", DDGender.SelectedValue);
+        string ext = System.IO.Path.GetExtension(this.FUDisplayPic.PostedFile.FileName);
+        string fileName = Server.MapPath("~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
+        FUDisplayPic.SaveAs(fileName);
+        myCommand.Parameters.AddWithValue("@Avatar", "~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
+        myCommand.ExecuteNonQuery();
+        Session["Notice"] = "Your Profile has been updated!";
+        Response.Redirect("~/students/profilesettings.aspx");
+      }
       //FUDisplayPic.SaveAs("~/img/StudentAvatars/Display_picture_" + User.Identity.Name);
-      string ext = System.IO.Path.GetExtension(this.FUDisplayPic.PostedFile.FileName);
-      FUDisplayPic.SaveAs(Server.MapPath("~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext));
-      LblBatch.Text = Server.MapPath("~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
+      
+      //FUDisplayPic.SaveAs(Server.MapPath("~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext));
+      //LblBatch.Text = Server.MapPath("~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
     }
 }
