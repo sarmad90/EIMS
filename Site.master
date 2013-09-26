@@ -69,6 +69,7 @@
           <p>
                 <asp:ContentPlaceHolder ID="LoginContent" runat="server">
                     <asp:LoginView ID="LoginView1" runat="server">
+
                         <LoggedInTemplate>
                             Welcome,
                             <asp:LoginName ID="LoginName1" runat="server" />.
