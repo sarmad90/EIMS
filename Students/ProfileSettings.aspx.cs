@@ -28,7 +28,7 @@ public partial class Students_ProfileSettings : System.Web.UI.Page
         {
           DDGender.SelectedIndex = 1;
         }
-        if (dvr["Avatar"].ToString()!="")
+        if (dvr["Avatar"].ToString() != "")
         {
           DisplayPicture.ImageUrl = dvr["Avatar"].ToString();
         }
@@ -47,7 +47,9 @@ public partial class Students_ProfileSettings : System.Web.UI.Page
       string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
 
       string updateSql = "update StudentProfiles set FirstName=@FirstName,LastName=@LastName,Contact=@Contact,Address=@Address,Gender=@Gender,Avatar=@Avatar where StudentId=@StudentId";
-
+      string fileName;
+      string ext = System.IO.Path.GetExtension(this.FUDisplayPic.PostedFile.FileName);
+      fileName = Server.MapPath("~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
       using (SqlConnection myConnection = new SqlConnection(connectionString))
       {
         myConnection.Open();
@@ -58,17 +60,13 @@ public partial class Students_ProfileSettings : System.Web.UI.Page
         myCommand.Parameters.AddWithValue("@Contact", TxtContact.Text);
         myCommand.Parameters.AddWithValue("@Address", TxtAddress.Text);
         myCommand.Parameters.AddWithValue("@Gender", DDGender.SelectedValue);
-        string ext = System.IO.Path.GetExtension(this.FUDisplayPic.PostedFile.FileName);
-        string fileName = Server.MapPath("~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
-        FUDisplayPic.SaveAs(fileName);
         myCommand.Parameters.AddWithValue("@Avatar", "~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
         myCommand.ExecuteNonQuery();
-        Session["Notice"] = "Your Profile has been updated!";
-        Response.Redirect("~/students/profilesettings.aspx");
       }
-      //FUDisplayPic.SaveAs("~/img/StudentAvatars/Display_picture_" + User.Identity.Name);
-      
-      //FUDisplayPic.SaveAs(Server.MapPath("~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext));
-      //LblBatch.Text = Server.MapPath("~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
+      FUDisplayPic.SaveAs(fileName);
+      //student.Email = TxtEmail.Text;
+      //Membership.UpdateUser(student);
+      //Session["Notice"] = "Your Profile has been updated!";
+      //Response.Redirect("~/students/profilesettings.aspx");
     }
 }
