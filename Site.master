@@ -120,6 +120,7 @@
                         <li><asp:HyperLink ID="HyperLink23" runat="server" NavigateUrl="~/Shared/TeacherProfile.aspx">Profile</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink21" runat="server" NavigateUrl="~/Shared/TeacherProfile.aspx">Classes</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink22" runat="server" NavigateUrl="~/Shared/TeacherProfile.aspx">Quiz & Assignments</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink28" runat="server" NavigateUrl="~/Teachers/ProfileSettings.aspx">Profile Settings</asp:HyperLink></li>
                       </ul>
                     </ContentTemplate>
                   </asp:RoleGroup>
@@ -142,6 +143,7 @@
                         <li><asp:HyperLink ID="HyperLink24" runat="server" NavigateUrl="~/Shared/ParentProfile.aspx">Profile</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink25" runat="server" NavigateUrl="~/Shared/ParentProfile.aspx">Children</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink26" runat="server" NavigateUrl="~/Shared/ParentProfile.aspx">Children Stats</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink28" runat="server" NavigateUrl="~/Parents/ProfileSettings.aspx">Profile Settings</asp:HyperLink></li>
                       </ul>
                     </ContentTemplate>
                   </asp:RoleGroup>
@@ -154,6 +156,7 @@
                         <li><asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">Attendance</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink15" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">Quizzes & Assignments</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink16" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">Parent Profile</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink28" runat="server" NavigateUrl="~/Students/ProfileSettings.aspx">Profile Settings</asp:HyperLink></li>
                       </ul>
                     </ContentTemplate>
                   </asp:RoleGroup>
