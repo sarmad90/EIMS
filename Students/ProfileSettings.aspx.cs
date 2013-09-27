@@ -13,24 +13,27 @@ public partial class Students_ProfileSettings : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-      DataView studentDataView = (DataView)StudentDataSource.Select(DataSourceSelectArguments.Empty);
-      foreach (DataRowView dvr in studentDataView)
+      if (!IsPostBack)
       {
-        TxtFirstName.Text = dvr["FirstName"].ToString();
-        TxtLastName.Text = dvr["LastName"].ToString();
-        TxtContact.Text = dvr["Contact"].ToString();
-        TxtEmail.Text = dvr["Email"].ToString();
-        TxtAddress.Text = dvr["Address"].ToString();
-        TxtBatch.Text = dvr["BatchName"].ToString();
-        TxtDepartment.Text = dvr["DepartmentName"].ToString();
-        TxtRollNum.Text = dvr["RollNo"].ToString();
-        if (dvr["Gender"].ToString()=="Female")
+        DataView studentDataView = (DataView)StudentDataSource.Select(DataSourceSelectArguments.Empty);
+        foreach (DataRowView dvr in studentDataView)
         {
-          DDGender.SelectedIndex = 1;
-        }
-        if (dvr["Avatar"].ToString() != "")
-        {
-          DisplayPicture.ImageUrl = dvr["Avatar"].ToString();
+          TxtFirstName.Text = dvr["FirstName"].ToString();
+          TxtLastName.Text = dvr["LastName"].ToString();
+          TxtContact.Text = dvr["Contact"].ToString();
+          TxtEmail.Text = dvr["Email"].ToString();
+          TxtAddress.Text = dvr["Address"].ToString();
+          TxtBatch.Text = dvr["BatchName"].ToString();
+          TxtDepartment.Text = dvr["DepartmentName"].ToString();
+          TxtRollNum.Text = dvr["RollNo"].ToString();
+          if (dvr["Gender"].ToString() == "Female")
+          {
+            DDGender.SelectedIndex = 1;
+          }
+          if (dvr["Avatar"].ToString() != "")
+          {
+            DisplayPicture.ImageUrl = dvr["Avatar"].ToString();
+          }
         }
       }
     }
@@ -46,7 +49,7 @@ public partial class Students_ProfileSettings : System.Web.UI.Page
       Guid studentId = (Guid)student.ProviderUserKey;
       string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
 
-      string updateSql = "update StudentProfiles set FirstName=@FirstName,LastName=@LastName,Contact=@Contact,Address=@Address,Gender=@Gender,Avatar=@Avatar where StudentId=@StudentId";
+      string updateSql = "UPDATE StudentProfiles SET FirstName=@FirstName,LastName=@LastName,Contact=@Contact,Address=@Address,Gender=@Gender,Avatar=@Avatar WHERE StudentId=@StudentId";
       string fileName;
       string ext = System.IO.Path.GetExtension(this.FUDisplayPic.PostedFile.FileName);
       fileName = Server.MapPath("~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
@@ -54,19 +57,20 @@ public partial class Students_ProfileSettings : System.Web.UI.Page
       {
         myConnection.Open();
         SqlCommand myCommand = new SqlCommand(updateSql, myConnection);
-        myCommand.Parameters.AddWithValue("@StudentId", studentId);
         myCommand.Parameters.AddWithValue("@FirstName", TxtFirstName.Text);
         myCommand.Parameters.AddWithValue("@LastName", TxtLastName.Text);
         myCommand.Parameters.AddWithValue("@Contact", TxtContact.Text);
         myCommand.Parameters.AddWithValue("@Address", TxtAddress.Text);
         myCommand.Parameters.AddWithValue("@Gender", DDGender.SelectedValue);
+        myCommand.Parameters.AddWithValue("@StudentId", studentId);
         myCommand.Parameters.AddWithValue("@Avatar", "~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
         myCommand.ExecuteNonQuery();
       }
       FUDisplayPic.SaveAs(fileName);
-      //student.Email = TxtEmail.Text;
-      //Membership.UpdateUser(student);
-      //Session["Notice"] = "Your Profile has been updated!";
-      //Response.Redirect("~/students/profilesettings.aspx");
+      Label1.Text = TxtFirstName.Text;
+      student.Email = TxtEmail.Text;
+      Membership.UpdateUser(student);
+      Session["Notice"] = "Your Profile has been updated!";
+      Response.Redirect("~/students/profilesettings.aspx");
     }
 }

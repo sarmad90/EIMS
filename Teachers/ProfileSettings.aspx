@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ProfileSettings.aspx.cs" Inherits="Students_ProfileSettings" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ProfileSettings.aspx.cs" Inherits="Teachers_ProfileSettings" %>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
   <!--Student Profile Settings-->
   <div class="row">
@@ -36,6 +37,5 @@ WHERE (StudentProfiles.StudentId = @StudentId);">
             <asp:Parameter Name="StudentId" />
         </SelectParameters>
     </asp:SqlDataSource>
-  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 </asp:Content>
 
