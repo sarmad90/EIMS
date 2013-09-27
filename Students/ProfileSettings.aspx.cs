@@ -63,10 +63,17 @@ public partial class Students_ProfileSettings : System.Web.UI.Page
         myCommand.Parameters.AddWithValue("@Address", TxtAddress.Text);
         myCommand.Parameters.AddWithValue("@Gender", DDGender.SelectedValue);
         myCommand.Parameters.AddWithValue("@StudentId", studentId);
-        myCommand.Parameters.AddWithValue("@Avatar", "~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
+        if (FUDisplayPic.HasFile)
+        {
+          myCommand.Parameters.AddWithValue("@Avatar", "~/img/StudentAvatars/Display_picture_" + User.Identity.Name + ext);
+          FUDisplayPic.SaveAs(fileName);
+        }
+        else
+        {
+          myCommand.Parameters.AddWithValue("@Avatar", DisplayPicture.ImageUrl);
+        }
         myCommand.ExecuteNonQuery();
       }
-      FUDisplayPic.SaveAs(fileName);
       Label1.Text = TxtFirstName.Text;
       student.Email = TxtEmail.Text;
       Membership.UpdateUser(student);
