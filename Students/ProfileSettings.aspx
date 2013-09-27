@@ -36,6 +36,5 @@ WHERE (StudentProfiles.StudentId = @StudentId);">
             <asp:Parameter Name="StudentId" />
         </SelectParameters>
     </asp:SqlDataSource>
-  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 </asp:Content>
 

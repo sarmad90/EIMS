@@ -74,7 +74,6 @@ public partial class Students_ProfileSettings : System.Web.UI.Page
         }
         myCommand.ExecuteNonQuery();
       }
-      Label1.Text = TxtFirstName.Text;
       student.Email = TxtEmail.Text;
       Membership.UpdateUser(student);
       Session["Notice"] = "Your Profile has been updated!";
