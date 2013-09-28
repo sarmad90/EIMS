@@ -275,9 +275,9 @@ select
 /* Display pic*/
 .Display-pic
 {
-	height: 40px  !important; 
 	margin-top: -19px  !important;
-	width: 40px  !important;
+	max-width: 60px;
+	max-height: 40px;
 	padding-top: 0px  !important;
 	padding-bottom: 0px  !important;
 	margin-bottom: -16px  !important;

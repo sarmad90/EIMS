@@ -2,7 +2,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
   <!--Student Profile Settings-->
   <div class="row">
-    <div class="span4"><asp:Image ID="DisplayPicture" runat="server" ImageUrl="~/img/graduated-icon_585.png" Height="200px" Width="200px" /></div>
+    <div class="span4"><asp:Image ID="DisplayPicture" runat="server" ImageUrl="~/img/graduated-icon_585.png" CssClass="Display-pic-medium" /></div>
     <div class="span8">
       <div class="row"><div class="span2"><b>First Name: </b></div><div class="span3"><asp:TextBox ID="TxtFirstName" runat="server"></asp:TextBox></div></div>
       <div class="row"><div class="span2"><b>Last Name: </b></div><div class="span3"><asp:TextBox ID="TxtLastName" runat="server" required="true"></asp:TextBox></div></div>
