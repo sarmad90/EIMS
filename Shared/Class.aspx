@@ -113,7 +113,6 @@
             </div>
             <div id="Div3" class="accordion-body collapse">
               <div class="accordion-inner">
-                <p class="text-center"><b>Assignment</b></p>
                 <div class="row">
                   <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="AssignmentTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="AssignmentTotalMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
                 </div>
@@ -164,7 +163,6 @@
             </div>
             <div id="Div6" class="accordion-body collapse">
               <div class="accordion-inner">
-                <p class="text-center"><b>Assignment</b></p>
                 <div class="row">
                   <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="QuizTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="QuizTotalMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
                 </div>
@@ -187,7 +185,7 @@
                 </div>
                 <div class="row">
                   <div class="span2">
-                    <asp:Button ID="AddQuiz" runat="server" Text="Assign" CssClass="btn btn-primary" OnClick="AddQuiz_Click" /></div>
+                    <asp:Button ID="AddQuiz" runat="server" Text="Add Quiz" CssClass="btn btn-primary" OnClick="AddQuiz_Click" /></div>
                 </div>
               </div>
             </div>
