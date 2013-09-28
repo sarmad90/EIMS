@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Class.aspx.cs" Inherits="Administration_Classes_Class" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="row">
-        <div class="span3 offset1">
+        <div class="span8 offset1">
             <asp:Label ID="Course" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
         </div> 
     </div>

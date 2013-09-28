@@ -3,7 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
   <!--<script type="text/javascript" src="/js/StudentProfile.js"></script>-->
     <div class="row">
-        <div class="span3 offset1">
+        <div class="span8 offset1">
             <asp:Label ID="StudentName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
         </div> 
     </div>

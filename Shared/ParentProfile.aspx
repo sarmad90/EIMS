@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
        <div class="row">
-        <div class="span3 offset1">
+        <div class="span8 offset1">
             <asp:Label ID="ParentName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>&nbsp;<asp:Label ID="ParentLastName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
         </div> 
     </div>
