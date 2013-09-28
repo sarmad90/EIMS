@@ -59,6 +59,10 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
           StudentContact.Text = drvSql["Contact"].ToString();
           StudentRollNum.Text = drvSql["RollNo"].ToString();
           StudentEmail.Text = drvSql["Email"].ToString();
+          if (drvSql["Avatar"].ToString() != "")
+          {
+            UserPicture.ImageUrl = drvSql["Avatar"].ToString();
+          }
         }
         //iterating through the parent association data view to show the parent if found
         DataView dvSql2 = (DataView)AssociationDataSource.Select(DataSourceSelectArguments.Empty);

@@ -270,3 +270,23 @@ select
     }
 
 /* END OF CRUD CSS*/
+
+
+/* Display pic*/
+.Display-pic
+{
+	height: 40px  !important; 
+	margin-top: -19px  !important;
+	width: 40px  !important;
+	padding-top: 0px  !important;
+	padding-bottom: 0px  !important;
+	margin-bottom: -16px  !important;
+	border-radius: 4px 4px 4px 4px  !important;
+}
+
+.Display-pic-medium
+{
+	max-height: 300px;
+	max-width: 300px;
+	border-radius: 10px 10px 10px 10px;
+}

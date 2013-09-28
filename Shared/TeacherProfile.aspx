@@ -32,15 +32,17 @@
                     <td><asp:Label ID="TeacherContact" runat="server" Text=""></asp:Label></td>
                 </tr>
             </table>
+          <div class="row">
+            <div class="span2">
+                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
+            </div>
+          </div>
+        </div>
+        <div class="span6">
+          <asp:Image runat="server" ID="UserPicture" CssClass="Display-pic-medium" ImageUrl="~/img/help_48.png"></asp:Image>
         </div>
     </div>
-    <div class="row">
-        <div class="span2 offset1">
-            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
-        </div>
-    </div>
-    
-    <asp:SqlDataSource ID="TeacherDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="TeacherDataSource_Selecting" SelectCommand="SELECT aspnet_Membership.Email, TeacherProfiles.Education, TeacherProfiles.FirstName, TeacherProfiles.LastName, TeacherProfiles.Contact, TeacherProfiles.Designation
+    <asp:SqlDataSource ID="TeacherDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="TeacherDataSource_Selecting" SelectCommand="SELECT aspnet_Membership.Email, TeacherProfiles.Education, TeacherProfiles.FirstName, TeacherProfiles.LastName, TeacherProfiles.Contact, TeacherProfiles.Designation, TeacherProfiles.Avatar
 FROM TeacherProfiles
 INNER JOIN aspnet_Membership
 ON aspnet_Membership.UserId=TeacherProfiles.TeacherId WHERE (TeacherProfiles.TeacherId = @TeacherId);">

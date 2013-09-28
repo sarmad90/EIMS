@@ -28,12 +28,17 @@
                     <td><asp:Label ID="ParentContact" runat="server" Text=""></asp:Label></td>
                 </tr>
             </table>
+            <div class="row">
+            <div class="span2">
+                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
+            </div>
+          </div>
+        </div>
+        <div class="span6">
+          <asp:Image runat="server" ID="UserPicture" CssClass="Display-pic-medium" ImageUrl="~/img/help_48.png"></asp:Image>
         </div>
     </div>
-    <div class="row">
-        <div class="span2 offset1">
-            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
-            <asp:SqlDataSource ID="ParentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="ParentDataSource_Selecting" SelectCommand="SELECT aspnet_Membership.Email, ParentProfiles.Address, ParentProfiles.FirstName, ParentProfiles.LastName, ParentProfiles.Contact, ParentProfiles.Contact
+            <asp:SqlDataSource ID="ParentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="ParentDataSource_Selecting" SelectCommand="SELECT aspnet_Membership.Email, ParentProfiles.Address, ParentProfiles.FirstName, ParentProfiles.LastName, ParentProfiles.Contact, ParentProfiles.Contact, ParentProfiles.Avatar
 FROM ParentProfiles
 INNER JOIN aspnet_Membership
 ON aspnet_Membership.UserId=ParentProfiles.ParentId WHERE (ParentProfiles.ParentId = @ParentId);">
@@ -41,7 +46,5 @@ ON aspnet_Membership.UserId=ParentProfiles.ParentId WHERE (ParentProfiles.Parent
                     <asp:Parameter Name="ParentId" />
                 </SelectParameters>
             </asp:SqlDataSource>
-        </div>
-    </div>
 </asp:Content>
 

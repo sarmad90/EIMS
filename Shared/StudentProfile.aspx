@@ -38,156 +38,18 @@
             </table>
           <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
         </div>
-      <!-- Results Section Start -->
-      <asp:Panel ID="ResultsAdminPanel" runat="server">
+      <!-- User pic section -->
       <div class="span6">
-        <div class="accordion" id="accordion2">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                Collapsible Group Item #1
-              </a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse in">
-              <div class="accordion-inner">
-                Anim pariatur cliche...
-              </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                Add Results
-              </a>
-            </div>
-            <div id="collapseTwo" class="accordion-body collapse">
-              <div class="accordion-inner">
-                <div class="row">
-                  <div class="span1"><asp:Label ID="Label2" runat="server" Text="Semester:  "></asp:Label></div>
-                  <div class="span1"><asp:TextBox ID="TxtSemester" CssClass="input-mini" runat="server"></asp:TextBox></div>
-                  <div class="span1"><asp:Label ID="Label3" runat="server" Text="Status:  "></asp:Label></div>
-                  <div class="span1"><asp:TextBox ID="TxtStatus" CssClass="input-mini" runat="server"></asp:TextBox></div>
-                </div>
-                <div class="row">
-                  <div class="span1"><asp:Label ID="Label4" runat="server" Text="GPA:  "></asp:Label></div>
-                  <div class="span1"><asp:TextBox ID="TxtGPA" CssClass="input-mini" runat="server"></asp:TextBox></div>
-                  <div class="span1"><asp:Label ID="Label6" runat="server" Text="Attendance:  "></asp:Label></div>
-                  <div class="span1"><asp:TextBox ID="TxtAttendance" CssClass="input-mini" runat="server"></asp:TextBox></div>
-                </div>
-                <div class="row">
-                  <div class="span1"><asp:Label ID="Label5" runat="server" Text="Passing Date:  "></asp:Label></div>
-                  <div class="span1">
-                    <asp:Calendar ID="PassingDate" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
-                      <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                      <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                      <OtherMonthDayStyle ForeColor="#999999" />
-                      <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                      <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                      <TodayDayStyle BackColor="#CCCCCC" />
-                    </asp:Calendar>
-                  </div>
-                </div>
-                <div class="row"><div class="span4 offset1"><hr /></div></div>
-                <div class="row">
-                  <div class="span6">
-                    <div>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <asp:Label ID="Label7" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TxtSubject1" runat="server" CssClass="input-mini"></asp:TextBox>
-                      <asp:Label ID="Label8" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TxtMarksObtained1" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                      <asp:Label ID="Label9" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TxtTotalMarks1" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="span6">
-                    <asp:Image ID="subject_fields_button_2" runat="server" ImageUrl="~/img/add.png" />
-                    <span class="subject_fields_2">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <asp:Label ID="Label10" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TxtSubject2" runat="server" CssClass="input-mini"></asp:TextBox>
-                      <asp:Label ID="Label11" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TxtMarksObtained2" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                      <asp:Label ID="Label12" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TxtTotalMarks2" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                    </span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="span6">
-                    <asp:Image ID="subject_fields_button_3" runat="server" ImageUrl="~/img/add.png" />
-                    <span class="subject_fields_3">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <asp:Label ID="Label13" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TxtSubject3" runat="server" CssClass="input-mini"></asp:TextBox>
-                      <asp:Label ID="Label14" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TxtMarksObtained3" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                      <asp:Label ID="Label15" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TxtTotalMarks3" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                    </span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="span6">
-                    <asp:Image ID="subject_fields_button_4" runat="server" ImageUrl="~/img/add.png" />
-                    <span class="subject_fields_4">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <asp:Label ID="Label16" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TxtSubject4" runat="server" CssClass="input-mini"></asp:TextBox>
-                      <asp:Label ID="Label17" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TxtMarksObtained4" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                      <asp:Label ID="Label18" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TxtTotalMarks4" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                    </span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="span6">
-                    <asp:Image ID="subject_fields_button_5" runat="server" ImageUrl="~/img/add.png" />
-                    <span class="subject_fields_5">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <asp:Label ID="Label19" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TxtSubject5" runat="server" CssClass="input-mini"></asp:TextBox>
-                      <asp:Label ID="Label20" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TxtMarksObtained5" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                      <asp:Label ID="Label21" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TxtTotalMarks5" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                    </span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="span6">
-                    <asp:Image ID="subject_fields_button_6" runat="server" ImageUrl="~/img/add.png" />
-                    <span class="subject_fields_6">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <asp:Label ID="Label22" runat="server" Text="Subject: "></asp:Label>
-                      <asp:TextBox ID="TxtSubject6" runat="server" CssClass="input-mini"></asp:TextBox>
-                      <asp:Label ID="Label23" runat="server" Text="MarksObtained: "></asp:Label>
-                      <asp:TextBox ID="TxtMarksObtained6" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                      <asp:Label ID="Label24" runat="server" Text="TotalMarks: "></asp:Label>
-                      <asp:TextBox ID="TxtTotalMarks6" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="form-actions">
-                <asp:Button ID="AddResult" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="AddResult_Click" />
-              </div>
-            </div>
-          </div>
-        </div>
+        <asp:Image runat="server" ID="UserPicture" CssClass="Display-pic-medium" ImageUrl="~/img/help_48.png"></asp:Image>
       </div>
-      </asp:Panel>
-      <!-- Results Section End -->
+      <!-- User pic section END-->
     </div>
-    <div class="row"> &nbsp;</div>
     <div class="row">
-      <!-- Administrator section-->
+      <div class="span6 offset1">
+        <!-- Parents association section START -->
         <asp:Panel ID="CreateAssociationPanel" runat="server">
-            <div class="span6 offset1">
                 <div class="row">
+                    <p class="text-center"><b>Enter Parent's Email</b></p>
                     <div class="span1"><asp:Label ID="Label1" runat="server" Text="Email: "></asp:Label></div>
                     <div class="span3"><asp:TextBox ID="ParentEmail" runat="server"></asp:TextBox></div>
                     <div class="span2"><asp:Button ID="Button1" runat="server" Text="Search" OnClick="Button1_Click" /></div>
@@ -200,14 +62,160 @@
                     </Columns>
                 </asp:GridView>
                 <asp:Label ID="CreateAssociationLabel" runat="server" Text=""></asp:Label>
-            </div>
-                  </asp:Panel>
-            <asp:Panel ID="ShowAssociationPanel" runat="server" Visible="False">
-              <div class="span6 offset1">
-                <asp:Label ID="AssociationMessage" runat="server" Text=""></asp:Label>
-                <asp:HyperLink ID="ParentLink" runat="server">asdasd</asp:HyperLink>
+        </asp:Panel>
+        <asp:Panel ID="ShowAssociationPanel" runat="server" Visible="False">
+            <asp:Label ID="AssociationMessage" runat="server" Text=""></asp:Label>
+            <asp:HyperLink ID="ParentLink" runat="server">asdasd</asp:HyperLink>
+        </asp:Panel>
+        <!-- Parents association section END -->
+      </div>
+      <!-- Results Section Start -->
+      <div class="span6">
+      <asp:Panel ID="ResultsAdminPanel" runat="server">
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                  Collapsible Group Item #1
+                </a>
               </div>
-            </asp:Panel>
+              <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                  Anim pariatur cliche...
+                </div>
+              </div>
+            </div>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                  Add Results
+                </a>
+              </div>
+              <div id="collapseTwo" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  <div class="row">
+                    <div class="span1"><asp:Label ID="Label2" runat="server" Text="Semester:  "></asp:Label></div>
+                    <div class="span1"><asp:TextBox ID="TxtSemester" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                    <div class="span1"><asp:Label ID="Label3" runat="server" Text="Status:  "></asp:Label></div>
+                    <div class="span1"><asp:TextBox ID="TxtStatus" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                  </div>
+                  <div class="row">
+                    <div class="span1"><asp:Label ID="Label4" runat="server" Text="GPA:  "></asp:Label></div>
+                    <div class="span1"><asp:TextBox ID="TxtGPA" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                    <div class="span1"><asp:Label ID="Label6" runat="server" Text="Attendance:  "></asp:Label></div>
+                    <div class="span1"><asp:TextBox ID="TxtAttendance" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                  </div>
+                  <div class="row">
+                    <div class="span1"><asp:Label ID="Label5" runat="server" Text="Passing Date:  "></asp:Label></div>
+                    <div class="span1">
+                      <asp:Calendar ID="PassingDate" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                        <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                        <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                        <OtherMonthDayStyle ForeColor="#999999" />
+                        <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                        <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                        <TodayDayStyle BackColor="#CCCCCC" />
+                      </asp:Calendar>
+                    </div>
+                  </div>
+                  <div class="row"><div class="span4 offset1"><hr /></div></div>
+                  <div class="row">
+                    <div class="span6">
+                      <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Label ID="Label7" runat="server" Text="Subject: "></asp:Label>
+                        <asp:TextBox ID="TxtSubject1" runat="server" CssClass="input-mini"></asp:TextBox>
+                        <asp:Label ID="Label8" runat="server" Text="MarksObtained: "></asp:Label>
+                        <asp:TextBox ID="TxtMarksObtained1" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                        <asp:Label ID="Label9" runat="server" Text="TotalMarks: "></asp:Label>
+                        <asp:TextBox ID="TxtTotalMarks1" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="span6">
+                      <asp:Image ID="subject_fields_button_2" runat="server" ImageUrl="~/img/add.png" />
+                      <span class="subject_fields_2">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Label ID="Label10" runat="server" Text="Subject: "></asp:Label>
+                        <asp:TextBox ID="TxtSubject2" runat="server" CssClass="input-mini"></asp:TextBox>
+                        <asp:Label ID="Label11" runat="server" Text="MarksObtained: "></asp:Label>
+                        <asp:TextBox ID="TxtMarksObtained2" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                        <asp:Label ID="Label12" runat="server" Text="TotalMarks: "></asp:Label>
+                        <asp:TextBox ID="TxtTotalMarks2" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="span6">
+                      <asp:Image ID="subject_fields_button_3" runat="server" ImageUrl="~/img/add.png" />
+                      <span class="subject_fields_3">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Label ID="Label13" runat="server" Text="Subject: "></asp:Label>
+                        <asp:TextBox ID="TxtSubject3" runat="server" CssClass="input-mini"></asp:TextBox>
+                        <asp:Label ID="Label14" runat="server" Text="MarksObtained: "></asp:Label>
+                        <asp:TextBox ID="TxtMarksObtained3" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                        <asp:Label ID="Label15" runat="server" Text="TotalMarks: "></asp:Label>
+                        <asp:TextBox ID="TxtTotalMarks3" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="span6">
+                      <asp:Image ID="subject_fields_button_4" runat="server" ImageUrl="~/img/add.png" />
+                      <span class="subject_fields_4">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Label ID="Label16" runat="server" Text="Subject: "></asp:Label>
+                        <asp:TextBox ID="TxtSubject4" runat="server" CssClass="input-mini"></asp:TextBox>
+                        <asp:Label ID="Label17" runat="server" Text="MarksObtained: "></asp:Label>
+                        <asp:TextBox ID="TxtMarksObtained4" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                        <asp:Label ID="Label18" runat="server" Text="TotalMarks: "></asp:Label>
+                        <asp:TextBox ID="TxtTotalMarks4" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="span6">
+                      <asp:Image ID="subject_fields_button_5" runat="server" ImageUrl="~/img/add.png" />
+                      <span class="subject_fields_5">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Label ID="Label19" runat="server" Text="Subject: "></asp:Label>
+                        <asp:TextBox ID="TxtSubject5" runat="server" CssClass="input-mini"></asp:TextBox>
+                        <asp:Label ID="Label20" runat="server" Text="MarksObtained: "></asp:Label>
+                        <asp:TextBox ID="TxtMarksObtained5" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                        <asp:Label ID="Label21" runat="server" Text="TotalMarks: "></asp:Label>
+                        <asp:TextBox ID="TxtTotalMarks5" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="span6">
+                      <asp:Image ID="subject_fields_button_6" runat="server" ImageUrl="~/img/add.png" />
+                      <span class="subject_fields_6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Label ID="Label22" runat="server" Text="Subject: "></asp:Label>
+                        <asp:TextBox ID="TxtSubject6" runat="server" CssClass="input-mini"></asp:TextBox>
+                        <asp:Label ID="Label23" runat="server" Text="MarksObtained: "></asp:Label>
+                        <asp:TextBox ID="TxtMarksObtained6" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                        <asp:Label ID="Label24" runat="server" Text="TotalMarks: "></asp:Label>
+                        <asp:TextBox ID="TxtTotalMarks6" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <asp:Button ID="AddResult" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="AddResult_Click" />
+                </div>
+              </div>
+            </div>
+          </div>
+      </asp:Panel>
+      </div>
+      <!-- Results Section End -->
+    </div>
+    <div class="row"> &nbsp;</div>
+    <div class="row">
+      <!-- Administrator section-->
       <!-- Assignments,Quizzes,Results and Attendance section start -->
       <asp:Panel ID="NonAdminPanel" runat="server">
         <div class="span10 offset1">
@@ -220,7 +228,6 @@
               </div>
               <div id="Div2" class="accordion-body collapse in">
                 <div class="accordion-inner">
-                  <p class="text-center"><b>Attendance</b></p>
                   <asp:GridView ID="StudentAttendanceGrid" runat="server" AutoGenerateColumns="False" DataSourceID="StudentAttendanceDataSource" AllowPaging="True" PageSize="5" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
                     <Columns>
                       <asp:BoundField DataField="AttendanceWeek" HeaderText="Week" SortExpression="AttendanceWeek" />
@@ -521,7 +528,7 @@ where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where 
     
     <asp:SqlDataSource ID="StudentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentDataSource_Selecting" SelectCommand="SELECT aspnet_Membership.Email, Departments.DepartmentName, Batches.BatchName,
 (StudentProfiles.FirstName+' '+ StudentProfiles.LastName) as Name, StudentProfiles.Contact,
-StudentProfiles.RollNo, StudentProfiles.Contact
+StudentProfiles.RollNo, StudentProfiles.Contact, StudentProfiles.Avatar
 FROM StudentProfiles
 INNER JOIN Batches ON Batches.BatchId=StudentProfiles.BatchId
 INNER JOIN Departments ON Departments.DepartmentId=StudentProfiles.DepartmentId

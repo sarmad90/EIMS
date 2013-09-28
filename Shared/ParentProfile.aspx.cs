@@ -30,6 +30,10 @@ public partial class Administration_ParentProfile : System.Web.UI.Page
                 ParentAddress.Text = drvSql["Address"].ToString();
                 ParentContact.Text = drvSql["Contact"].ToString();
                 ParentEmail.Text = drvSql["Email"].ToString();
+                if (drvSql["Avatar"].ToString() != "")
+                {
+                  UserPicture.ImageUrl = drvSql["Avatar"].ToString();
+                }
             }
     }
 

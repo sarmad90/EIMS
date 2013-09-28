@@ -32,6 +32,10 @@ public partial class Administration_TeacherProfile : System.Web.UI.Page
               TeacherContact.Text = drvSql["Contact"].ToString();
               TeacherEmail.Text = drvSql["Email"].ToString();
               TeacherDesignation.Text = drvSql["Designation"].ToString();
+              if (drvSql["Avatar"].ToString() != "")
+              {
+                UserPicture.ImageUrl = drvSql["Avatar"].ToString();
+              }
           }
     }
 

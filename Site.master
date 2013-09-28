@@ -69,14 +69,26 @@
           <p>
                 <asp:ContentPlaceHolder ID="LoginContent" runat="server">
                     <asp:LoginView ID="LoginView1" runat="server">
-
                         <LoggedInTemplate>
                             Welcome,
                             <asp:LoginName ID="LoginName1" runat="server" />.
-          <asp:HyperLink ID="lnkUpdateSettings" runat="server" 
-               NavigateUrl="~/Membership/AdditionalUserInfo.aspx">
-               Update Your Settings</asp:HyperLink>
                         </LoggedInTemplate>
+                        <RoleGroups>
+                          <asp:RoleGroup Roles="Administrator">
+                            <ContentTemplate>
+                              Welcome,
+                              <asp:LoginName ID="LoginName1" runat="server" />.
+                              <asp:Image ID="AdminPicture" runat="server" CssClass="Display-pic" ImageUrl="~/img/admin-logo-1238680674-2_avatar.png"></asp:Image>
+                            </ContentTemplate>
+                          </asp:RoleGroup>
+                          <asp:RoleGroup Roles="Student,Parent,Teacher">
+                            <ContentTemplate>
+                              Welcome,
+                              <asp:LoginName ID="LoginName1" runat="server" />.
+                              <asp:Image ID="UserPicture" runat="server" CssClass="Display-pic" ImageUrl="~/img/help_48.png"></asp:Image>
+                            </ContentTemplate>
+                          </asp:RoleGroup>
+                        </RoleGroups>
                         <AnonymousTemplate>
                             Hello, guest.
                         </AnonymousTemplate>
