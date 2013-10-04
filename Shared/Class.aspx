@@ -91,6 +91,7 @@
             </div>
           </div>
         </div>
+      <!-- Assignments and Quizzes Secction START-->
       <div class="span6">
         <div class="accordion" id="Div1">
           <div class="accordion-group">
@@ -192,6 +193,7 @@
           </div>
         </div>
       </div>
+      <!--Assignments and Quizzes section END -->
     </div>
   <asp:SqlDataSource ID="StudentsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentsDataSource_Selecting" SelectCommand="SELECT (StudentProfiles.FirstName + ' ' + StudentProfiles.LastName) as Name,(StudentProfiles.RollNo) as 'Roll Number',Batches.BatchName as Batch,Departments.DepartmentInitials as Dept, StudentProfiles.StudentId
 FROM StudentProfiles
