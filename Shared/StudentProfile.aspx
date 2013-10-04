@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="StudentProfile.aspx.cs" Inherits="Administration_StudentProfile" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-  <!--<script type="text/javascript" src="/js/StudentProfile.js"></script>-->
+  <script type="text/javascript" src="/js/StudentProfile.js"></script>
     <div class="row">
         <div class="span8 offset1">
             <asp:Label ID="StudentName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
