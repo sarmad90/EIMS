@@ -139,7 +139,7 @@
   });
 </script>
             <!-- Carousel End -->
-            <div class="Image-Footer"><p style="font-size:30px;">Education made organised.</p></div>
+            <div class="Image-Footer"><p style="font-size:30px; padding-top: 25px;">Education made organised.</p></div>
           </div>
           <div class="span4 offset1">
               <asp:Login ID="Login1" runat="server" BackColor="White" CssClass="Home-Login2" DisplayRememberMe="False" Height="200px" TextLayout="TextOnTop">
