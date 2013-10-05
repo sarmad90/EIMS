@@ -166,7 +166,7 @@
                       <ul class="nav nav-pills">  
                         <li class="active"><asp:HyperLink ID="HyperLink111" runat="server" NavigateUrl="~/Dashboard.aspx">Dashboard</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">Profile</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">Classes</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl="~/Students/MyClasses.aspx">My Classes</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">Attendance</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink15" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">Quizzes & Assignments</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink16" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">Parent Profile</asp:HyperLink></li>
