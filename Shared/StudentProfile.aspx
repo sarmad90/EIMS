@@ -246,6 +246,11 @@
                     <SortedAscendingHeaderStyle BackColor="#007DBB" />
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    <emptydatarowstyle backcolor="LightBlue" />
+                    <emptydatatemplate>
+                      <asp:image id="NoDataImage" imageurl="~/img/cancel.png" alternatetext="No Image" runat="server"/>
+                        No Data Found.  
+                    </emptydatatemplate>
                   </asp:GridView>
                   <asp:SqlDataSource ID="StudentAttendanceDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentAttendanceDataSource_Selecting" SelectCommand="SELECT attendance.AttendanceWeek, Semesters.SemesterName, attendance.TotalClasses,
 attendance.ClassesAttended, attendance.ClassesMissed,
@@ -291,16 +296,9 @@ WHERE Attendance.StudentId = @StudentId">
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#00547E" />
                     <emptydatarowstyle backcolor="LightBlue" />
-
                     <emptydatatemplate>
-
-                      <asp:image id="NoDataImage"
-                        imageurl="~/img/cancel.png"
-                        alternatetext="No Image" 
-                        runat="server"/>
-
+                      <asp:image id="NoDataImage" imageurl="~/img/cancel.png" alternatetext="No Image" runat="server"/>
                         No Data Found.  
-
                     </emptydatatemplate> 
                   </asp:GridView>
                   <asp:SqlDataSource ID="StudentResultDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentResultDataSource_Selecting" SelectCommand="SELECT results.status, semesters.SemesterName, results.passingdate,
@@ -340,6 +338,11 @@ WHERE results.StudentId = @StudentId">
                     <SortedAscendingHeaderStyle BackColor="#007DBB" />
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    <emptydatarowstyle backcolor="LightBlue" />
+                    <emptydatatemplate>
+                      <asp:image id="NoDataImage" imageurl="~/img/cancel.png" alternatetext="No Image" runat="server"/>
+                        No Data Found.  
+                    </emptydatatemplate>
                   </asp:GridView>
                   <asp:SqlDataSource ID="StudentAssignmentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentAssignmentDataSource_Selecting" SelectCommand="select Assignments.AssignmentId,Classes.CourseId,Courses.CourseName,Assignments.Title,Assignments.SubmissionDate,Assignments.TotalMarks
 from Assignments
@@ -378,6 +381,11 @@ where Assignments.ClassId IN (select Classes.ClassId from Classes where Classes.
                     <SortedAscendingHeaderStyle BackColor="#007DBB" />
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    <emptydatarowstyle backcolor="LightBlue" />
+                    <emptydatatemplate>
+                      <asp:image id="NoDataImage" imageurl="~/img/cancel.png" alternatetext="No Image" runat="server"/>
+                        No Data Found.  
+                    </emptydatatemplate>
                   </asp:GridView>
                   <asp:SqlDataSource ID="StudentQuizDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="select Quizzes.QuizId,Classes.CourseId,Courses.CourseName,Quizzes.Title,Quizzes.QuizDate,Quizzes.TotalMarks
 from Quizzes
@@ -417,6 +425,11 @@ where Quizzes.ClassId IN (select Classes.ClassId from Classes where Classes.Clas
                     <SortedAscendingHeaderStyle BackColor="#007DBB" />
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    <emptydatarowstyle backcolor="LightBlue" />
+                    <emptydatatemplate>
+                      <asp:image id="NoDataImage" imageurl="~/img/cancel.png" alternatetext="No Image" runat="server"/>
+                        No Data Found.  
+                    </emptydatatemplate>
                   </asp:GridView>
                   <asp:SqlDataSource ID="StudentClassesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="select Courses.CourseName,Sections.SectionName,Semesters.SemesterName,Classes.CreditHours,(TeacherProfiles.FirstName+ ' ' +TeacherProfiles.LastName) as Teacher
 from Classes
