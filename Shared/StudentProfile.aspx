@@ -290,6 +290,18 @@ WHERE Attendance.StudentId = @StudentId">
                     <SortedAscendingHeaderStyle BackColor="#007DBB" />
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    <emptydatarowstyle backcolor="LightBlue" />
+
+                    <emptydatatemplate>
+
+                      <asp:image id="NoDataImage"
+                        imageurl="~/img/cancel.png"
+                        alternatetext="No Image" 
+                        runat="server"/>
+
+                        No Data Found.  
+
+                    </emptydatatemplate> 
                   </asp:GridView>
                   <asp:SqlDataSource ID="StudentResultDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentResultDataSource_Selecting" SelectCommand="SELECT results.status, semesters.SemesterName, results.passingdate,
 results.attendance, results.gpa
