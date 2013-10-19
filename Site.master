@@ -168,8 +168,8 @@
                         <li><asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">Profile</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl="~/Students/MyClasses.aspx">My Classes</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/Students/Attendance.aspx">Attendance</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="HyperLink15" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">Quizzes & Assignments</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="HyperLink16" runat="server" NavigateUrl="~/Shared/StudentProfile.aspx">Parent Profile</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink15" runat="server" NavigateUrl="~/Students/QuizAndAssignments.aspx">Quizzes & Assignments</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="ParentLinkMaster" runat="server" NavigateUrl="~/Shared/ParentProfile.aspx?id=NPF">Parent Profile</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink28" runat="server" NavigateUrl="~/Students/ProfileSettings.aspx">Profile Settings</asp:HyperLink></li>
                       </ul>
                     </ContentTemplate>
@@ -207,7 +207,7 @@
 				<div class="span12">
 					<div class="span2" style="width: 15%;">
 						<ul class="unstyled">
-							<li>GitHub<li>
+							<li>GitHub</li>
 							<li><a href="#">About us</a></li>
 							<li><a href="#">Blog</a></li>
 							<li><a href="#">Contact & support</a></li>
@@ -217,7 +217,7 @@
 					</div>
 					<div class="span2" style="width: 15%;">
 						<ul class="unstyled">
-							<li>Applications<li>
+							<li>Applications</li>
 							<li><a href="#">Product for Mac</a></li>
 							<li><a href="#">Product for Windows</a></li>
 							<li><a href="#">Product for Eclipse</a></li>
@@ -226,7 +226,7 @@
 					</div>
 					<div class="span2" style="width: 15%;">
 						<ul class="unstyled">
-							<li>Services<li>
+							<li>Services</li>
 							<li><a href="#">Web analytics</a></li>
 							<li><a href="#">Presentations</a></li>
 							<li><a href="#">Code snippets</a></li>
@@ -235,7 +235,7 @@
 					</div>
 					<div class="span2" style="width: 15%;">
 						<ul class="unstyled">
-							<li>Documentation<li>
+							<li>Documentation</li>
 							<li><a href="#">Product Help</a></li>
 							<li><a href="#">Developer API</a></li>
 							<li><a href="#">Product Markdown</a></li>
@@ -244,7 +244,7 @@
 					</div>	
 					<div class="span2" style="width: 15%;">
 						<ul class="unstyled">
-							<li>More<li>
+							<li>More</li>
 							<li><a href="#">Training</a></li>
 							<li><a href="#">Students & teachers</a></li>
 							<li><a href="#">The Shop</a></li>
@@ -254,7 +254,7 @@
 					</div>					
 				</div>
 			</div>
-			<hr>
+			<hr/>
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="span8">
@@ -268,6 +268,11 @@
 				</div>
 			</div>
   </div>
+  <asp:SqlDataSource ID="AssociationDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="AssociationDataSource_Selecting" SelectCommand="select ParentId from Associations where (StudentId = @StudentId) ;">
+        <SelectParameters>
+            <asp:Parameter Name="StudentId" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <!-- Footer End -->
   <script type="text/javascript">
     $(document).ready(function () {
