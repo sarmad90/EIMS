@@ -17,11 +17,13 @@ public partial class Students_QuizAndAssignments : System.Web.UI.Page
       MembershipUser student = Membership.GetUser(User.Identity.Name);
       Guid studentId = (Guid)student.ProviderUserKey;
       e.Command.Parameters["@StudentId"].Value = studentId;
+      e.Command.Parameters["@AssignmentDate"].Value = DateTime.Now.Date;
     }
     protected void StudentQuizDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
       MembershipUser student = Membership.GetUser(User.Identity.Name);
       Guid studentId = (Guid)student.ProviderUserKey;
       e.Command.Parameters["@StudentId"].Value = studentId;
+      e.Command.Parameters["@QuizDate"].Value = DateTime.Now.Date;
     }
 }

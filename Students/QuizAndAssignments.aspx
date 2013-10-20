@@ -27,7 +27,7 @@
                     <emptydatarowstyle backcolor="LightBlue" />
                     <emptydatatemplate>
                       <asp:image id="NoDataImage" imageurl="~/img/cancel.png" alternatetext="No Image" runat="server"/>
-                        No Data Found.  
+                        No Data Found / No coming quizzes scheduled yet.  
                     </emptydatatemplate>
                   </asp:GridView>
     </div>
@@ -60,7 +60,7 @@
                     <emptydatarowstyle backcolor="LightBlue" />
                     <emptydatatemplate>
                       <asp:image id="NoDataImage" imageurl="~/img/cancel.png" alternatetext="No Image" runat="server"/>
-                        No Data Found.  
+                        No Data Found / No assignments issued yet.  
                     </emptydatatemplate>
                   </asp:GridView>
     </div>
@@ -69,18 +69,20 @@
 from Assignments
 INNER JOIN Classes ON Classes.ClassId = Assignments.ClassId
 INNER JOIN Courses ON Courses.CourseId=Classes.CourseId
-where Assignments.ClassId IN (select Classes.ClassId from Classes where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where ClassStudents.StudentId=@StudentId))">
+where Assignments.ClassId IN (select Classes.ClassId from Classes where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where ClassStudents.StudentId=@StudentId)) and Assignments.AssignmentDate &gt;= @AssignmentDate">
                     <SelectParameters>
                       <asp:Parameter Name="StudentId" />
+                      <asp:Parameter Name="AssignmentDate" />
                     </SelectParameters>
                   </asp:SqlDataSource>
   <asp:SqlDataSource ID="StudentQuizDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="select Quizzes.QuizId,Classes.CourseId,Courses.CourseName,Quizzes.Title, Quizzes.Description, Quizzes.QuizDate,Quizzes.TotalMarks
 from Quizzes
 INNER JOIN Classes ON Classes.ClassId = Quizzes.ClassId
 INNER JOIN Courses ON Courses.CourseId=Classes.CourseId
-where Quizzes.ClassId IN (select Classes.ClassId from Classes where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where ClassStudents.StudentId=@StudentId))" OnSelecting="StudentQuizDataSource_Selecting">
+where Quizzes.ClassId IN (select Classes.ClassId from Classes where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where ClassStudents.StudentId=@StudentId)) and Quizzes.QuizDate &gt;= @QuizDate" OnSelecting="StudentQuizDataSource_Selecting">
                     <SelectParameters>
                       <asp:Parameter Name="StudentId" />
+                      <asp:Parameter Name="QuizDate" />
                     </SelectParameters>
                   </asp:SqlDataSource>
 </asp:Content>

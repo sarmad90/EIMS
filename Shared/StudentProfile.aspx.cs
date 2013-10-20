@@ -396,10 +396,12 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
     protected void StudentAssignmentDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
       e.Command.Parameters["@StudentId"].Value = studentId;
+      e.Command.Parameters["@AssignmentDate"].Value = DateTime.Now.Date;
     }
     protected void StudentQuizDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
       e.Command.Parameters["@StudentId"].Value = studentId;
+      e.Command.Parameters["@QuizDate"].Value = DateTime.Now.Date;
     }
     protected void StudentClassesDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
