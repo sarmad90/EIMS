@@ -21,6 +21,12 @@
                                                 <div class="span8" id="carousel-bounding-box">
                                                         <div id="myCarousel" class="carousel slide">
                                                                 <!-- Carousel items -->
+                                                                <style>
+                                                                  .carousel-inner img
+                                                                  {
+                                                                    z-index:-3;
+                                                                  }
+                                                                </style>
                                                                 <div class="carousel-inner">
                                                                         <div class="active item" data-slide-number="0"><asp:Image ID="Image8" runat="server" ImageUrl="~/img/man-with-laptop2.jpg" Width="650px" Height="400px" /></div>
                                                                         <div class="item" data-slide-number="1"><asp:Image ID="Image7" runat="server" ImageUrl="~/img/students-around-laptop.jpg" Width="650px" Height="400px" /></div>
