@@ -18,6 +18,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
   //End of Attendance Code
   MembershipUser student;
   Guid studentId;
+  MembershipUser parent;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -74,7 +75,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
             ShowAssociationPanel.Visible = true;
             CreateAssociationPanel.Visible = false;
             AssociationMessage.Text = "You have a parent account";
-            MembershipUser parent = Membership.GetUser(drvSql["ParentId"]);
+            parent = Membership.GetUser(drvSql["ParentId"]);
             ParentLink.NavigateUrl = "~/Shared/ParentProfile.aspx?id=" + parent.UserName.ToString();
             ParentLink.Text = parent.Email + "(" + parent.UserName + ")";
           }
@@ -222,7 +223,23 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
           int rows = sqlcom.ExecuteNonQuery();
           if (rows > 0)
           {
-            Session["Notice"] = "Attendance record has been added!";
+            DataView dvSql2 = (DataView)AssociationDataSource.Select(DataSourceSelectArguments.Empty);
+            foreach (DataRowView drvSql in dvSql2)
+            {
+              //checking if a record is present in the data view, then show the associated parent
+              if (drvSql["ParentId"].ToString() != "")
+              { 
+                parent = Membership.GetUser(drvSql["ParentId"]);
+                //Email
+                EimsHelper.SendMail(parent.Email, "EIMS Notification: Child Attendance Added.", "Hi Mr./Miss" + parent.UserName + ".\nYour child has a new attendance record. Take a look at the details:\nAttendance Week: " + AttendanceWeek.Text + " \nTotal Classes: " + TotalClasses.Text + "\nClasses Attended: " + ClassesAttended.Text + "\nClasses Missed: " + ClassesMissed.Text + "\nAttendance Percentage: " + attendancePercentage + "\nFor further information and reports you can always login to the EIMS with credentials you have been provided.");
+                Session["Notice"] = "Attendance record has been added and Email has been sent to parent/guardian and the student!";
+                Response.Redirect("~/shared/StudentProfile.aspx?id="+Request.QueryString["id"]);
+              }
+              
+            }
+            
+              Session["Notice"] = "Attendance record has been added and Email has been sent to the student only because no guardian could be found!";
+              Response.Redirect("~/shared/StudentProfile.aspx?id=" + Request.QueryString["id"]);
             BindGrid();
           }
         }
