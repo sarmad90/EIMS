@@ -231,15 +231,17 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
               { 
                 parent = Membership.GetUser(drvSql["ParentId"]);
                 //Email
-                EimsHelper.SendMail(parent.Email, "EIMS Notification: Child Attendance Added.", "Hi Mr./Miss" + parent.UserName + ".\nYour child has a new attendance record. Take a look at the details:\nAttendance Week: " + AttendanceWeek.Text + " \nTotal Classes: " + TotalClasses.Text + "\nClasses Attended: " + ClassesAttended.Text + "\nClasses Missed: " + ClassesMissed.Text + "\nAttendance Percentage: " + attendancePercentage + "\nFor further information and reports you can always login to the EIMS with credentials you have been provided.");
+                EimsHelper.SendMail(parent.Email, "EIMS Notification: Child Attendance Added.", "Hi Mr./Miss " + parent.UserName + ".\nYour child has a new attendance record. Take a look at the details:\nAttendance Week: " + AttendanceWeek.Text + " \nTotal Classes: " + TotalClasses.Text + "\nClasses Attended: " + ClassesAttended.Text + "\nClasses Missed: " + ClassesMissed.Text + "\nAttendance Percentage: " + attendancePercentage + "\nFor further information and reports you can always login to the EIMS with credentials you have been provided.");
+                EimsHelper.SendMail(student.Email, "EIMS Notification: Child Attendance Added.", "Dear " + student.UserName + ".\nA new attendance record has been added to your profile and an email notification has been sent to your parent/guardian's email account. Take a look at the details:\nAttendance Week: " + AttendanceWeek.Text + " \nTotal Classes: " + TotalClasses.Text + "\nClasses Attended: " + ClassesAttended.Text + "\nClasses Missed: " + ClassesMissed.Text + "\nAttendance Percentage: " + attendancePercentage + "\nFor further information and reports you can always login to the EIMS with credentials you have been provided.");
+
                 Session["Notice"] = "Attendance record has been added and Email has been sent to parent/guardian and the student!";
                 Response.Redirect("~/shared/StudentProfile.aspx?id="+Request.QueryString["id"]);
               }
               
             }
-            
+              EimsHelper.SendMail(student.Email, "EIMS Notification: Child Attendance Added.", "Dear " + student.UserName + ".\nA new attendance record has been added to your profile and an email notification has been sent to your parent/guardian's email account. Take a look at the details:\nAttendance Week: " + AttendanceWeek.Text + " \nTotal Classes: " + TotalClasses.Text + "\nClasses Attended: " + ClassesAttended.Text + "\nClasses Missed: " + ClassesMissed.Text + "\nAttendance Percentage: " + attendancePercentage + "\nFor further information and reports you can always login to the EIMS with credentials you have been provided.");            
               Session["Notice"] = "Attendance record has been added and Email has been sent to the student only because no guardian could be found!";
-              Response.Redirect("~/shared/StudentProfile.aspx?id=" + Request.QueryString["id"]);
+            Response.Redirect("~/shared/StudentProfile.aspx?id=" + Request.QueryString["id"]);
             BindGrid();
           }
         }
