@@ -1,24 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Test.aspx.cs" Inherits="Test" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-  <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
- 
-<!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
-  </div>
-  <div class="modal-body">
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-  <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-  <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
-  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
-  </div>
-</div>
-  
-
+  <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="275px" NextPrevFormat="FullMonth" SelectionMode="None" Width="739px" OnDayRender="Calendar1_DayRender">
+    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+    <OtherMonthDayStyle ForeColor="#999999" />
+    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+    <TodayDayStyle BackColor="#CCCCCC" />
+  </asp:Calendar>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="SELECT [SubmissionDate], [Title] FROM [Assignments]"></asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="SELECT [Title], [QuizDate] FROM [Quizzes]"></asp:SqlDataSource>
 </asp:Content>

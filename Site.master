@@ -10,8 +10,11 @@
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <!--<script src="http://code.jquery.com/jquery.js"></script> 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>  !-->
+    <script src="/scripts/jquery-1.4.1.js"></script>
+    <script src="/scripts/jquery.js"></script>
+    <script src="/scripts/jquery.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.js"></script>
 </head>
 <body>
@@ -169,6 +172,7 @@
                         <li><asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/Students/Attendance.aspx">Attendance</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink15" runat="server" NavigateUrl="~/Students/QuizAndAssignments.aspx">Quizzes & Assignments</asp:HyperLink></li>
                         <li><asp:HyperLink ID="ParentLinkMaster" runat="server" NavigateUrl="~/Shared/ParentProfile.aspx?id=NPF">Parent Profile</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink16" runat="server" NavigateUrl="~/Students/EventCalendar.aspx">Events Calendar</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink28" runat="server" NavigateUrl="~/Students/ProfileSettings.aspx">Profile Settings</asp:HyperLink></li>
                       </ul>
                     </ContentTemplate>
@@ -201,10 +205,11 @@
         </form>
     </div>
     <!-- Footer Start -->
-      <div class="container">	
-<div class="row-fluid">
-				<div class="span12">
-					<div class="span2" style="width: 15%;">
+<div class="row" style="background-color:#F5F3F3;">
+  <br />
+  <br />
+				<div class="span12 offset2">
+					<div class="span2" style="width: 17%;">
 						<ul class="unstyled">
 							<li>GitHub</li>
 							<li><a href="#">About us</a></li>
@@ -214,7 +219,7 @@
 							<li><a href="#">Site status</a></li>
 						</ul>
 					</div>
-					<div class="span2" style="width: 15%;">
+					<div class="span2" style="width: 17%;">
 						<ul class="unstyled">
 							<li>Applications</li>
 							<li><a href="#">Product for Mac</a></li>
@@ -223,7 +228,7 @@
 							<li><a href="#">Product mobile apps</a></li>							
 						</ul>
 					</div>
-					<div class="span2" style="width: 15%;">
+					<div class="span2" style="width: 17%;">
 						<ul class="unstyled">
 							<li>Services</li>
 							<li><a href="#">Web analytics</a></li>
@@ -232,7 +237,7 @@
 							<li><a href="#">Job board</a></li>							
 						</ul>
 					</div>
-					<div class="span2" style="width: 15%;">
+					<div class="span2" style="width: 17%;">
 						<ul class="unstyled">
 							<li>Documentation</li>
 							<li><a href="#">Product Help</a></li>
@@ -241,7 +246,7 @@
 							<li><a href="#">Product Pages</a></li>							
 						</ul>
 					</div>	
-					<div class="span2" style="width: 15%;">
+					<div class="span2" style="width: 17%;">
 						<ul class="unstyled">
 							<li>More</li>
 							<li><a href="#">Training</a></li>
@@ -253,20 +258,20 @@
 					</div>					
 				</div>
 			</div>
-			<hr/>
-			<div class="row-fluid">
-				<div class="span12">
+			
+			<div class="row" style="background-color:#F5F3F3;">
+				<div class="span12 offset2">
+          <hr/>
 					<div class="span8">
 						<a href="#">Terms of Service</a>    
 						<a href="#">Privacy</a>    
 						<a href="#">Security</a>
 					</div>
-					<div class="span4">
+					<div class="span3">
 						<p class="muted pull-right">© 2013 EIMS. All rights reserved</p>
 					</div>
 				</div>
 			</div>
-  </div>
   <asp:SqlDataSource ID="AssociationDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="AssociationDataSource_Selecting" SelectCommand="select ParentId from Associations where (StudentId = @StudentId) ;">
         <SelectParameters>
             <asp:Parameter Name="StudentId" />
