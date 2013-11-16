@@ -136,6 +136,7 @@
                         <li><asp:HyperLink ID="HyperLink23" runat="server" NavigateUrl="~/Shared/TeacherProfile.aspx">Profile</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink21" runat="server" NavigateUrl="~/Teachers/MyClasses.aspx">My Classes</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink22" runat="server" NavigateUrl="~/Teachers/QuizAndAssignments.aspx">Quiz & Assignments</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink29" runat="server" NavigateUrl="~/Teachers/EventCalendar.aspx">Event Calendar</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink28" runat="server" NavigateUrl="~/Teachers/ProfileSettings.aspx">Profile Settings</asp:HyperLink></li>
                       </ul>
                     </ContentTemplate>
