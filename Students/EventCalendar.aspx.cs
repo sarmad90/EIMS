@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Security;
 
 public partial class Students_EventCalendar : System.Web.UI.Page
 {
@@ -48,6 +49,14 @@ public partial class Students_EventCalendar : System.Web.UI.Page
           hf4.Value = drvSql["TotalMarks"].ToString();
           hf4.ID = "Assignment" + drvSql["AssignmentId"] + "Marks";
           e.Cell.Controls.Add(hf4);
+          HiddenField hf5 = new HiddenField();
+          hf5.Value = drvSql["TeacherName"].ToString();
+          hf5.ID = "Assignment" + drvSql["AssignmentId"] + "Teacher";
+          e.Cell.Controls.Add(hf5);
+          HiddenField hf6 = new HiddenField();
+          hf6.Value = drvSql["CourseName"].ToString();
+          hf6.ID = "Assignment" + drvSql["AssignmentId"] + "Course";
+          e.Cell.Controls.Add(hf6);
           //Label lb = new Label();
           //lb.Visible = true;
           //lb.ForeColor = System.Drawing.Color.Blue;
@@ -94,6 +103,14 @@ public partial class Students_EventCalendar : System.Web.UI.Page
           hf4.Value = drvSql["TotalMarks"].ToString();
           hf4.ID = "Quiz" + drvSql["QuizId"] + "Marks";
           e.Cell.Controls.Add(hf4);
+          HiddenField hf5 = new HiddenField();
+          hf5.Value = drvSql["TeacherName"].ToString();
+          hf5.ID = "Quiz" + drvSql["QuizId"] + "Teacher";
+          e.Cell.Controls.Add(hf5);
+          HiddenField hf6 = new HiddenField();
+          hf6.Value = drvSql["CourseName"].ToString();
+          hf6.ID = "Quiz" + drvSql["QuizId"] + "Course";
+          e.Cell.Controls.Add(hf6);
           //hl.ForeColor = System.Drawing.Color.Purple;
           //lb.Text = drvSql["Title"].ToString();
           //hl.Text = "Quiz";  
@@ -102,4 +119,11 @@ public partial class Students_EventCalendar : System.Web.UI.Page
         }
       }
     }
+    protected void AssignmentsDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+    {
+      MembershipUser student = Membership.GetUser(User.Identity.Name);
+      Guid studentId = (Guid)student.ProviderUserKey;
+      e.Command.Parameters["@StudentId"].Value = studentId;
+    }
+    
 }

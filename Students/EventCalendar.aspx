@@ -12,8 +12,26 @@
         <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
         <TodayDayStyle BackColor="#CCCCCC" />
       </asp:Calendar>
-      <asp:SqlDataSource ID="AssignmentsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="SELECT * FROM [Assignments]"></asp:SqlDataSource>
-      <asp:SqlDataSource ID="QuizzesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="SELECT * FROM [Quizzes]"></asp:SqlDataSource>
+      <asp:SqlDataSource ID="AssignmentsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="select (TeacherProfiles.FirstName + ' ' + TeacherProfiles.LastName) as TeacherName, Assignments.AssignmentId,Classes.CourseId, Assignments.Description,Courses.CourseName,Assignments.Title,Assignments.SubmissionDate,Assignments.TotalMarks
+from Assignments
+INNER JOIN Classes ON Classes.ClassId = Assignments.ClassId
+INNER JOIN Courses ON Courses.CourseId=Classes.CourseId
+INNER JOIN TeacherProfiles ON TeacherProfiles.TeacherId=Classes.TeacherId
+where Assignments.ClassId IN (select Classes.ClassId from Classes where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where ClassStudents.StudentId=@StudentId))" OnSelecting="AssignmentsDataSource_Selecting">
+        <SelectParameters>
+          <asp:Parameter Name="StudentId" />
+        </SelectParameters>
+      </asp:SqlDataSource>
+      <asp:SqlDataSource ID="QuizzesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="select (TeacherProfiles.FirstName+ ' ' + TeacherProfiles.LastName) as TeacherName, Quizzes.QuizId,Classes.CourseId,Courses.CourseName,Quizzes.Title, Quizzes.Description, Quizzes.QuizDate,Quizzes.TotalMarks
+from Quizzes
+INNER JOIN Classes ON Classes.ClassId = Quizzes.ClassId
+INNER JOIN Courses ON Courses.CourseId=Classes.CourseId
+INNER JOIN TeacherProfiles ON TeacherProfiles.TeacherId=Classes.TeacherId
+where Quizzes.ClassId IN (select Classes.ClassId from Classes where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where ClassStudents.StudentId=@StudentId))" OnSelecting="AssignmentsDataSource_Selecting">
+        <SelectParameters>
+          <asp:Parameter Name="StudentId" />
+        </SelectParameters>
+      </asp:SqlDataSource>
     </div>
   </div>
   <!-- Modal -->
@@ -23,6 +41,10 @@
     <h3 id="myModalLabel">Modal header</h3>
   </div>
   <div class="modal-body">
+    <b>Subject: </b>
+    <p id="course-modal"></p>
+    <b>Teacher: </b>
+    <p id="teacher-modal"></p>
     <b>Quiz Date: </b>
     <p id="date-modal"></p>
     <b>Total Marks: </b>
@@ -47,6 +69,10 @@
         $('#date-modal').text(date);
         var marks = $('#' + linkId + 'Marks').val();
         $('#marks-modal').text(marks);
+        var teacher = $('#' + linkId + 'Teacher').val();
+        $('#teacher-modal').text(teacher);
+        var course = $('#' + linkId + 'Course').val();
+        $('#course-modal').text(course);
       });
     });
   </script>
