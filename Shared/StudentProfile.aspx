@@ -7,6 +7,19 @@
             <asp:Label ID="StudentName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
         </div> 
     </div>
+  <div class="row">
+        <div class="span8 offset1">
+          <asp:LoginView ID="LoginView1" runat="server">
+            <RoleGroups>
+              <asp:RoleGroup Roles="Parent">
+                <ContentTemplate>
+                  <asp:HyperLink ID="EventCalendarLink" runat="server">Event Calendar</asp:HyperLink>
+                </ContentTemplate>
+              </asp:RoleGroup>
+            </RoleGroups>
+          </asp:LoginView>
+        </div> 
+    </div>
     <div class="row">&nbsp;</div>
     <div class="row">
         <div class="span6 offset1">

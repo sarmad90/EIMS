@@ -22,7 +22,11 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-      
+      if(User.IsInRole("Parent"))
+      {
+        HyperLink EventCalendarLink = LoginView1.FindControl("EventCalendarLink") as HyperLink;
+        EventCalendarLink.NavigateUrl = "~/Parents/EventCalendar.aspx?id=" + Request.QueryString["id"].ToString();
+      }
       //setting a user instance based on query string or session variable
       if (Request.QueryString["id"] != null)
       {
