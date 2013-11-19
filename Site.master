@@ -174,7 +174,7 @@
                         <li><asp:HyperLink ID="HyperLink15" runat="server" NavigateUrl="~/Students/QuizAndAssignments.aspx">Quizzes & Assignments</asp:HyperLink></li>
                         <li><asp:HyperLink ID="ParentLinkMaster" runat="server" NavigateUrl="~/Shared/ParentProfile.aspx?id=NPF">Parent Profile</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink16" runat="server" NavigateUrl="~/Students/EventCalendar.aspx">Events Calendar</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="HyperLink28" runat="server" NavigateUrl="~/Students/ProfileSettings.aspx">Profile Settings</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink28" runat="server" NavigateUrl="~/Students/Settings.aspx">Settings</asp:HyperLink></li>
                       </ul>
                     </ContentTemplate>
                   </asp:RoleGroup>

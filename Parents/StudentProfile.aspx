@@ -1,9 +1,17 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Profile.aspx.cs" Inherits="Administration_StudentProfile" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="StudentProfile.aspx.cs" Inherits="Administration_StudentProfile" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="row">
         <div class="span8 offset1">
             <asp:Label ID="StudentName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+        </div> 
+    </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+        <div class="span8 offset1">
+            <asp:HyperLink ID="EventCalendarLink" runat="server">Event Calendar</asp:HyperLink>
         </div> 
     </div>
     <div class="row">&nbsp;</div>
@@ -47,11 +55,11 @@
       <div class="span6 offset1">
         <!-- Parents association section START -->
         <asp:Panel ID="CreateAssociationPanel" runat="server">
-                <asp:Label ID="CreateAssociationLabel" runat="server" Text="You don't have an associated parent yet."></asp:Label>
+                <asp:Label ID="CreateAssociationLabel" runat="server" Text="This student does not have an associated parent yet."></asp:Label>
         </asp:Panel>
         <asp:Panel ID="ShowAssociationPanel" runat="server" Visible="False">
             <asp:Label ID="AssociationMessage" runat="server" Text=""></asp:Label>
-            <asp:HyperLink ID="ParentLink" runat="server">asdasd</asp:HyperLink>
+            <asp:HyperLink ID="ParentLink" runat="server">Parent Link</asp:HyperLink>
         </asp:Panel>
         <!-- Parents association section END -->
       </div>

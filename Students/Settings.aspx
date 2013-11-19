@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ProfileSettings.aspx.cs" Inherits="Students_ProfileSettings" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Settings.aspx.cs" Inherits="Students_ProfileSettings" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
   <!--Student Profile Settings-->
   <div class="row">

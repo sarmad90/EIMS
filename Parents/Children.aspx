@@ -10,7 +10,7 @@
         
         <ItemTemplate>
             <li>
-                <asp:HyperLink ID="lnkMenuItem" runat="server" NavigateUrl='<%# "~/Shared/StudentProfile.aspx?id=" + Eval("UserName").ToString() %>'><%# Eval("UserName") %></asp:HyperLink>
+                <asp:HyperLink ID="lnkMenuItem" runat="server" NavigateUrl='<%# "~/Parents/StudentProfile.aspx?id=" + Eval("UserName").ToString() %>'><%# Eval("UserName") %></asp:HyperLink>
             </li>
         </ItemTemplate>
         <FooterTemplate>
