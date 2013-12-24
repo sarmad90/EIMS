@@ -25,6 +25,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
       if (Request.QueryString["id"] != null)
       {
         student = Membership.GetUser(Request.QueryString["id"].ToString());
+        
       }
       else
       {
@@ -46,6 +47,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
         else
         {
           userName = User.Identity.Name;
+          
         }
         //iterating through the data view and setting the fields in the form
         StudentUserName.Text = userName;
@@ -80,7 +82,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
           }
         }
       }
-      
+     
     }
 
 

@@ -108,10 +108,12 @@ public partial class Administration_Classes_Class : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@ClassId", Request.QueryString["id"]);
         cmd.Parameters.AddWithValue("@Title", AssignmentTitle.Text);
         cmd.Parameters.AddWithValue("@Description", AssignmentDescription.Text);
-        cmd.Parameters.AddWithValue("@SubmissionDate", AssignmentSubmissionDate.SelectedDate);
+        cmd.Parameters.AddWithValue("@SubmissionDate", Convert.ToDateTime(AssignmentDate.Text));
         cmd.Parameters.AddWithValue("@AssignmentDate", DateTime.Now.Date);
         cmd.Parameters.AddWithValue("@TotalMarks", AssignmentTotalMarks.Text);
         cmd.ExecuteNonQuery();
+        Session["Notice"] = "An assignment has been assigned to this class!";
+        Response.Redirect("~/shared/Class.aspx?id=" + Request.QueryString["id"]);
       }
     }
     protected void AddQuiz_Click(object sender, EventArgs e)
@@ -125,9 +127,29 @@ public partial class Administration_Classes_Class : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@ClassId", Request.QueryString["id"]);
         cmd.Parameters.AddWithValue("@Title", QuizTitle.Text);
         cmd.Parameters.AddWithValue("@Description", QuizDescription.Text);
-        cmd.Parameters.AddWithValue("@QuizDate", QuizDate.SelectedDate);
+        cmd.Parameters.AddWithValue("@QuizDate", Convert.ToDateTime(QuizDate.Text));
         cmd.Parameters.AddWithValue("@TotalMarks", QuizTotalMarks.Text);
         cmd.ExecuteNonQuery();
+        Session["Notice"] = "A quiz has been scheduled for this class!";
+        Response.Redirect("~/shared/Class.aspx?id=" + Request.QueryString["id"]);
+      }
+    }
+    protected void AddPresentation_Click(object sender, EventArgs e)
+    {
+      string connectionString = ConfigurationManager.ConnectionStrings["EIMSConnectionString"].ConnectionString;
+      string insertSql = "insert into presentations values(@Title,@Description,@PresentationDate,@TotalMarks,@ClassId)";
+      using (SqlConnection sqlConn = new SqlConnection(connectionString))
+      {
+        sqlConn.Open();
+        SqlCommand cmd = new SqlCommand(insertSql, sqlConn);
+        cmd.Parameters.AddWithValue("@ClassId", Request.QueryString["id"]);
+        cmd.Parameters.AddWithValue("@Title", PresentationTitle.Text);
+        cmd.Parameters.AddWithValue("@Description", PresentationDescription.Text);
+        cmd.Parameters.AddWithValue("@PresentationDate", Convert.ToDateTime(PresentationDate.Text));
+        cmd.Parameters.AddWithValue("@TotalMarks", PresentationMarks.Text);
+        cmd.ExecuteNonQuery();
+        Session["Notice"] = "A presentation has been scheduled for this class!";
+        Response.Redirect("~/shared/Class.aspx?id="+ Request.QueryString["id"]);
       }
     }
 }
