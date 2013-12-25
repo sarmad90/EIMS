@@ -45,7 +45,7 @@ where Quizzes.ClassId IN (select Classes.ClassId from Classes where Classes.Clas
     <p id="course-modal"></p>
     <b>Teacher: </b>
     <p id="teacher-modal"></p>
-    <b>Quiz Date: </b>
+    <b  id="date-label">Quiz Date: </b>
     <p id="date-modal"></p>
     <b>Total Marks: </b>
     <p id="marks-modal"></p>
@@ -60,20 +60,34 @@ where Quizzes.ClassId IN (select Classes.ClassId from Classes where Classes.Clas
     $(document).ready(function () {
       $('.event').click(function () {
         var linkId = $(this).attr("id");
-        
-        var title=$('#' + linkId + 'Title').val();
-        $('#myModalLabel').text(title);
-        var description = $('#' + linkId + 'Description').val();
-        $('#body-modal').text(description);
-        var date = $('#' + linkId + 'Date').val();
-        $('#date-modal').text(date);
-        var marks = $('#' + linkId + 'Marks').val();
-        $('#marks-modal').text(marks);
-        var teacher = $('#' + linkId + 'Teacher').val();
-        $('#teacher-modal').text(teacher);
-        var course = $('#' + linkId + 'Course').val();
-        $('#course-modal').text(course);
+        var type = $(this).data("type");
+        if (type=="Assignment" || type=="Quiz" || type=="Presentation")
+        {
+          $('#date-label').text(type + " Date");
+          var title = $(this).data("title");
+          var description = $(this).data("description");
+          var date = $(this).data("date");
+          var teacher = $(this).data("teacher");
+          var course = $(this).data("course");
+          var marks = $(this).data("marks");
+          $('#myModalLabel').text(title);
+          $('#body-modal').text(description);
+          $('#date-modal').text(date);
+          $('#marks-modal').text(marks);
+          $('#teacher-modal').text(teacher);
+          $('#course-modal').text(course);
+        }
       });
     });
   </script>
+  <asp:SqlDataSource ID="PresentationsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" SelectCommand="select (TeacherProfiles.FirstName+ ' ' + TeacherProfiles.LastName) as TeacherName, Presentations.PresentationId,Classes.CourseId,Courses.CourseName,Presentations.Title, Presentations.Description, Presentations.PresentationDate,Presentations.TotalMarks
+from Presentations
+INNER JOIN Classes ON Classes.ClassId = Presentations.ClassId
+INNER JOIN Courses ON Courses.CourseId=Classes.CourseId
+INNER JOIN TeacherProfiles ON TeacherProfiles.TeacherId=Classes.TeacherId
+where Presentations.ClassId IN (select Classes.ClassId from Classes where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where ClassStudents.StudentId=@StudentId))" OnSelecting="AssignmentsDataSource_Selecting">
+    <SelectParameters>
+      <asp:Parameter Name="StudentId" />
+    </SelectParameters>
+  </asp:SqlDataSource>
 </asp:Content>
