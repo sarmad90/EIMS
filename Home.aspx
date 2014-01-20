@@ -9,11 +9,59 @@
     
     <asp:Panel runat="Server" ID="AnonymousMessagePanel">
         <div class="row">
-          <div class="span8">
+          <div class="col-md-8">
             <div class="Image-Footer"><p style="font-size:30px; padding-top: 25px;">Education made organised.</p></div>
           </div>
-          <div class="span4 offset1">
-              <asp:Login ID="Login1" runat="server" BackColor="White" CssClass="Home-Login2" DisplayRememberMe="False" Height="200px" TextLayout="TextOnTop">
+          <div class="col-md-8">
+              <asp:Login ID="Login1" runat="server" BackColor="White" Width="400px" CssClass="Home-Login2" DisplayRememberMe="False" Height="200px" TextLayout="TextOnTop">
+                <LayoutTemplate>
+                  <!-- Login !-->
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-lock"></span> Login</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        
+                        <div class="col-sm-9">
+                          <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
+                          <asp:TextBox ID="UserName" class="form-control" placeholder="Username" runat="server"></asp:TextBox>
+                          <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        
+                        <div class="col-sm-9">
+                          <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
+                          <asp:TextBox ID="Password" class="form-control" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
+                          <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                          <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"/>
+                                    Remember me
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group last">
+                        <div class="col-sm-offset-3 col-sm-9">
+                          <asp:Button ID="LoginButton" runat="server" CommandName="Login" CssClass="btn btn-primary" Text="Log In" ValidationGroup="Login1" />
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    Not Registred? 
+            </div>
+        </div>
+    </div>            
+                </LayoutTemplate>
                 <LoginButtonStyle CssClass="btn btn-primary" />
               </asp:Login>
           </div>
