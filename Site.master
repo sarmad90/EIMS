@@ -227,8 +227,8 @@
 <div class="row" style="background-color:#F5F3F3;">
   <br />
   <br />
-				<div class="span12 offset2">
-					<div class="span2" style="width: 17%;">
+				<div class="col-md-10 col-md-offset-2">
+					<div class="col-md-2" style="width: 17%;">
 						<ul class="unstyled">
 							<li>GitHub</li>
 							<li><a href="#">About us</a></li>
@@ -238,7 +238,7 @@
 							<li><a href="#">Site status</a></li>
 						</ul>
 					</div>
-					<div class="span2" style="width: 17%;">
+					<div class="col-md-2" style="width: 17%;">
 						<ul class="unstyled">
 							<li>Applications</li>
 							<li><a href="#">Product for Mac</a></li>
@@ -247,7 +247,7 @@
 							<li><a href="#">Product mobile apps</a></li>							
 						</ul>
 					</div>
-					<div class="span2" style="width: 17%;">
+					<div class="col-md-2" style="width: 17%;">
 						<ul class="unstyled">
 							<li>Services</li>
 							<li><a href="#">Web analytics</a></li>
@@ -256,7 +256,7 @@
 							<li><a href="#">Job board</a></li>							
 						</ul>
 					</div>
-					<div class="span2" style="width: 17%;">
+					<div class="col-md-2" style="width: 17%;">
 						<ul class="unstyled">
 							<li>Documentation</li>
 							<li><a href="#">Product Help</a></li>
@@ -265,7 +265,7 @@
 							<li><a href="#">Product Pages</a></li>							
 						</ul>
 					</div>	
-					<div class="span2" style="width: 17%;">
+					<div class="col-md-2" style="width: 17%;">
 						<ul class="unstyled">
 							<li>More</li>
 							<li><a href="#">Training</a></li>
@@ -279,14 +279,14 @@
 			</div>
 			
 			<div class="row" style="background-color:#F5F3F3;">
-				<div class="span12 offset2">
+				<div class="col-md-10 col-md-offset-2">
           <hr/>
-					<div class="span8">
+					<div class="col-md-8">
 						<a href="#">Terms of Service</a>    
 						<a href="#">Privacy</a>    
 						<a href="#">Security</a>
 					</div>
-					<div class="span3">
+					<div class="col-md-3">
 						<p class="muted pull-right">© 2013 EIMS. All rights reserved</p>
 					</div>
 				</div>
