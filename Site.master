@@ -22,117 +22,136 @@
   <script type="text/javascript" src="/js/Application.js"></script>
 </head>
 <body>
-    <div id="container">
-      <form id="form1" runat="server">
-  <nav class="navbar navbar-inverse" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-  </div>
-        
-       <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <li class="active"></li>
-      <li><asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Public/Admission.aspx">Admissions</asp:LinkButton></li>
-      <li><asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/Public/Attendance.aspx">Attendance</asp:LinkButton></li>
-      <li><asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/Public/Examination.aspx">Examination</asp:LinkButton></li>
-      <li><asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/Public/Fee.aspx">Fee Information</asp:LinkButton></li>
-      <li><asp:LinkButton ID="LinkButton5" runat="server" PostBackUrl="~/Public/TimeTable.aspx">Time Table</asp:LinkButton></li>
-      <li class="dropdown">
-        <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-          Departments <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <li><asp:LinkButton ID="LinkButton9" runat="server" PostBackUrl="~/Public/ComputerScience.aspx">Computer Science</asp:LinkButton></li>
-          <li><asp:LinkButton ID="LinkButton10" runat="server" PostBackUrl="~/Public/CivilEngineering.aspx">Civil Engineering</asp:LinkButton></li>
-          <li><asp:LinkButton ID="LinkButton11" runat="server" PostBackUrl="~/Public/ElectronicsEngineering.aspx">Electronics Engineering</asp:LinkButton></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <asp:LoginView ID="LoginView2" runat="server">
-            <AnonymousTemplate>   
-            </AnonymousTemplate>
-            <RoleGroups>
+  <div id="container">
+    <form id="form1" runat="server">
+      <nav class="navbar navbar-inverse" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"></li>
+          <li><asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Public/Admission.aspx">Admissions</asp:LinkButton></li>
+          <li><asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/Public/Attendance.aspx">Attendance</asp:LinkButton></li>
+          <li><asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/Public/Examination.aspx">Examination</asp:LinkButton></li>
+          <li><asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/Public/Fee.aspx">Fee Information</asp:LinkButton></li>
+          <li><asp:LinkButton ID="LinkButton5" runat="server" PostBackUrl="~/Public/TimeTable.aspx">Time Table</asp:LinkButton></li>
+          <li class="dropdown">
+            <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">Departments <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <li><asp:LinkButton ID="LinkButton9" runat="server" PostBackUrl="~/Public/ComputerScience.aspx">Computer Science</asp:LinkButton></li>
+              <li><asp:LinkButton ID="LinkButton10" runat="server" PostBackUrl="~/Public/CivilEngineering.aspx">Civil Engineering</asp:LinkButton></li>
+              <li><asp:LinkButton ID="LinkButton11" runat="server" PostBackUrl="~/Public/ElectronicsEngineering.aspx">Electronics Engineering</asp:LinkButton></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <asp:LoginView ID="LoginView2" runat="server">
+              <AnonymousTemplate>   
+              </AnonymousTemplate>
+              <RoleGroups>
                 <asp:RoleGroup Roles="Student,Parent,Teacher">
                   <ContentTemplate>
                     <asp:LinkButton runat="server" PostBackUrl="~/Dashboard.aspx">Dashboard</asp:LinkButton>
                   </ContentTemplate>
                 </asp:RoleGroup>
                 <asp:RoleGroup Roles="Administrator">
-                    <ContentTemplate>
-                      <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-                        Admin <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <li><asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/Administration/Dashboard.aspx">Dashboard</asp:LinkButton></li>
-                        <li><asp:LinkButton ID="LinkButton11" runat="server" PostBackUrl="~/Administration/Parents/AddParent.aspx">Add a Parent</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="LinkButton12" runat="server" PostBackUrl="~/Administration/Students/AddStudent.aspx">Add a Student</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="LinkButton17" runat="server" PostBackUrl="~/Administration/Teachers/AddTeacher.aspx">Add a Teacher</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="LinkButton13" runat="server" PostBackUrl="~/Administration/Parents/AllParents.aspx">Parents</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="LinkButton14" runat="server" PostBackUrl="~/Shared/AllStudents.aspx">Students</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="LinkButton18" runat="server" PostBackUrl="~/Shared/AllTeachers.aspx">Teachers</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="LinkButton15" runat="server" PostBackUrl="~/Administration/ManageUsers.aspx">Manage Users</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="LinkButton16" runat="server" PostBackUrl="~/Administration/UserInformation.aspx">User Info</asp:LinkButton></li>
-                      </ul>                        
-                    </ContentTemplate>
+                  <ContentTemplate>
+                    <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+                      Admin <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                      <li><asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/Administration/Dashboard.aspx">Dashboard</asp:LinkButton></li>
+                      <li><asp:LinkButton ID="LinkButton11" runat="server" PostBackUrl="~/Administration/Parents/AddParent.aspx">Add a Parent</asp:LinkButton></li>
+                      <li><asp:LinkButton ID="LinkButton12" runat="server" PostBackUrl="~/Administration/Students/AddStudent.aspx">Add a Student</asp:LinkButton></li>
+                      <li><asp:LinkButton ID="LinkButton17" runat="server" PostBackUrl="~/Administration/Teachers/AddTeacher.aspx">Add a Teacher</asp:LinkButton></li>
+                      <li><asp:LinkButton ID="LinkButton13" runat="server" PostBackUrl="~/Administration/Parents/AllParents.aspx">Parents</asp:LinkButton></li>
+                      <li><asp:LinkButton ID="LinkButton14" runat="server" PostBackUrl="~/Shared/AllStudents.aspx">Students</asp:LinkButton></li>
+                      <li><asp:LinkButton ID="LinkButton18" runat="server" PostBackUrl="~/Shared/AllTeachers.aspx">Teachers</asp:LinkButton></li>
+                      <li><asp:LinkButton ID="LinkButton15" runat="server" PostBackUrl="~/Administration/ManageUsers.aspx">Manage Users</asp:LinkButton></li>
+                      <li><asp:LinkButton ID="LinkButton16" runat="server" PostBackUrl="~/Administration/UserInformation.aspx">User Info</asp:LinkButton></li>
+                    </ul>                        
+                  </ContentTemplate>
                 </asp:RoleGroup>
-            </RoleGroups>
-        </asp:LoginView>
-      </li>
-    </ul>
-
-      <div class="User-Login-Info">
+              </RoleGroups>
+            </asp:LoginView>
+          </li>
+        </ul>
+        <div class="User-Login-Info">
           <p>
-                <asp:ContentPlaceHolder ID="LoginContent" runat="server">
-                    <asp:LoginView ID="LoginView1" runat="server">
-                        <LoggedInTemplate>
-                            Welcome,
-                            <asp:LoginName ID="LoginName1" runat="server" />.
-                        </LoggedInTemplate>
-                        <RoleGroups>
-                          <asp:RoleGroup Roles="Administrator">
-                            <ContentTemplate>
-                              Welcome,
-                              <asp:LoginName ID="LoginName1" runat="server" />.
-                              <asp:Image ID="AdminPicture" runat="server" CssClass="Display-pic" ImageUrl="~/img/admin-logo-1238680674-2_avatar.png"></asp:Image>
-                            </ContentTemplate>
-                          </asp:RoleGroup>
-                          <asp:RoleGroup Roles="Student,Parent,Teacher">
-                            <ContentTemplate>
-                              Welcome,
-                              <asp:LoginName ID="LoginName1" runat="server" />.
-                              <asp:Image ID="UserPicture" runat="server" CssClass="Display-pic" ImageUrl="~/img/help_48.png"></asp:Image>
-                            </ContentTemplate>
-                          </asp:RoleGroup>
-                        </RoleGroups>
-                        <AnonymousTemplate>
-                            Hello, guest.
-                        </AnonymousTemplate>
-                    </asp:LoginView>
-                    |
-                    <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Logout.aspx" />
+            <asp:ContentPlaceHolder ID="LoginContent" runat="server">
+              <asp:LoginView ID="LoginView1" runat="server">
+                <LoggedInTemplate>
+                    Welcome, <asp:LoginName ID="LoginName1" runat="server" />.
+                </LoggedInTemplate>
+                <RoleGroups>
+                  <asp:RoleGroup Roles="Administrator">
+                    <ContentTemplate>
+                      Welcome,
+                      <asp:LoginName ID="LoginName1" runat="server" />.
+                      <asp:Image ID="AdminPicture" runat="server" CssClass="Display-pic" ImageUrl="~/img/admin-logo-1238680674-2_avatar.png"></asp:Image>
+                    </ContentTemplate>
+                  </asp:RoleGroup>
+                  <asp:RoleGroup Roles="Student,Parent,Teacher">
+                    <ContentTemplate>
+                      Welcome,
+                      <asp:LoginName ID="LoginName1" runat="server" />.
+                      <asp:Image ID="UserPicture" runat="server" CssClass="Display-pic" ImageUrl="~/img/help_48.png"></asp:Image>
+                    </ContentTemplate>
+                  </asp:RoleGroup>
+                </RoleGroups>
+                  <AnonymousTemplate>
+                      Hello, guest.
+                  </AnonymousTemplate>
+              </asp:LoginView>
+                |
+                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Logout.aspx" />
+            </asp:ContentPlaceHolder>
+            </p>
+          </div>
+        </div>
+      </nav>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="header">
+              <span class="breadcrumb">
+                  <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+                  </asp:SiteMapPath>
+              </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Side Nav !-->
+        <div class="col-md-2"> 
+           <!-- Side Navigation-->
+            <div id="navigation">
+                <asp:ContentPlaceHolder ID="SideNavigation" runat="server">
+                  <ul class="nav nav-list">
+                    <li class="active"><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Home.aspx">Home</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Dashboard.aspx">Department</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Membership/CreatingUserAccounts.aspx">Creating User Accounts</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Membership/AdditionalUserInfo.aspx">Additional User Info</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Membership/EnhancedCreateUserWizard.aspx">Enhanced Create User</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Membership/Guestbook.aspx">Guestbook</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Membership/UserBasedAuthorization.aspx">User Based Authorization</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Roles/CreateUserWizardWithRoles.aspx">Create User With Roles</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/Roles/ManageRoles.aspx">Manage Roles</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/Roles/UsersAndRoles.aspx">Users and Roles</asp:HyperLink></li>
+                  </ul>
                 </asp:ContentPlaceHolder>
-              </p>
             </div>
-    </div>
-  </nav>
-            
+        </div>
 
-            <div id="header">
-                <span class="breadcrumb">
-                    <asp:SiteMapPath ID="SiteMapPath1" runat="server">
-                    </asp:SiteMapPath>
-                </span>
-            </div>
-        
-            <div id="content">
-                <asp:Panel ID="SuccessMessages" runat="server">
+        <!-- Main Section !-->
+        <div class="col-md-10">
+          <asp:Panel ID="SuccessMessages" runat="server">
                     <div class="alert alert-success">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <asp:Label ID="SuccessMessage" runat="server" Text=""></asp:Label>
@@ -202,27 +221,10 @@
                 <asp:contentplaceholder id="MainContent" runat="server">
                   <!-- Page-specific content will go here... -->
                 </asp:contentplaceholder>
-            </div>
-            <!-- Side Navigation-->
-            <div id="navigation">
-                <asp:ContentPlaceHolder ID="SideNavigation" runat="server">
-                  <ul class="nav nav-list">
-                    <li class="nav-header">EIMS</li>
-                    <li class="active"><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Home.aspx">Home</asp:HyperLink></li>
-                    <li><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Dashboard.aspx">Department</asp:HyperLink></li>
-                    <li><asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Membership/CreatingUserAccounts.aspx">Creating User Accounts</asp:HyperLink></li>
-                    <li><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Membership/AdditionalUserInfo.aspx">Additional User Info</asp:HyperLink></li>
-                    <li><asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Membership/EnhancedCreateUserWizard.aspx">Enhanced Create User</asp:HyperLink></li>
-                    <li><asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Membership/Guestbook.aspx">Guestbook</asp:HyperLink></li>
-                    <li><asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Membership/UserBasedAuthorization.aspx">User Based Authorization</asp:HyperLink></li>
-                    <li><asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Roles/CreateUserWizardWithRoles.aspx">Create User With Roles</asp:HyperLink></li>
-                    <li><asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/Roles/ManageRoles.aspx">Manage Roles</asp:HyperLink></li>
-                    <li><asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/Roles/UsersAndRoles.aspx">Users and Roles</asp:HyperLink></li>
-                  </ul>
-                </asp:ContentPlaceHolder>
-            </div>
-        </form>
-    </div>
+        </div>
+      </div>
+    </form>
+  </div>
     <!-- Footer Start -->
 <div class="row" style="background-color:#F5F3F3;">
   <br />

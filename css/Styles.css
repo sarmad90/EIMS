@@ -64,15 +64,6 @@ background-color:#1E82CC;
 	color: #08c;
 }
 
-/* Navigation */
-
-#navigation {
-	width: 200px;
-	top: 9em;
-	left: 1em;
-	width: 13em;	
-	position:absolute;
-}
 
 #header .breadcrumb {
 	font: 90% Arial, Helvetica, Georgia, "Times New Roman", Times, serif;

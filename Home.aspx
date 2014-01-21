@@ -1,11 +1,61 @@
 <%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="_Default" Title="EIMS" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    
-    <asp:Panel runat="server" ID="AuthenticatedMessagePanel">
-        <asp:Label runat="server" ID="WelcomeBackMessage">
-</asp:Label>
-    </asp:Panel>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="jumbotron">
+        <h2>Admissions are open!</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget leo condimentum, suscipit sapien a, cursus enim.</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <!-- Carousel Start -->
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/img/Blackboard-Teachers-Students-Knowledge.jpg" Height="400px" Width="1200px" />
+            <div class="carousel-caption">
+              ...
+            </div>
+          </div>
+          <div class="item">
+            <asp:Image ID="Image2" runat="server" ImageUrl="~/img/college-professor.jpg" Height="400px" Width="1200px" />
+            <div class="carousel-caption">
+              ...
+            </div>
+          </div>
+          <div class="item">
+            <asp:Image ID="Image3" runat="server" ImageUrl="~/img/students-around-laptop.jpg" Height="400px" Width="1200px" />
+            <div class="carousel-caption">
+              ...
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+      <!-- Carousel end -->
+    </div>
+  </div>
+  
+  <asp:Panel runat="server" ID="AuthenticatedMessagePanel"> <!-- Login Message -->
+        <asp:Label runat="server" ID="WelcomeBackMessage"></asp:Label>
+  </asp:Panel>
     
     <asp:Panel runat="Server" ID="AnonymousMessagePanel">
         <div class="row">
