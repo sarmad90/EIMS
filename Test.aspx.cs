@@ -12,10 +12,6 @@ public partial class Test : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
   {
-    String userName = User.Identity.Name;
-      MembershipUser student=Membership.GetUser(userName);
-      
-    Label1.Text = Student.FullName(student);
-      //Membership student = Membership.GetUser();
+    
     }
 }

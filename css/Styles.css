@@ -224,3 +224,9 @@ select
 	max-width: 300px;
 	border-radius: 10px 10px 10px 10px;
 }
+.left-border
+{
+	border-left: 30px;
+	border-left-color: #1E82CC;
+	border-left-style: solid;
+}

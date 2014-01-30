@@ -1,220 +1,213 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Class.aspx.cs" Inherits="Administration_Classes_Class" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-    <div class="row">
-        <div class="span8 offset1">
-            <asp:Label ID="Course" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
-        </div> 
+  <div class="row">
+    <div class="col-md-8">
+      <asp:Label ID="Course" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+    </div> 
+  </div>
+  <div class="row">&nbsp;</div>
+  <div class="row">
+    <!-- Class Details Start !-->
+    <div class="col-md-6">
+      <table class="table table-striped">
+        <tr>
+          <td> Teacher Name:</td>
+          <td><asp:Label ID="Teacher" runat="server" Text=""></asp:Label></td>
+        </tr>
+        <tr>
+          <td> Batch:</td>
+          <td><asp:Label ID="Batch" runat="server" Text=""></asp:Label></td>
+        </tr>
+        <tr>
+          <td> Department:</td>
+          <td><asp:Label ID="Department" runat="server" Text=""></asp:Label></td>
+        </tr>
+        <tr>
+          <td> Section:</td>
+          <td><asp:Label ID="Section" runat="server" Text=""></asp:Label></td>
+        </tr>
+        <tr>
+          <td> Semester:</td>
+          <td><asp:Label ID="Semester" runat="server" Text=""></asp:Label></td>
+        </tr>
+        <tr>
+          <td> Credit Hours:</td>
+          <td><asp:Label ID="CreditHours" runat="server" Text=""></asp:Label></td>
+        </tr>
+      </table>
+      <!-- Class Details End !-->
+      <div class="row">
+        <div class="col-md-12">
+        <!-- Students in the class Start !-->
+        <!-- Collapse Start !-->
+          <!-- !-->
+          <div class="panel-group" id="Div12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Students in the class</a></h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                  <asp:GridView ID="ClassStudentsGridview" CssClass="table table-hover" runat="server" AutoGenerateColumns="False">
+                    <Columns>
+                      <asp:TemplateField HeaderText="Profile">
+                        <ItemTemplate>
+                          <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/Shared/StudentProfile.aspx?id=" + Eval("UserName")   %>'>View Profile</asp:HyperLink>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:BoundField DataField="Name" HeaderText="Name" />
+                      <asp:BoundField DataField="Roll Number" HeaderText="Roll Number" />
+                      <asp:BoundField DataField="Batch" HeaderText="Batch" />
+                      <asp:BoundField DataField="Dept" HeaderText="Dept" />
+                    </Columns>
+                  </asp:GridView>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Add students to the class</a></h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <asp:GridView ID="AddStudents" runat="server" CssClass="table table-hover" DataKeyNames="Roll Number" AutoGenerateColumns="False">
+                    <Columns>
+                      <asp:TemplateField HeaderText="Select">
+                        <ItemTemplate>
+                          <asp:CheckBox ID="chkSelect" runat="server" /> 
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:BoundField DataField="Name" HeaderText="Name" />
+                      <asp:BoundField DataField="Roll Number" HeaderText="Roll Number" />
+                      <asp:BoundField DataField="Batch" HeaderText="Batch" />
+                      <asp:BoundField DataField="Dept" HeaderText="Dept" />
+                    </Columns>
+                  </asp:GridView>
+                  <asp:Button ID="AddStudentsButton" runat="server" Text="Add Students" CssClass="btn" OnClick="AddStudentsButton_Click" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">&nbsp;</div>
+        <!-- Collapse END !-->
+        <!-- Students in the class End !-->
+        </div>
+      </div>
     </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="span6 offset1">
-            <table class="table table-striped">
-                <tr>
-                    <td> Teacher Name:</td>
-                    <td>
-                        <asp:Label ID="Teacher" runat="server" Text=""></asp:Label></td>
-                </tr>
-                <tr>
-                    <td> Batch:</td>
-                    <td><asp:Label ID="Batch" runat="server" Text=""></asp:Label></td>
-                </tr>
-                <tr>
-                    <td> Department:</td>
-                    <td><asp:Label ID="Department" runat="server" Text=""></asp:Label></td>
-                </tr>
-                <tr>
-                    <td> Section:</td>
-                    <td><asp:Label ID="Section" runat="server" Text=""></asp:Label></td>
-                </tr>
-                <tr>
-                    <td> Semester:</td>
-                    <td><asp:Label ID="Semester" runat="server" Text=""></asp:Label></td>
-                </tr>
-                <tr>
-                    <td> Credit Hours:</td>
-                    <td><asp:Label ID="CreditHours" runat="server" Text=""></asp:Label></td>
-                </tr>
-            </table>
-          <div class="row">
-            <div class="span6">
-                <div class="accordion" id="accordion2">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                Students in the class
-              </a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse in">
-              <div class="accordion-inner">
-                <asp:GridView ID="ClassStudentsGridview" CssClass="table table-hover" runat="server" AutoGenerateColumns="False">
-                  <Columns>
-                    <asp:TemplateField HeaderText="Profile">
-                      <ItemTemplate>
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/Shared/StudentProfile.aspx?id=" + Eval("UserName")   %>'>View Profile</asp:HyperLink>
-                      </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="Name" HeaderText="Name" />
-                    <asp:BoundField DataField="Roll Number" HeaderText="Roll Number" />
-                    <asp:BoundField DataField="Batch" HeaderText="Batch" />
-                    <asp:BoundField DataField="Dept" HeaderText="Dept" />
-                  </Columns>
-                </asp:GridView>
-              </div>
-            </div>
+    <!-- Assignments and Quizzes Secction START-->
+    <div class="col-md-6">
+      <div class="panel-group" id="accordion2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">Due Assignments</a></h4>
           </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                Add students to the class
-              </a>
-            </div>
-            <div id="collapseTwo" class="accordion-body collapse">
-              <div class="accordion-inner">
-                <asp:GridView ID="AddStudents" runat="server" CssClass="table table-hover" DataKeyNames="Roll Number" AutoGenerateColumns="False">
-                  <Columns>
-                    <asp:TemplateField HeaderText="Select">
-                      <ItemTemplate>
-                        <asp:CheckBox ID="chkSelect" runat="server" /> 
-                      </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="Name" HeaderText="Name" />
-                    <asp:BoundField DataField="Roll Number" HeaderText="Roll Number" />
-                    <asp:BoundField DataField="Batch" HeaderText="Batch" />
-                    <asp:BoundField DataField="Dept" HeaderText="Dept" />
-                  </Columns>
-                </asp:GridView>
-                <asp:Button ID="AddStudentsButton" runat="server" Text="Add Students" CssClass="btn" OnClick="AddStudentsButton_Click" />
-              </div>
+          <div id="collapseFour" class="panel-collapse collapse in">
+            <div class="panel-body">
+              No Assignments
             </div>
           </div>
         </div>
-            </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">Add Assignemnts</a></h4>
           </div>
-        </div>
-      <!-- Assignments and Quizzes Secction START-->
-      <div class="span6">
-        <div class="accordion" id="Div1">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div2">
-                Due Assignments
-              </a>
-            </div>
-            <div id="Div2" class="accordion-body collapse in">
-              <div class="accordion-inner">
-                No Assignment
+          <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="row">
+                <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="AssignmentTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="AssignmentTotalMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
               </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div3">
-                Add Assignments
-              </a>
-            </div>
-            <div id="Div3" class="accordion-body collapse">
-              <div class="accordion-inner">
-                <div class="row">
-                  <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="AssignmentTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="AssignmentTotalMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
-                </div>
-                <div class="row">
-                  <div class="span1">Description:  </div>
-                  <div class="span4"><asp:TextBox ID="AssignmentDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px"></asp:TextBox></div>
-                </div>
-                <div class="row">
-                  <div class="span5">Submission Date:  <asp:TextBox ID="AssignmentDate" runat="server" class="datepicker"></asp:TextBox></div>
-                </div>
-                <div class="row">
-                  <div class="span2">
-                    <asp:Button ID="AddAssignment" runat="server" Text="Assign" CssClass="btn btn-primary" OnClick="AddAssignment_Click" /></div>
-                </div>
+              <div class="row">
+                <div class="span1">Description:  </div>
+                <div class="span4"><asp:TextBox ID="AssignmentDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px"></asp:TextBox></div>
               </div>
-            </div>
-          </div>
-        </div>
-        <!-- Divider between two accordians -->
-        <div class="accordion" id="Div4">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div4" href="#Div5">
-                Coming Quizzes
-              </a>
-            </div>
-            <div id="Div5" class="accordion-body collapse in">
-              <div class="accordion-inner">
-                No Upcoming Quizzes
+              <div class="row">
+                <div class="span5">Submission Date:  <asp:TextBox ID="AssignmentDate" runat="server" class="datepicker"></asp:TextBox></div>
               </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div4" href="#Div6">
-                Add Quizzes
-              </a>
-            </div>
-            <div id="Div6" class="accordion-body collapse">
-              <div class="accordion-inner">
-                <div class="row">
-                  <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="QuizTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="QuizTotalMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
-                </div>
-                <div class="row">
-                  <div class="span1">Description:  </div>
-                  <div class="span4"><asp:TextBox ID="QuizDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px"></asp:TextBox></div>
-                </div>
-                <div class="row">
-                  <div class="span5">Quiz Date:  <asp:TextBox ID="QuizDate" runat="server" class="datepicker"></asp:TextBox></div>
-                </div>
-                <div class="row">
-                  <div class="span2">
-                    <asp:Button ID="AddQuiz" runat="server" Text="Add Quiz" CssClass="btn btn-primary" OnClick="AddQuiz_Click" /></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Divider between two accordians -->
-        <div class="accordion" id="Div7">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div7" href="#Div8">
-                Coming Presentations
-              </a>
-            </div>
-            <div id="Div8" class="accordion-body collapse in">
-              <div class="accordion-inner">
-                No Upcoming Presentations
-              </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div7" href="#Div9">
-                Add Presentations
-              </a>
-            </div>
-            <div id="Div9" class="accordion-body collapse">
-              <div class="accordion-inner">
-                <div class="row">
-                  <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="PresentationTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="PresentationMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
-                </div>
-                <div class="row">
-                  <div class="span1">Description:  </div>
-                  <div class="span4"><asp:TextBox ID="PresentationDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px"></asp:TextBox></div>
-                </div>
-                <div class="row">
-                  <div class="span5">Presentation Date:  <asp:TextBox ID="PresentationDate" runat="server" class="datepicker"></asp:TextBox></div>
-                </div>
-                <div class="row">
-                  <div class="span2">
-                    <asp:Button ID="AddPresentation" runat="server" Text="Add Presentation" CssClass="btn btn-primary" OnClick="AddPresentation_Click" /></div>
-                </div>
+              <div class="row">
+                <div class="span2">
+                  <asp:Button ID="AddAssignment" runat="server" Text="Assign" CssClass="btn btn-primary" OnClick="AddAssignment_Click" /></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!--Assignments and Quizzes section END -->
+      <!-- Divider between two accordians -->
+      <div class="row">&nbsp;</div>
+      <div class="panel-group" id="accordion3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion3" href="#collapseFive">Coming Quizzes</a></h4>
+          </div>
+          <div id="collapseFive" class="panel-collapse collapse in">
+            <div class="panel-body">
+              No Upcoming Quizzes
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion3" href="#collapseSix">Add Quiz</a></h4>
+          </div>
+          <div id="collapseSix" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="row">
+                <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="QuizTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="QuizTotalMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
+              </div>
+              <div class="row">
+                <div class="span1">Description:  </div>
+                <div class="span4"><asp:TextBox ID="QuizDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px"></asp:TextBox></div>
+              </div>
+              <div class="row">
+                <div class="span5">Quiz Date:  <asp:TextBox ID="QuizDate" runat="server" class="datepicker"></asp:TextBox></div>
+              </div>
+              <div class="row">
+                <div class="span2">
+                  <asp:Button ID="AddQuiz" runat="server" Text="Add Quiz" CssClass="btn btn-primary" OnClick="AddQuiz_Click" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Divider between two accordians -->
+      <div class="row">&nbsp;</div>
+      <div class="panel-group" id="accordion4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion4" href="#collapseSeven">Coming Presentations</a></h4>
+          </div>
+          <div id="collapseSeven" class="panel-collapse collapse in">
+            <div class="panel-body">
+              No Upcoming Presentations
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion4" href="#collapseEight">Schedule Presentations</a></h4>
+          </div>
+          <div id="collapseEight" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="row">
+                <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="PresentationTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="PresentationMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
+              </div>
+              <div class="row">
+                <div class="span1">Description:  </div>
+                <div class="span4"><asp:TextBox ID="PresentationDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px"></asp:TextBox></div>
+              </div>
+              <div class="row">
+                <div class="span5">Presentation Date:  <asp:TextBox ID="PresentationDate" runat="server" class="datepicker"></asp:TextBox></div>
+              </div>
+              <div class="row">
+                <div class="span2">
+                  <asp:Button ID="AddPresentation" runat="server" Text="Add Presentation" CssClass="btn btn-primary" OnClick="AddPresentation_Click" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <!--Assignments and Quizzes section END -->
+  </div>
   <asp:SqlDataSource ID="StudentsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentsDataSource_Selecting" SelectCommand="SELECT (StudentProfiles.FirstName + ' ' + StudentProfiles.LastName) as Name,(StudentProfiles.RollNo) as 'Roll Number',Batches.BatchName as Batch,Departments.DepartmentInitials as Dept, StudentProfiles.StudentId
 FROM StudentProfiles
 INNER JOIN batches ON StudentProfiles.BatchId=Batches.BatchId
