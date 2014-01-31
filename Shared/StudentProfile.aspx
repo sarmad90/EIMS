@@ -83,30 +83,27 @@
         <!-- Parents association section END -->
       </div>
       <!-- Results Section Start -->
-      <div class="col-md-6">
+      <div class="col-md-6 col-md-offset-1">
       <asp:Panel ID="ResultsAdminPanel" runat="server">
-          <div class="accordion" id="accordion2">
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                  Results
-                </a>
-              </div>
-              <div id="collapseOne" class="accordion-body collapse in">
-                <div class="accordion-inner">
-                  No Results
-                </div>
+        <!-- !-->
+        <div class="panel-group" id="accordionResults">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionResults" href="#collapseResults1">Results</a></h4>
+            </div>
+            <div id="collapseResults1" class="panel-collapse collapse in">
+              <div class="panel-body">
+                No Results
               </div>
             </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                  Add Results
-                </a>
-              </div>
-              <div id="collapseTwo" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  <div class="row">
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionResults" href="#collapseResults2">Add Results</a></h4>
+            </div>
+            <div id="collapseResults2" class="panel-collapse collapse">
+              <div class="panel-body">
+                <div class="row">
                     <div class="col-md-1"><asp:Label ID="Label2" runat="server" Text="Semester:  "></asp:Label></div>
                     <div class="col-md-1"><asp:TextBox ID="TxtSemester" CssClass="input-mini" runat="server"></asp:TextBox></div>
                     <div class="col-md-1"><asp:Label ID="Label3" runat="server" Text="Status:  "></asp:Label></div>
@@ -208,13 +205,14 @@
                       </span>
                     </div>
                   </div>
-                </div>
-                <div class="form-actions">
-                  <asp:Button ID="AddResult" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="AddResult_Click" />
-                </div>
+                  <div class="form-actions">
+                    <asp:Button ID="AddResult" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="AddResult_Click" />
+                  </div>
               </div>
             </div>
           </div>
+        </div>
+        <!-- !-->
       </asp:Panel>
       </div>
       <!-- Results Section End -->
