@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="QuizAndAssignments.aspx.cs" Inherits="Students_QuizAndAssignments" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
   <div class="row">
-    <div class="span12 offset1">
+    <div class="col-md-12">
       <h2 class="text-center">Upcoming Quizzes</h2>
     </div>
   </div>
   <div class="row">
-    <div class="span12 offset1">
+    <div class="col-md-12">
       <asp:GridView ID="StudentQuizGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="QuizId" DataSourceID="StudentQuizDataSource" Width="1000px">
                     <Columns>
                       <asp:BoundField DataField="CourseName" HeaderText="Class" SortExpression="CourseName" />
@@ -34,12 +34,12 @@
   </div>
   <div class="row">&nbsp;</div>
   <div class="row">
-    <div class="span12 offset1">
+    <div class="col-md-12">
       <h2 class="text-center">Due Assignments</h2>
     </div>
   </div>
   <div class="row">
-    <div class="span12 offset1">
+    <div class="col-md-12">
       <asp:GridView ID="StudentAssignmentGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="AssignmentId" DataSourceID="StudentAssignmentDataSource" Width="1000px">
                     <Columns>
                       <asp:BoundField DataField="CourseName" HeaderText="Class" SortExpression="CourseName" />
