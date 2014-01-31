@@ -34,28 +34,34 @@ where Quizzes.ClassId IN (select Classes.ClassId from Classes where Classes.Clas
       </asp:SqlDataSource>
     </div>
   </div>
-  <!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
-  </div>
-  <div class="modal-body">
-    <b>Subject: </b>
-    <p id="course-modal"></p>
-    <b>Teacher: </b>
-    <p id="teacher-modal"></p>
-    <b  id="date-label">Quiz Date: </b>
-    <p id="date-modal"></p>
-    <b>Total Marks: </b>
-    <p id="marks-modal"></p>
-    <b>Description: </b>
-    <p id="body-modal">One fine body…</p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  <!-- Modal Start -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="H1">Event Details</h4>
+      </div>
+      <div class="modal-body">
+        <b>Subject: </b>
+        <p id="course-modal"></p>
+        <b>Teacher: </b>
+        <p id="teacher-modal"></p>
+        <b  id="date-label">Quiz Date: </b>
+        <p id="date-modal"></p>
+        <b>Total Marks: </b>
+        <p id="marks-modal"></p>
+        <b>Description: </b>
+        <p id="body-modal">One fine body…</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
+  <!-- Modal END -->
+
   <script type="text/javascript">
     $(document).ready(function () {
       $('.event').click(function () {
