@@ -9,7 +9,7 @@
     </div>
     <div class="row">&nbsp;</div>
     <div class="row">
-        <div class="span6 offset1">
+        <div class="col-md-6 col-md-offset-1">
             <table class="table table-striped">
                 <tr>
                     <td> UserName:</td>
@@ -30,19 +30,19 @@
                 </tr>
             </table>
             <div class="row">
-            <div class="span2">
-                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
+            <div class="col-md-2">
+                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-default" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
             </div>
           </div>
         </div>
-        <div class="span6">
+        <div class="col-md-5">
           <asp:Image runat="server" ID="UserPicture" CssClass="Display-pic-medium" ImageUrl="~/img/help_48.png"></asp:Image>
         </div>
     </div>
   </asp:Panel>
   <asp:Panel ID="NoParentFound" runat="server">
     <div class="row">
-      <div class="span12 offset1">
+      <div class="col-md-12 col-md-offset-1">
         <h1>You don't have an associated parent account yet.</h1>
       </div>
     </div>

@@ -49,7 +49,7 @@
                     <td><asp:Label ID="StudentContact" runat="server" Text=""></asp:Label></td>
                 </tr>
             </table>
-          <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
+          <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-default" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
         </div>
       <!-- User pic section -->
       <div class="col-md-5">
