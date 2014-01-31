@@ -111,7 +111,7 @@
                   </AnonymousTemplate>
               </asp:LoginView>
                 |
-                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Logout.aspx" />
+                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Home.aspx" />
             </asp:ContentPlaceHolder>
             </p>
           </div>

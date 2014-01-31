@@ -229,4 +229,5 @@ select
 	border-left: 30px;
 	border-left-color: #1E82CC;
 	border-left-style: solid;
+	min-height: 400px;
 }

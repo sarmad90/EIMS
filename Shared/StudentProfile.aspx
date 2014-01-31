@@ -3,12 +3,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <script type="text/javascript" src="/js/StudentProfile.js"></script>
     <div class="row">
-        <div class="span8 offset1">
+        <div class="col-md-8 col-md-offset-1">
             <asp:Label ID="StudentName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
         </div> 
     </div>
   <div class="row">
-        <div class="span8 offset1">
+        <div class="col-md-8 col-md-offset-1">
           <asp:LoginView ID="LoginView1" runat="server">
             <RoleGroups>
               <asp:RoleGroup Roles="Parent">
@@ -22,7 +22,7 @@
     </div>
     <div class="row">&nbsp;</div>
     <div class="row">
-        <div class="span6 offset1">
+        <div class="col-md-6 col-md-offset-1">
             <table class="table table-striped">
                 <tr>
                     <td> UserName:</td>
@@ -52,20 +52,20 @@
           <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
         </div>
       <!-- User pic section -->
-      <div class="span6">
+      <div class="col-md-5">
         <asp:Image runat="server" ID="UserPicture" CssClass="Display-pic-medium" ImageUrl="~/img/help_48.png"></asp:Image>
       </div>
       <!-- User pic section END-->
     </div>
     <div class="row">
-      <div class="span6 offset1">
+      <div class="col-md-6 col-md-offset-1">
         <!-- Parents association section START -->
         <asp:Panel ID="CreateAssociationPanel" runat="server">
                 <div class="row">
                     <p class="text-center"><b>Enter Parent's Email</b></p>
-                    <div class="span1"><asp:Label ID="Label1" runat="server" Text="Email: "></asp:Label></div>
-                    <div class="span3"><asp:TextBox ID="ParentEmail" runat="server"></asp:TextBox></div>
-                    <div class="span2"><asp:Button ID="Button1" runat="server" Text="Search" OnClick="Button1_Click" /></div>
+                    <div class="col-md-1"><asp:Label ID="Label1" runat="server" Text="Email: "></asp:Label></div>
+                    <div class="col-md-3"><asp:TextBox ID="ParentEmail" runat="server"></asp:TextBox></div>
+                    <div class="col-md-2"><asp:Button ID="Button1" runat="server" Text="Search" OnClick="Button1_Click" /></div>
                 </div>
                 <asp:GridView ID="ParentAssociation" runat="server" CssClass="table table-bordered table-striped" AutoGenerateColumns="False" OnSelectedIndexChanged="ParentAssociation_SelectedIndexChanged" >
                     <Columns>
@@ -83,18 +83,18 @@
         <!-- Parents association section END -->
       </div>
       <!-- Results Section Start -->
-      <div class="span6">
+      <div class="col-md-6">
       <asp:Panel ID="ResultsAdminPanel" runat="server">
           <div class="accordion" id="accordion2">
             <div class="accordion-group">
               <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                  Collapsible Group Item #1
+                  Results
                 </a>
               </div>
               <div id="collapseOne" class="accordion-body collapse in">
                 <div class="accordion-inner">
-                  Anim pariatur cliche...
+                  No Results
                 </div>
               </div>
             </div>
@@ -107,33 +107,26 @@
               <div id="collapseTwo" class="accordion-body collapse">
                 <div class="accordion-inner">
                   <div class="row">
-                    <div class="span1"><asp:Label ID="Label2" runat="server" Text="Semester:  "></asp:Label></div>
-                    <div class="span1"><asp:TextBox ID="TxtSemester" CssClass="input-mini" runat="server"></asp:TextBox></div>
-                    <div class="span1"><asp:Label ID="Label3" runat="server" Text="Status:  "></asp:Label></div>
-                    <div class="span1"><asp:TextBox ID="TxtStatus" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                    <div class="col-md-1"><asp:Label ID="Label2" runat="server" Text="Semester:  "></asp:Label></div>
+                    <div class="col-md-1"><asp:TextBox ID="TxtSemester" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                    <div class="col-md-1"><asp:Label ID="Label3" runat="server" Text="Status:  "></asp:Label></div>
+                    <div class="col-md-1"><asp:TextBox ID="TxtStatus" CssClass="input-mini" runat="server"></asp:TextBox></div>
                   </div>
                   <div class="row">
-                    <div class="span1"><asp:Label ID="Label4" runat="server" Text="GPA:  "></asp:Label></div>
-                    <div class="span1"><asp:TextBox ID="TxtGPA" CssClass="input-mini" runat="server"></asp:TextBox></div>
-                    <div class="span1"><asp:Label ID="Label6" runat="server" Text="Attendance:  "></asp:Label></div>
-                    <div class="span1"><asp:TextBox ID="TxtAttendance" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                    <div class="col-md-1"><asp:Label ID="Label4" runat="server" Text="GPA:  "></asp:Label></div>
+                    <div class="col-md-1"><asp:TextBox ID="TxtGPA" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                    <div class="col-md-1"><asp:Label ID="Label6" runat="server" Text="Attendance:  "></asp:Label></div>
+                    <div class="col-md-1"><asp:TextBox ID="TxtAttendance" CssClass="input-mini" runat="server"></asp:TextBox></div>
                   </div>
                   <div class="row">
-                    <div class="span1"><asp:Label ID="Label5" runat="server" Text="Passing Date:  "></asp:Label></div>
-                    <div class="span1">
-                      <asp:Calendar ID="PassingDate" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
-                        <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                        <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                        <OtherMonthDayStyle ForeColor="#999999" />
-                        <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                        <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                        <TodayDayStyle BackColor="#CCCCCC" />
-                      </asp:Calendar>
+                    <div class="col-md-1"><asp:Label ID="Label5" runat="server" Text="Passing Date:  "></asp:Label></div>
+                    <div class="col-md-1">
+                      <div class="span5">Passing Date:  <asp:TextBox ID="PassingDate" runat="server" class="datepicker"></asp:TextBox></div>
                     </div>
                   </div>
-                  <div class="row"><div class="span4 offset1"><hr /></div></div>
+                  <div class="row"><div class="col-md-4 col-md-offset-1"><hr /></div></div>
                   <div class="row">
-                    <div class="span6">
+                    <div class="col-md-6">
                       <div>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Label ID="Label7" runat="server" Text="Subject: "></asp:Label>
@@ -146,7 +139,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="span6">
+                    <div class="col-md-6">
                       <asp:Image ID="subject_fields_button_2" runat="server" ImageUrl="~/img/add.png" />
                       <span class="subject_fields_2">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -160,7 +153,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="span6">
+                    <div class="col-md-6">
                       <asp:Image ID="subject_fields_button_3" runat="server" ImageUrl="~/img/add.png" />
                       <span class="subject_fields_3">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -174,7 +167,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="span6">
+                    <div class="col-md-6">
                       <asp:Image ID="subject_fields_button_4" runat="server" ImageUrl="~/img/add.png" />
                       <span class="subject_fields_4">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -188,7 +181,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="span6">
+                    <div class="col-md-6">
                       <asp:Image ID="subject_fields_button_5" runat="server" ImageUrl="~/img/add.png" />
                       <span class="subject_fields_5">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -202,7 +195,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="span6">
+                    <div class="col-md-6">
                       <asp:Image ID="subject_fields_button_6" runat="server" ImageUrl="~/img/add.png" />
                       <span class="subject_fields_6">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -231,7 +224,7 @@
       <!-- Administrator section-->
       <!-- Assignments,Quizzes,Results and Attendance section start -->
       <asp:Panel ID="NonAdminPanel" runat="server">
-        <div class="span10 offset1">
+        <div class="col-md-10 col-md-offset-1">
           <div class="accordion" id="Div1">
             <div class="accordion-group">
               <div class="accordion-heading">
@@ -465,7 +458,7 @@ where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where 
       </asp:Panel>
       <!-- Assignments,Quizzes,Results and Attendance section end -->
       <asp:Panel ID="AttendancePanel" runat="server">
-        <div class="span10 offset1">
+        <div class="col-md-10 col-md-offset-1">
             <h1>Attendance</h1>
                   <asp:GridView ID="gvCrud" runat="server" DataKeyNames="AttendanceId" CssClass="GridView" ShowFooter="true" AutoGenerateColumns="false" OnRowDataBound="gvCrud_RowDataBound" OnRowCancelingEdit="gvCrud_RowCancelingEdit" OnRowEditing="gvCrud_RowEditing" OnRowCommand="gvCrud_RowCommand" OnRowDeleting="gvCrud_RowDeleting">
                       <EmptyDataTemplate>

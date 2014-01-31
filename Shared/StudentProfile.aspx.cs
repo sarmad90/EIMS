@@ -343,7 +343,7 @@ public partial class Administration_StudentProfile : System.Web.UI.Page
       string insertResultQuery = "INSERT INTO Results Output inserted.ResultId VALUES(@SemesterId,@PassingDate,@Status,@GPA,@Attendance,@StudentId)";
       sqlcom = new SqlCommand(insertResultQuery,sqlcon);
       sqlcom.Parameters.AddWithValue("@SemesterId", TxtSemester.Text);
-      sqlcom.Parameters.AddWithValue("@PassingDate", PassingDate.SelectedDate);
+      sqlcom.Parameters.AddWithValue("@PassingDate", Convert.ToDateTime(PassingDate.Text));
       sqlcom.Parameters.AddWithValue("@Status", TxtStatus.Text);
       sqlcom.Parameters.AddWithValue("@GPA", TxtGPA.Text);
       sqlcom.Parameters.AddWithValue("@Attendance", TxtAttendance.Text);
