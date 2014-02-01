@@ -2,7 +2,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-  <asp:CreateUserWizard ID="AddNewStudent" runat="server" LoginCreatedUser="False" OnCreatedUser="AddNewStudent_CreatedUser" Question="What's your mother first name?" OnActiveStepChanged="AddNewStudent_ActiveStepChanged">    
+  <asp:CreateUserWizard ID="AddNewStudent" runat="server" LoginCreatedUser="False" OnCreatedUser="AddNewStudent_CreatedUser" Question="What's your mother first name?" OnActiveStepChanged="AddNewStudent_ActiveStepChanged" CreateUserButtonText="Create Account" AutoGeneratePassword="False" ContinueDestinationPageUrl="~/Administration/Dashboard.aspx">    
     <WizardSteps>
       <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
         <ContentTemplate>
@@ -207,24 +207,7 @@
                     
                 </td>
             </tr>
-            <tr>
-              <td align="right">
-                <asp:Label ID="QuestionLabel" runat="server" AssociatedControlID="Question">Security Question:</asp:Label>
-              </td>
-              <td>
-                <asp:TextBox ID="Question" runat="server">What&#39;s your mother first name?</asp:TextBox>
-                <asp:RequiredFieldValidator ID="QuestionRequired" runat="server" ControlToValidate="Question" ErrorMessage="Security question is required." ToolTip="Security question is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
-              </td>
-            </tr>
-            <tr>
-              <td align="right">
-                <asp:Label ID="AnswerLabel" runat="server" AssociatedControlID="Answer">Security Answer:</asp:Label>
-              </td>
-              <td>
-                <asp:TextBox ID="Answer" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="AnswerRequired" runat="server" ControlToValidate="Answer" ErrorMessage="Security answer is required." ToolTip="Security answer is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
-              </td>
-            </tr>
+      
             <tr>
               <td align="center" colspan="2">
             </tr>
