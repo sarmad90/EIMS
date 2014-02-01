@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="row">
-        <div class="span8 offset1">
+        <div class="col-md-8 col-md-offset-1">
             <asp:Label ID="StudentName" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
         </div> 
     </div>
@@ -10,13 +10,13 @@
     &nbsp;
   </div>
   <div class="row">
-        <div class="span8 offset1">
+        <div class="col-md-8 col-md-offset-1">
             <asp:HyperLink ID="EventCalendarLink" runat="server">Event Calendar</asp:HyperLink>
         </div> 
     </div>
     <div class="row">&nbsp;</div>
     <div class="row">
-        <div class="span6 offset1">
+        <div class="col-md-6 col-md-offset-1">
             <table class="table table-striped">
                 <tr>
                     <td> UserName:</td>
@@ -43,16 +43,16 @@
                     <td><asp:Label ID="StudentContact" runat="server" Text=""></asp:Label></td>
                 </tr>
             </table>
-          <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
+          <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-default" PostBackUrl='javascript:history.go(-1)'>Back</asp:LinkButton>
         </div>
       <!-- User pic section -->
-      <div class="span6">
+      <div class="col-md-5">
         <asp:Image runat="server" ID="UserPicture" CssClass="Display-pic-medium" ImageUrl="~/img/help_48.png"></asp:Image>
       </div>
       <!-- User pic section END-->
     </div>
     <div class="row">
-      <div class="span6 offset1">
+      <div class="col-md-6 col-md-offset-1">
         <!-- Parents association section START -->
         <asp:Panel ID="CreateAssociationPanel" runat="server">
                 <asp:Label ID="CreateAssociationLabel" runat="server" Text="This student does not have an associated parent yet."></asp:Label>
@@ -69,16 +69,14 @@
       <!-- Administrator section-->
       <!-- Assignments,Quizzes,Results and Attendance section start -->
       <asp:Panel ID="NonAdminPanel" runat="server">
-        <div class="span10 offset1">
-          <div class="accordion" id="Div1">
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div2">
-                  Attendance
-                </a>
+        <div class="col-md-10 col-md-offset-1">
+          <div class="panel-group" id="accordionAttendance">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionAttendance" href="#collapseAttendance1">Attendance</a></h4>
               </div>
-              <div id="Div2" class="accordion-body collapse in">
-                <div class="accordion-inner">
+              <div id="collapseAttendance1" class="panel-collapse collapse in">
+                <div class="panel-body">
                   <asp:GridView ID="StudentAttendanceGrid" runat="server" AutoGenerateColumns="False" DataSourceID="StudentAttendanceDataSource" AllowPaging="True" PageSize="5" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
                     <Columns>
                       <asp:BoundField DataField="AttendanceWeek" HeaderText="Week" SortExpression="AttendanceWeek" />
@@ -116,14 +114,12 @@ WHERE Attendance.StudentId = @StudentId">
                 </div>
               </div>
             </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div3">
-                  Results
-                </a>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionAttendance" href="#collapseAttendance2">Results</a></h4>
               </div>
-              <div id="Div3" class="accordion-body collapse">
-                <div class="accordion-inner">
+              <div id="collapseAttendance2" class="panel-collapse collapse">
+                <div class="panel-body">
                   <asp:GridView ID="StudentResultGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="StudentResultDataSource">
                     <Columns>
                       <asp:TemplateField>
@@ -164,14 +160,12 @@ WHERE results.StudentId = @StudentId">
                 </div>
               </div>
             </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div4">
-                  Due Assignments
-                </a>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionAttendance" href="#collapseAttendance3">Due Assignments</a></h4>
               </div>
-              <div id="Div4" class="accordion-body collapse">
-                <div class="accordion-inner">
+              <div id="collapseAttendance3" class="panel-collapse collapse">
+                <div class="panel-body">
                   <asp:GridView ID="StudentAssignmentGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="AssignmentId" DataSourceID="StudentAssignmentDataSource">
                     <Columns>
                       <asp:TemplateField><ItemTemplate><asp:HyperLink ID="HyperLink2" runat="server">Details</asp:HyperLink></ItemTemplate></asp:TemplateField>
@@ -208,14 +202,12 @@ where Assignments.ClassId IN (select Classes.ClassId from Classes where Classes.
                 </div>
               </div>
             </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div5">
-                  Upcoming Quizzes
-                </a>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionAttendance" href="#collapseAttendance4">Upcoming Quizzes</a></h4>
               </div>
-              <div id="Div5" class="accordion-body collapse">
-                <div class="accordion-inner">
+              <div id="collapseAttendance4" class="panel-collapse collapse">
+                <div class="panel-body">
                   <asp:GridView ID="StudentQuizGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="QuizId" DataSourceID="StudentQuizDataSource">
                     <Columns>
                       <asp:TemplateField><ItemTemplate><asp:HyperLink ID="HyperLink3" runat="server">Details</asp:HyperLink></ItemTemplate></asp:TemplateField>
@@ -252,14 +244,12 @@ where Quizzes.ClassId IN (select Classes.ClassId from Classes where Classes.Clas
                 </div>
               </div>
             </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div6">
-                  Classes
-                </a>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionAttendance" href="#collapseAttendance5">My Classes</a></h4>
               </div>
-              <div id="Div6" class="accordion-body collapse">
-                <div class="accordion-inner">
+              <div id="collapseAttendance5" class="panel-collapse collapse">
+                <div class="panel-body">
                   <asp:GridView ID="StudentClassGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="StudentClassesDataSource">
                     <Columns>
                       <asp:TemplateField><ItemTemplate> <asp:HyperLink ID="HyperLink4" runat="server">Details</asp:HyperLink></ItemTemplate></asp:TemplateField>
@@ -298,7 +288,7 @@ where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where 
                 </div>
               </div>
             </div>
-          </div>
+            </div>
         </div>
       </asp:Panel>
       <!-- Assignments,Quizzes,Results and Attendance section end -->
