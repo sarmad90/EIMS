@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
     if ($('#MainContent_TxtStatus').val() != "" || $('#MainContent_TxtSemester').val() != "" || $('#MainContent_TxtGPA').val() != "" || $('#MainContent_TxtAttendance').val() != "") {
-        $(".collapse").collapse();
         if ($('#MainContent_TxtSubject2').val() == "") {
             $('.subject_fields_2').hide();
         }

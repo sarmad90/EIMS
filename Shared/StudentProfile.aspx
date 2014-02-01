@@ -223,15 +223,13 @@
       <!-- Assignments,Quizzes,Results and Attendance section start -->
       <asp:Panel ID="NonAdminPanel" runat="server">
         <div class="col-md-10 col-md-offset-1">
-          <div class="accordion" id="Div1">
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div2">
-                  Attendance
-                </a>
+          <div class="panel-group" id="accordionAttendance">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionAttendance" href="#collapseAttendance1">Attendance</a></h4>
               </div>
-              <div id="Div2" class="accordion-body collapse in">
-                <div class="accordion-inner">
+              <div id="collapseAttendance1" class="panel-collapse collapse in">
+                <div class="panel-body">
                   <asp:GridView ID="StudentAttendanceGrid" runat="server" AutoGenerateColumns="False" DataSourceID="StudentAttendanceDataSource" AllowPaging="True" PageSize="5" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
                     <Columns>
                       <asp:BoundField DataField="AttendanceWeek" HeaderText="Week" SortExpression="AttendanceWeek" />
@@ -256,7 +254,7 @@
                         No Data Found.  
                     </emptydatatemplate>
                   </asp:GridView>
-                  <asp:SqlDataSource ID="StudentAttendanceDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentAttendanceDataSource_Selecting" SelectCommand="SELECT attendance.AttendanceWeek, Semesters.SemesterName, attendance.TotalClasses,
+                  <asp:SqlDataSource ID="StudentAttendanceDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="AssociationDataSource_Selecting" SelectCommand="SELECT attendance.AttendanceWeek, Semesters.SemesterName, attendance.TotalClasses,
 attendance.ClassesAttended, attendance.ClassesMissed,
 attendance.AttendancePercentage
 FROM Attendance
@@ -269,14 +267,12 @@ WHERE Attendance.StudentId = @StudentId">
                 </div>
               </div>
             </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div3">
-                  Results
-                </a>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionAttendance" href="#collapseAttendance2">Results</a></h4>
               </div>
-              <div id="Div3" class="accordion-body collapse">
-                <div class="accordion-inner">
+              <div id="collapseAttendance2" class="panel-collapse collapse">
+                <div class="panel-body">
                   <asp:GridView ID="StudentResultGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="StudentResultDataSource">
                     <Columns>
                       <asp:TemplateField>
@@ -305,7 +301,7 @@ WHERE Attendance.StudentId = @StudentId">
                         No Data Found.  
                     </emptydatatemplate> 
                   </asp:GridView>
-                  <asp:SqlDataSource ID="StudentResultDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="StudentResultDataSource_Selecting" SelectCommand="SELECT results.status, semesters.SemesterName, results.passingdate,
+                  <asp:SqlDataSource ID="StudentResultDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:EIMSConnectionString %>" OnSelecting="AssociationDataSource_Selecting" SelectCommand="SELECT results.status, semesters.SemesterName, results.passingdate,
 results.attendance, results.gpa
 FROM results
 INNER JOIN Semesters ON Semesters.SemesterId=results.SemesterId
@@ -317,14 +313,12 @@ WHERE results.StudentId = @StudentId">
                 </div>
               </div>
             </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div4">
-                  Due Assignments
-                </a>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionAttendance" href="#collapseAttendance3">Due Assignments</a></h4>
               </div>
-              <div id="Div4" class="accordion-body collapse">
-                <div class="accordion-inner">
+              <div id="collapseAttendance3" class="panel-collapse collapse">
+                <div class="panel-body">
                   <asp:GridView ID="StudentAssignmentGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="AssignmentId" DataSourceID="StudentAssignmentDataSource">
                     <Columns>
                       <asp:TemplateField><ItemTemplate><asp:HyperLink ID="HyperLink2" runat="server">Details</asp:HyperLink></ItemTemplate></asp:TemplateField>
@@ -361,14 +355,12 @@ where Assignments.ClassId IN (select Classes.ClassId from Classes where Classes.
                 </div>
               </div>
             </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div5">
-                  Upcoming Quizzes
-                </a>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionAttendance" href="#collapseAttendance4">Upcoming Quizzes</a></h4>
               </div>
-              <div id="Div5" class="accordion-body collapse">
-                <div class="accordion-inner">
+              <div id="collapseAttendance4" class="panel-collapse collapse">
+                <div class="panel-body">
                   <asp:GridView ID="StudentQuizGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="QuizId" DataSourceID="StudentQuizDataSource">
                     <Columns>
                       <asp:TemplateField><ItemTemplate><asp:HyperLink ID="HyperLink3" runat="server">Details</asp:HyperLink></ItemTemplate></asp:TemplateField>
@@ -405,14 +397,12 @@ where Quizzes.ClassId IN (select Classes.ClassId from Classes where Classes.Clas
                 </div>
               </div>
             </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#Div1" href="#Div6">
-                  Classes
-                </a>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordionAttendance" href="#collapseAttendance5">My Classes</a></h4>
               </div>
-              <div id="Div6" class="accordion-body collapse">
-                <div class="accordion-inner">
+              <div id="collapseAttendance5" class="panel-collapse collapse">
+                <div class="panel-body">
                   <asp:GridView ID="StudentClassGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="StudentClassesDataSource">
                     <Columns>
                       <asp:TemplateField><ItemTemplate> <asp:HyperLink ID="HyperLink4" runat="server">Details</asp:HyperLink></ItemTemplate></asp:TemplateField>
@@ -443,7 +433,7 @@ INNER JOIN Courses ON Courses.CourseId=Classes.CourseId
 INNER JOIN Sections ON Sections.SectionId=Classes.SectionId
 INNER JOIN Semesters ON Semesters.SemesterId=Classes.SemesterId
 INNER JOIN TeacherProfiles ON TeacherProfiles.TeacherId=Classes.TeacherId
-where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where ClassStudents.StudentId=@StudentId)" OnSelecting="StudentClassesDataSource_Selecting">
+where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where ClassStudents.StudentId=@StudentId)" OnSelecting="AssociationDataSource_Selecting">
                     <SelectParameters>
                       <asp:Parameter Name="StudentId" />
                     </SelectParameters>
@@ -451,7 +441,7 @@ where Classes.ClassId IN (select ClassStudents.ClassId from ClassStudents where 
                 </div>
               </div>
             </div>
-          </div>
+            </div>
         </div>
       </asp:Panel>
       <!-- Assignments,Quizzes,Results and Attendance section end -->
