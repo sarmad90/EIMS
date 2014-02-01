@@ -5,6 +5,36 @@
         <WizardSteps>
             <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                 <ContentTemplate>
+                <!-- -->
+                  <div class="container" id="wrap">
+	                  <div class="row">
+                      <div class="col-md-6 col-md-offset-3">
+                        <legend>Parents Registraion</legend>
+                        <h4>Educational Institute Management System</h4>
+                        <div class="row">
+                          <div class="col-xs-6 col-md-6"><input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  /></div>
+                          <div class="col-xs-6 col-md-6"><input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  /></div>
+                        </div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row"><div class="col-md-12"><input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  /></div></div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                          <div class="col-xs-6 col-md-6"><input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  /></div>
+                          <div class="col-xs-6 col-md-6"><input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  /></div>
+                        </div>
+                        <label>Gender : </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="gender" value="M" id=male />Male
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="gender" value="F" id=female />Female
+                        </label>
+                        <br />
+                        <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">Create my account</button>         
+                      </div>
+                    </div>            
+                  </div>
+                <!-- -->
                     <table>
                         <tr>
                             <td align="center" colspan="2">Register a parent</td>
