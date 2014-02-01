@@ -4,13 +4,13 @@
     <div class="container" id="wrap">
 	  <div class="row">
       <div class="col-md-6 col-md-offset-1">
-    <asp:CreateUserWizard ID="AddNewParent" runat="server" LoginCreatedUser="False" Question="What's your mother first name?" OnActiveStepChanged="AddNewParent_ActiveStepChanged" CreateUserButtonText="Create Account" AutoGeneratePassword="True" ContinueDestinationPageUrl="~/Administration/Dashboard.aspx">
+    <asp:CreateUserWizard ID="AddNewParent" runat="server" LoginCreatedUser="False" Question="What's your mother first name?" OnActiveStepChanged="AddNewParent_ActiveStepChanged" CreateUserButtonText="Create Account" AutoGeneratePassword="True" ContinueDestinationPageUrl="~/Administration/Parents/AddParent.aspx">
       <CreateUserButtonStyle CssClass="btn btn-lg btn-primary btn-block signup-btn" />
       <WizardSteps>
           <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
               <ContentTemplate>
               <!-- -->
-                <legend>Students Registraion</legend>
+                <legend>Parents Registraion</legend>
                 <h4>Educational Institute Management System</h4>
                 <div class="row">
                   <div class="col-xs-6 col-md-6">
@@ -58,7 +58,6 @@
                     <asp:Literal ID="Literal1" runat="server" EnableViewState="False"></asp:Literal>
                   </div>
                 </div>
-                <br />         
               <!-- -->
               </ContentTemplate>
           </asp:CreateUserWizardStep>

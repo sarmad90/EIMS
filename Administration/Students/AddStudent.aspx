@@ -5,7 +5,7 @@
   <div class="container" id="wrap">
 	  <div class="row">
       <div class="col-md-6 col-md-offset-1">
-  <asp:CreateUserWizard ID="AddNewStudent" runat="server" LoginCreatedUser="False" OnCreatedUser="AddNewStudent_CreatedUser" Question="What's your mother first name?" OnActiveStepChanged="AddNewStudent_ActiveStepChanged" CreateUserButtonText="Create Account" AutoGeneratePassword="True" ContinueDestinationPageUrl="~/Administration/Dashboard.aspx">    
+  <asp:CreateUserWizard ID="AddNewStudent" runat="server" LoginCreatedUser="False" OnCreatedUser="AddNewStudent_CreatedUser" Question="What's your mother first name?" OnActiveStepChanged="AddNewStudent_ActiveStepChanged" CreateUserButtonText="Create Account" AutoGeneratePassword="True" ContinueDestinationPageUrl="~/Administration/Students/AddStudent.aspx">    
     <CreateUserButtonStyle CssClass="btn btn-lg btn-primary btn-block signup-btn" />
     <WizardSteps>
       <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
@@ -73,7 +73,6 @@
               <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
             </div>
           </div>
-          <br />         
         <!-- -->
         </ContentTemplate>
       </asp:CreateUserWizardStep>

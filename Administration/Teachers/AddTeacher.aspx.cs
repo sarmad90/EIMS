@@ -20,6 +20,7 @@ public partial class Administration_AddTeachers : System.Web.UI.Page
     {
         //Get the UserID for the just added user
         MembershipUser newUser = Membership.GetUser(AddNewTeacher.UserName);
+        newUser.ChangePassword(AddNewTeacher.Password, "admin123");
         Guid newUserId = (Guid)newUser.ProviderUserKey;
 
         // Have we JUST reached the Complete step?
@@ -30,7 +31,6 @@ public partial class Administration_AddTeachers : System.Web.UI.Page
             TextBox FirstName = AddNewTeacher.CreateUserStep.ContentTemplateContainer.FindControl("FirstName") as TextBox;
             TextBox Email = AddNewTeacher.CreateUserStep.ContentTemplateContainer.FindControl("Email") as TextBox;
             TextBox UserName = AddNewTeacher.CreateUserStep.ContentTemplateContainer.FindControl("UserName") as TextBox;
-            TextBox Password = AddNewTeacher.CreateUserStep.ContentTemplateContainer.FindControl("Password") as TextBox;
             // Programmatically reference the TextBox controls
             // TextBox FirstName = CreateUserWizardStep1.FindControl("FirstName") as TextBox;
             TextBox LastName = AddNewTeacher.CreateUserStep.ContentTemplateContainer.FindControl("LastName") as TextBox;
@@ -60,7 +60,7 @@ public partial class Administration_AddTeachers : System.Web.UI.Page
 
             Roles.AddUserToRole(AddNewTeacher.UserName, "teacher");
             //Email
-            EimsHelper.SendMail(Email.Text, "EIMS Registration.", "Hi Mr." + FirstName.Text + " " + LastName.Text + ".\nYou are added as a faculty member on Educational Institute Management System.\nYou can log in with these credentials:\nUsername: " + UserName.Text + "\nPassword: " + Password.Text + "\nWe hope to provide you a great experience.");
+            EimsHelper.SendMail(Email.Text, "EIMS Registration.", "Hi Mr." + FirstName.Text + " " + LastName.Text + ".\nYou are added as a faculty member on Educational Institute Management System.\nYou can log in with these credentials:\nUsername: " + UserName.Text + "\nPassword: " + "admin123" + "\nWe hope to provide you a great experience.");
           
           
         }
