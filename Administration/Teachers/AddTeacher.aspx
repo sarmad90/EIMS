@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="AddTeacher.aspx.cs" Inherits="Administration_AddTeachers" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-    <asp:CreateUserWizard ID="AddNewTeacher" runat="server" LoginCreatedUser="False" Question="What's your mother first name?" OnActiveStepChanged="AddNewTeacher_ActiveStepChanged">
+    <asp:CreateUserWizard ID="AddNewTeacher" runat="server" LoginCreatedUser="False" Question="What's your mother first name?" OnActiveStepChanged="AddNewTeacher_ActiveStepChanged" CreateUserButtonText="Create Account" AutoGeneratePassword="True" ContinueDestinationPageUrl="~/Administration/Dashboard.aspx">
+      <CreateUserButtonStyle CssClass="btn btn-lg btn-primary btn-block signup-btn" />
         <WizardSteps>
             <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                 <ContentTemplate>
