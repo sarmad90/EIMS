@@ -78,6 +78,6 @@ public partial class Students_ProfileSettings : System.Web.UI.Page
       Membership.UpdateUser(student);
       EimsHelper.SendMail("sam_sarmad@hotmail.com", "EIMS Notification.", "Hi Mr./Ms." + "Sarmad" + " " + "Sabih" + ".\nYour child has updated his profile settings.\nYou can log in and see his/her profile to verify the changes.\nIn case of any misinformation you can feel free to contact the administrator." + "\nWe hope to provide you a great experience.");
       Session["Notice"] = "Your Profile has been updated! And your Parent/Guardian has been notified about the changes via an Email.";
-      Response.Redirect("~/students/profilesettings.aspx");
+      Response.Redirect("~/students/settings.aspx");
     }
 }
