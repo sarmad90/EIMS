@@ -35,7 +35,7 @@ public partial class Teachers_QuizAndAssignments : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@ClassId", DDQuizClass.SelectedValue);
         cmd.Parameters.AddWithValue("@Title", QuizTitle.Text);
         cmd.Parameters.AddWithValue("@Description", QuizDescription.Text);
-        cmd.Parameters.AddWithValue("@QuizDate", QuizDate.SelectedDate);
+        cmd.Parameters.AddWithValue("@QuizDate", Convert.ToDateTime(QuizDate.Text));
         cmd.Parameters.AddWithValue("@TotalMarks", QuizTotalMarks.Text);
         cmd.ExecuteNonQuery();
       }
@@ -51,10 +51,11 @@ public partial class Teachers_QuizAndAssignments : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@ClassId", DDAssignmentClass.SelectedValue);
         cmd.Parameters.AddWithValue("@Title", AssignmentTitle.Text);
         cmd.Parameters.AddWithValue("@Description", AssignmentDescription.Text);
-        cmd.Parameters.AddWithValue("@SubmissionDate", AssignmentSubmissionDate.SelectedDate);
+        cmd.Parameters.AddWithValue("@SubmissionDate", Convert.ToDateTime(AssignmentSubmissionDate.Text));
         cmd.Parameters.AddWithValue("@AssignmentDate", DateTime.Now.Date);
         cmd.Parameters.AddWithValue("@TotalMarks", AssignmentTotalMarks.Text);
         cmd.ExecuteNonQuery();
+        
       }
     }
     protected void ClassesDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)

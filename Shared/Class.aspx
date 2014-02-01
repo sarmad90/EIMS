@@ -114,17 +114,19 @@
           <div id="collapseThree" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="row">
-                <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="AssignmentTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="AssignmentTotalMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
+                <div class="col-md-1">Title:</div><div class="col-md-4"><asp:TextBox ID="AssignmentTitle" runat="server" CssClass="input-medium form-control"></asp:TextBox></div>
+                <div class="col-md-2">Marks:</div><div class="col-md-3">  <asp:TextBox ID="AssignmentTotalMarks" runat="server" CssClass="input-mini form-control"></asp:TextBox></div>
               </div>
+              <div class="row">&nbsp;</div>
               <div class="row">
-                <div class="span1">Description:  </div>
-                <div class="span4"><asp:TextBox ID="AssignmentDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px"></asp:TextBox></div>
+                <div class="col-md-2">Description:  </div>
+                <div class="col-md-4"><asp:TextBox ID="AssignmentDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px" CssClass="form-control"></asp:TextBox></div>
               </div>
+              <div class="row">&nbsp;</div>
               <div class="row">
-                <div class="span5">Submission Date:  <asp:TextBox ID="AssignmentDate" runat="server" class="datepicker"></asp:TextBox></div>
-              </div>
-              <div class="row">
-                <div class="span2">
+                <div class="col-md-2">Submission Date:</div>
+                <div class="col-md-4"><asp:TextBox ID="AssignmentDate" runat="server" class="datepicker form-control"></asp:TextBox></div>
+                <div class="col-md-2">
                   <asp:Button ID="AddAssignment" runat="server" Text="Assign" CssClass="btn btn-primary" OnClick="AddAssignment_Click" /></div>
               </div>
             </div>
@@ -151,17 +153,19 @@
           <div id="collapseSix" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="row">
-                <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="QuizTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="QuizTotalMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
+                <div class="col-md-1">Title:</div><div class="col-md-4"><asp:TextBox ID="QuizTitle" runat="server" CssClass="input-medium form-control"></asp:TextBox></div>
+                <div class="col-md-2">Total Marks:</div><div class="col-md-3"><asp:TextBox ID="QuizTotalMarks" runat="server" CssClass="input-mini form-control"></asp:TextBox></div>
               </div>
+              <div class="row">&nbsp;</div>
               <div class="row">
-                <div class="span1">Description:  </div>
-                <div class="span4"><asp:TextBox ID="QuizDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px"></asp:TextBox></div>
+                <div class="col-md-2">Description:  </div>
+                <div class="col-md-4"><asp:TextBox ID="QuizDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px" CssClass="form-control"></asp:TextBox></div>
               </div>
+              <div class="row">&nbsp;</div>
               <div class="row">
-                <div class="span5">Quiz Date:  <asp:TextBox ID="QuizDate" runat="server" class="datepicker"></asp:TextBox></div>
-              </div>
-              <div class="row">
-                <div class="span2">
+                <div class="col-md-1">Quiz Date:  </div>
+                <div class="col-md-4"><asp:TextBox ID="QuizDate" runat="server" class="datepicker form-control"></asp:TextBox></div>
+                <div class="col-md-2">
                   <asp:Button ID="AddQuiz" runat="server" Text="Add Quiz" CssClass="btn btn-primary" OnClick="AddQuiz_Click" /></div>
               </div>
             </div>
@@ -188,17 +192,19 @@
           <div id="collapseEight" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="row">
-                <div class="span6">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="PresentationTitle" runat="server" CssClass="input-medium"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Marks:  <asp:TextBox ID="PresentationMarks" runat="server" CssClass="input-mini"></asp:TextBox></div>
+                <div class="col-md-1">Title:</div><div class="col-md-3"><asp:TextBox ID="PresentationTitle" runat="server" CssClass="input-medium form-control"></asp:TextBox></div>
+                <div class="col-md-2">Total Marks:</div><div class="col-md-3"><asp:TextBox ID="PresentationMarks" runat="server" CssClass="form-control input-mini"></asp:TextBox></div>
               </div>
+              <div class="row">&nbsp;</div>
               <div class="row">
-                <div class="span1">Description:  </div>
-                <div class="span4"><asp:TextBox ID="PresentationDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px"></asp:TextBox></div>
+                <div class="col-md-2">Description:  </div>
+                <div class="col-md-4"><asp:TextBox ID="PresentationDescription" runat="server" Rows="5" TextMode="MultiLine" Width="335px" CssClass="form-control"></asp:TextBox></div>
               </div>
+              <div class="row">&nbsp;</div>
               <div class="row">
-                <div class="span5">Presentation Date:  <asp:TextBox ID="PresentationDate" runat="server" class="datepicker"></asp:TextBox></div>
-              </div>
-              <div class="row">
-                <div class="span2">
+                <div class="col-md-2">Presentation Date: </div>
+                <div class="col-md-3"><asp:TextBox ID="PresentationDate" runat="server" class="datepicker form-control"></asp:TextBox></div>
+                <div class="col-md-2">
                   <asp:Button ID="AddPresentation" runat="server" Text="Add Presentation" CssClass="btn btn-primary" OnClick="AddPresentation_Click" /></div>
               </div>
             </div>
