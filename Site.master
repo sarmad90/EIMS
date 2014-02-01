@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EIMS</title>
   <link href="css/Styles.css" rel="stylesheet" type="text/css" />
   <link href="css/bootstrap-responsive.css" rel="stylesheet" />
