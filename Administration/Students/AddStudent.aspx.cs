@@ -69,6 +69,7 @@ public partial class Administration_AddStudent : System.Web.UI.Page
     {
         //Get the UserID for the just added user
         MembershipUser newUser = Membership.GetUser(AddNewStudent.UserName);
+        newUser.ChangePassword(AddNewStudent.Password, "admin123");
         Guid newUserId = (Guid)newUser.ProviderUserKey;
 
          // Have we JUST reached the Complete step?
@@ -79,7 +80,7 @@ public partial class Administration_AddStudent : System.Web.UI.Page
             TextBox FirstName = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("FirstName") as TextBox;
             TextBox Email = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Email") as TextBox;
             TextBox UserName = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("UserName") as TextBox;
-            TextBox Password = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Password") as TextBox;
+            //TextBox Password = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("Password") as TextBox;
             // Programmatically reference the TextBox controls
             //TextBox FirstName = CreateUserWizardStep1.FindControl("FirstName") as TextBox;
             TextBox LastName = AddNewStudent.CreateUserStep.ContentTemplateContainer.FindControl("LastName") as TextBox;
@@ -123,7 +124,7 @@ public partial class Administration_AddStudent : System.Web.UI.Page
 
             Roles.AddUserToRole(AddNewStudent.UserName, "student");
           //Email
-            EimsHelper.SendMail(Email.Text, "EIMS Registration.", "Hi Mr." + FirstName.Text + " " + LastName.Text + ".\nYou are added as a student on Educational Institute Management System.\nYou can log in with these credentials:\nUsername: " + UserName.Text + "\nPassword: " + Password.Text + "\nWe hope to provide you a great experience.");
+            EimsHelper.SendMail(Email.Text, "EIMS Registration.", "Hi Mr." + FirstName.Text + " " + LastName.Text + ".\nYou are added as a student on Educational Institute Management System.\nYou can log in with these credentials:\nUsername: " + UserName.Text + "\nPassword: " + "admin123" + "\nWe hope to provide you a great experience.");
         }
  
     }

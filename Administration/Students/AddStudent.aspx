@@ -2,7 +2,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-  <asp:CreateUserWizard ID="AddNewStudent" runat="server" LoginCreatedUser="False" OnCreatedUser="AddNewStudent_CreatedUser" Question="What's your mother first name?" OnActiveStepChanged="AddNewStudent_ActiveStepChanged" CreateUserButtonText="Create Account" AutoGeneratePassword="False" ContinueDestinationPageUrl="~/Administration/Dashboard.aspx">    
+  <asp:CreateUserWizard ID="AddNewStudent" runat="server" LoginCreatedUser="False" OnCreatedUser="AddNewStudent_CreatedUser" Question="What's your mother first name?" OnActiveStepChanged="AddNewStudent_ActiveStepChanged" CreateUserButtonText="Create Account" AutoGeneratePassword="True" ContinueDestinationPageUrl="~/Administration/Dashboard.aspx">    
     <WizardSteps>
       <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
         <ContentTemplate>
@@ -96,7 +96,6 @@
                 <div class="row">
                   <div class="col-md-12">
                     <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
-                    <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match." ValidationGroup="AddNewStudent"></asp:CompareValidator></td>
                   </div>
                 </div>
                 <br />
@@ -179,24 +178,6 @@
                 </td>
                 <td>
                     
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Confirm Password:</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPassword" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." ValidationGroup="AddNewStudent">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
