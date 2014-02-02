@@ -104,110 +104,113 @@
             <div id="collapseResults2" class="panel-collapse collapse">
               <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-2"><asp:Label ID="Label2" runat="server" Text="Semester:  "></asp:Label></div>
-                    <div class="col-md-3"><asp:TextBox ID="TxtSemester" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                    <div class="col-md-3"><asp:Label ID="Label2" runat="server" Text="Semester:  "></asp:Label></div>
+                    <div class="col-md-5"><asp:TextBox ID="TxtSemester" CssClass="input-mini form-control" runat="server"></asp:TextBox></div>
                     
                   </div>
+                <div class="row">&nbsp;</div>
                   <div class="row">
-                    <div class="col-md-2"><asp:Label ID="Label3" runat="server" Text="Status:  "></asp:Label></div>
-                    <div class="col-md-3"><asp:TextBox ID="TxtStatus" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                    <div class="col-md-3"><asp:Label ID="Label3" runat="server" Text="Status:  "></asp:Label></div>
+                    <div class="col-md-5"><asp:TextBox ID="TxtStatus" CssClass="input-mini form-control" runat="server"></asp:TextBox></div>
                   </div>
+                <div class="row">&nbsp;</div>
                   <div class="row">
-                    <div class="col-md-1"><asp:Label ID="Label4" runat="server" Text="GPA:  "></asp:Label></div>
-                    <div class="col-md-1"><asp:TextBox ID="TxtGPA" CssClass="input-mini" runat="server"></asp:TextBox></div>
-                    <div class="col-md-1"><asp:Label ID="Label6" runat="server" Text="Attendance:  "></asp:Label></div>
-                    <div class="col-md-1"><asp:TextBox ID="TxtAttendance" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                    <div class="col-md-3"><asp:Label ID="Label4" runat="server" Text="GPA:  "></asp:Label></div>
+                    <div class="col-md-5"><asp:TextBox ID="TxtGPA" CssClass="input-mini form-control" runat="server"></asp:TextBox></div>
+                    
                   </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                  <div class="col-md-3"><asp:Label ID="Label6" runat="server" Text="Attendance:  "></asp:Label></div>
+                    <div class="col-md-5"><asp:TextBox ID="TxtAttendance" CssClass="input-mini form-control" runat="server"></asp:TextBox></div>
+                </div>
+                <div class="row">&nbsp;</div>
                   <div class="row">
-                    <div class="col-md-1"><asp:Label ID="Label5" runat="server" Text="Passing Date:  "></asp:Label></div>
-                    <div class="col-md-1">
-                      <div class="col-md-5">Passing Date:  <asp:TextBox ID="PassingDate" runat="server" class="datepicker"></asp:TextBox></div>
+                    <div class="col-md-3"><asp:Label ID="Label5" runat="server" Text="Passing Date:  "></asp:Label></div>
+                    <div class="col-md-5">
+                      <asp:TextBox ID="PassingDate" runat="server" class="datepicker form-control"></asp:TextBox>
                     </div>
                   </div>
-                  <div class="row"><div class="col-md-4 col-md-offset-1"><hr /></div></div>
+                  <div class="row"><div class="col-md-8 col-md-offset-1"><hr /></div></div>
                   <div class="row">
-                    <div class="col-md-6">
-                      <div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="Label7" runat="server" Text="Subject: "></asp:Label>
-                        <asp:TextBox ID="TxtSubject1" runat="server" CssClass="input-mini"></asp:TextBox>
-                        <asp:Label ID="Label8" runat="server" Text="MarksObtained: "></asp:Label>
-                        <asp:TextBox ID="TxtMarksObtained1" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                        <asp:Label ID="Label9" runat="server" Text="TotalMarks: "></asp:Label>
-                        <asp:TextBox ID="TxtTotalMarks1" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
+                    <div class="col-md-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label7" runat="server" Text="Subject: "></asp:Label></div>
+                    <div class="col-md-2"><asp:TextBox ID="TxtSubject1" runat="server" CssClass="form-control"></asp:TextBox></div>
+                    <div class="col-md-3"><asp:Label ID="Label8" runat="server" Text="MarksObtained: "></asp:Label></div>
+                    <div class="col-md-1"><asp:TextBox ID="TxtMarksObtained1" runat="server" CssClass="form-control" Width="40px"></asp:TextBox></div>
+                    <div class="col-md-2"><asp:Label ID="Label9" runat="server" Text="TotalMarks: "></asp:Label></div>
+                    <div class="col-md-1"><asp:TextBox ID="TxtTotalMarks1" runat="server" CssClass="input-mini form-control" Width="40px"></asp:TextBox></div>
+                  </div>
+                <div class="row">&nbsp;</div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <asp:Image ID="subject_fields_button_2" runat="server" ImageUrl="~/img/add.png" />
+                      <div class="row subject_fields_2">
+                        <div class="col-md-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label10" runat="server" Text="Subject: "></asp:Label></div>
+                        <div class="col-md-2"><asp:TextBox ID="TxtSubject2" runat="server" CssClass="input-mini form-control"></asp:TextBox></div>
+                        <div class="col-md-3"><asp:Label ID="Label11" runat="server" Text="MarksObtained: "></asp:Label></div>
+                        <div class="col-md-1"><asp:TextBox ID="TxtMarksObtained2" runat="server" CssClass="input-mini form-control" Width="40px"></asp:TextBox></div>
+                        <div class="col-md-2"><asp:Label ID="Label12" runat="server" Text="TotalMarks: "></asp:Label></div>
+                        <div class="col-md-1"><asp:TextBox ID="TxtTotalMarks2" runat="server" CssClass="input-mini form-control" Width="40px"></asp:TextBox></div>
                       </div>
                     </div>
                   </div>
+                <div class="row">&nbsp;</div>
                   <div class="row">
-                    <div class="col-md-6">
-                      <asp:Image ID="subject_fields_button_2" runat="server" ImageUrl="~/img/add.png" />
-                      <span class="subject_fields_2">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="Label10" runat="server" Text="Subject: "></asp:Label>
-                        <asp:TextBox ID="TxtSubject2" runat="server" CssClass="input-mini"></asp:TextBox>
-                        <asp:Label ID="Label11" runat="server" Text="MarksObtained: "></asp:Label>
-                        <asp:TextBox ID="TxtMarksObtained2" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                        <asp:Label ID="Label12" runat="server" Text="TotalMarks: "></asp:Label>
-                        <asp:TextBox ID="TxtTotalMarks2" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <asp:Image ID="subject_fields_button_3" runat="server" ImageUrl="~/img/add.png" />
-                      <span class="subject_fields_3">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="Label13" runat="server" Text="Subject: "></asp:Label>
-                        <asp:TextBox ID="TxtSubject3" runat="server" CssClass="input-mini"></asp:TextBox>
-                        <asp:Label ID="Label14" runat="server" Text="MarksObtained: "></asp:Label>
-                        <asp:TextBox ID="TxtMarksObtained3" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                        <asp:Label ID="Label15" runat="server" Text="TotalMarks: "></asp:Label>
-                        <asp:TextBox ID="TxtTotalMarks3" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                      </span>
+                      <div class="row subject_fields_3">
+                        <div class="col-md-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label13" runat="server" Text="Subject: "></asp:Label></div>
+                        <div class="col-md-2"><asp:TextBox ID="TxtSubject3" runat="server" CssClass="input-mini form-control"></asp:TextBox></div>
+                        <div class="col-md-3"><asp:Label ID="Label14" runat="server" Text="MarksObtained: "></asp:Label></div>
+                        <div class="col-md-1"><asp:TextBox ID="TxtMarksObtained3" runat="server" CssClass="input-mini form-control" Width="40px"></asp:TextBox></div>
+                        <div class="col-md-2"><asp:Label ID="Label15" runat="server" Text="TotalMarks: "></asp:Label></div>
+                        <div class="col-md-1"><asp:TextBox ID="TxtTotalMarks3" runat="server" CssClass="input-mini form-control" Width="40px"></asp:TextBox></div>
+                      </div>
                     </div>
                   </div>
+                <div class="row">&nbsp;</div>
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <asp:Image ID="subject_fields_button_4" runat="server" ImageUrl="~/img/add.png" />
-                      <span class="subject_fields_4">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="Label16" runat="server" Text="Subject: "></asp:Label>
-                        <asp:TextBox ID="TxtSubject4" runat="server" CssClass="input-mini"></asp:TextBox>
-                        <asp:Label ID="Label17" runat="server" Text="MarksObtained: "></asp:Label>
-                        <asp:TextBox ID="TxtMarksObtained4" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                        <asp:Label ID="Label18" runat="server" Text="TotalMarks: "></asp:Label>
-                        <asp:TextBox ID="TxtTotalMarks4" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                      </span>
+                      <div class="row subject_fields_4">
+                        <div class="col-md-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label16" runat="server" Text="Subject: "></asp:Label></div>
+                        <div class="col-md-2"><asp:TextBox ID="TxtSubject4" runat="server" CssClass="input-mini form-control"></asp:TextBox></div>
+                        <div class="col-md-3"><asp:Label ID="Label17" runat="server" Text="MarksObtained: "></asp:Label></div>
+                        <div class="col-md-1"><asp:TextBox ID="TxtMarksObtained4" runat="server" CssClass="input-mini form-control" Width="40px"></asp:TextBox></div>
+                        <div class="col-md-2"><asp:Label ID="Label18" runat="server" Text="TotalMarks: "></asp:Label></div>
+                        <div class="col-md-1"><asp:TextBox ID="TxtTotalMarks4" runat="server" CssClass="input-mini form-control" Width="40px"></asp:TextBox></div>
+                      </div>
                     </div>
                   </div>
+                <div class="row">&nbsp;</div>
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <asp:Image ID="subject_fields_button_5" runat="server" ImageUrl="~/img/add.png" />
-                      <span class="subject_fields_5">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="Label19" runat="server" Text="Subject: "></asp:Label>
-                        <asp:TextBox ID="TxtSubject5" runat="server" CssClass="input-mini"></asp:TextBox>
-                        <asp:Label ID="Label20" runat="server" Text="MarksObtained: "></asp:Label>
-                        <asp:TextBox ID="TxtMarksObtained5" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                        <asp:Label ID="Label21" runat="server" Text="TotalMarks: "></asp:Label>
-                        <asp:TextBox ID="TxtTotalMarks5" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                      </span>
+                      <div class="row subject_fields_5">
+                        <div class="col-md-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label19" runat="server" Text="Subject: "></asp:Label></div>
+                        <div class="col-md-2"><asp:TextBox ID="TxtSubject5" runat="server" CssClass="input-mini form-control"></asp:TextBox></div>
+                        <div class="col-md-3"><asp:Label ID="Label20" runat="server" Text="MarksObtained: "></asp:Label></div>
+                        <div class="col-md-1"><asp:TextBox ID="TxtMarksObtained5" runat="server" CssClass="input-mini form-control" Width="40px"></asp:TextBox></div>
+                        <div class="col-md-2"><asp:Label ID="Label21" runat="server" Text="TotalMarks: "></asp:Label></div>
+                        <div class="col-md-1"><asp:TextBox ID="TxtTotalMarks5" runat="server" CssClass="input-mini form-control" Width="40px"></asp:TextBox></div>
+                      </div>
                     </div>
                   </div>
+                <div class="row">&nbsp;</div>
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <asp:Image ID="subject_fields_button_6" runat="server" ImageUrl="~/img/add.png" />
-                      <span class="subject_fields_6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="Label22" runat="server" Text="Subject: "></asp:Label>
-                        <asp:TextBox ID="TxtSubject6" runat="server" CssClass="input-mini"></asp:TextBox>
-                        <asp:Label ID="Label23" runat="server" Text="MarksObtained: "></asp:Label>
-                        <asp:TextBox ID="TxtMarksObtained6" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                        <asp:Label ID="Label24" runat="server" Text="TotalMarks: "></asp:Label>
-                        <asp:TextBox ID="TxtTotalMarks6" runat="server" CssClass="input-mini" Width="25px"></asp:TextBox>
-                      </span>
+                      <div class="row subject_fields_6">
+                        <div class="col-md-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label22" runat="server" Text="Subject: "></asp:Label></div>
+                        <div class="col-md-2"><asp:TextBox ID="TxtSubject6" runat="server" CssClass="input-mini form-control"></asp:TextBox></div>
+                        <div class="col-md-3"><asp:Label ID="Label23" runat="server" Text="MarksObtained: "></asp:Label></div>
+                        <div class="col-md-1"><asp:TextBox ID="TxtMarksObtained6" runat="server" CssClass="input-mini form-control" Width="40px"></asp:TextBox></div>
+                        <div class="col-md-2"><asp:Label ID="Label24" runat="server" Text="TotalMarks: "></asp:Label></div>
+                        <div class="col-md-1"><asp:TextBox ID="TxtTotalMarks6" runat="server" CssClass="input-mini form-control" Width="40px"></asp:TextBox></div>
+                      </div>
                     </div>
                   </div>
+                <div class="row">&nbsp;</div>
                   <div class="form-actions">
                     <asp:Button ID="AddResult" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="AddResult_Click" />
                   </div>
