@@ -104,10 +104,13 @@
             <div id="collapseResults2" class="panel-collapse collapse">
               <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-1"><asp:Label ID="Label2" runat="server" Text="Semester:  "></asp:Label></div>
-                    <div class="col-md-1"><asp:TextBox ID="TxtSemester" CssClass="input-mini" runat="server"></asp:TextBox></div>
-                    <div class="col-md-1"><asp:Label ID="Label3" runat="server" Text="Status:  "></asp:Label></div>
-                    <div class="col-md-1"><asp:TextBox ID="TxtStatus" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                    <div class="col-md-2"><asp:Label ID="Label2" runat="server" Text="Semester:  "></asp:Label></div>
+                    <div class="col-md-3"><asp:TextBox ID="TxtSemester" CssClass="input-mini" runat="server"></asp:TextBox></div>
+                    
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2"><asp:Label ID="Label3" runat="server" Text="Status:  "></asp:Label></div>
+                    <div class="col-md-3"><asp:TextBox ID="TxtStatus" CssClass="input-mini" runat="server"></asp:TextBox></div>
                   </div>
                   <div class="row">
                     <div class="col-md-1"><asp:Label ID="Label4" runat="server" Text="GPA:  "></asp:Label></div>
@@ -118,7 +121,7 @@
                   <div class="row">
                     <div class="col-md-1"><asp:Label ID="Label5" runat="server" Text="Passing Date:  "></asp:Label></div>
                     <div class="col-md-1">
-                      <div class="span5">Passing Date:  <asp:TextBox ID="PassingDate" runat="server" class="datepicker"></asp:TextBox></div>
+                      <div class="col-md-5">Passing Date:  <asp:TextBox ID="PassingDate" runat="server" class="datepicker"></asp:TextBox></div>
                     </div>
                   </div>
                   <div class="row"><div class="col-md-4 col-md-offset-1"><hr /></div></div>

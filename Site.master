@@ -150,7 +150,7 @@
                                       <form class="form-horizontal" role="form">
                                         <div class="row">
                                           <div class="col-sm-12 col-sm-offset-1">
-                                            <h3>Educational Institute Management System</h3>
+                                            <h3 style="font-family: serif;">Educational Institute Management System</h3>
                                           </div>
                                         </div>
                                         <div class="row">
@@ -162,7 +162,7 @@
                                           </div>
                                         </div>
                                         <div class="row">
-                                          <div class="col-sm-6 col-sm-offset-3">
+                                          <div class="col-sm-6 col-md-6 col-sm-offset-3">
                                             <asp:TextBox ID="Password" class="form-control" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
                                             <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
@@ -211,16 +211,6 @@
           </div>
         </div>
       </nav>
-      <div class="row">
-        <div class="col-md-12">
-          <div id="header">
-              <span class="breadcrumb">
-                  <asp:SiteMapPath ID="SiteMapPath1" runat="server">
-                  </asp:SiteMapPath>
-              </span>
-          </div>
-        </div>
-      </div>
       <div class="row">
         <!-- Side Nav !-->
         <asp:ContentPlaceHolder ID="SideNavigation" runat="server">
