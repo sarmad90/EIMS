@@ -49,7 +49,7 @@
   </div>
   <div class="row">
     <div class="col-md-12 col-md-offset-1">
-      <div class="Image-Footer"><p style="font-size:30px; padding-top: 25px;">Education made organised.</p></div>
+      <div class="Image-Footer"><p style="font-size:30px; padding-top: 0px;">Educational Institute Management System.</p><p style="font-size:25px; padding-top: 0px;">Education made organised.</p></div>
     </div>
   </div>
   <div class="row">&nbsp;</div>
