@@ -130,6 +130,23 @@ h1 {
 			color: #999;
 		}
 
+.modal-header-custom
+{
+	min-height: 0px !important;
+	padding: 0px !important;
+}
+.panel-custom
+{
+	margin-bottom:	0px !important;
+	border-radius: 0px !important;
+}
+.panel-heading-custom
+{
+	border-top-right-radius: 0px !important;
+	border-top-left-radius: 0px !important;
+	padding: 15px 15px !important;
+}
+
 
 
 /* CRUD CSS */

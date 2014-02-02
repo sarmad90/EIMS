@@ -4,11 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EIMS</title>
   <link href="css/Styles.css" rel="stylesheet" type="text/css" />
   <link href="css/bootstrap-responsive.css" rel="stylesheet" />
-  <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
+<%--  <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />--%>
   <link href="css/bootstrap.css" rel="stylesheet" />
   <link href="css/bootstrap.min.css" rel="stylesheet" />
   <link href="css/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
@@ -89,30 +89,123 @@
             <asp:ContentPlaceHolder ID="LoginContent" runat="server">
               <asp:LoginView ID="LoginView1" runat="server">
                 <LoggedInTemplate>
-                    Welcome, <asp:LoginName ID="LoginName1" runat="server" />.
+                  Welcome,
+                  <asp:LoginName ID="LoginName1" runat="server" />
+                  .
+                  |
+                  <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Home.aspx" />
                 </LoggedInTemplate>
                 <RoleGroups>
                   <asp:RoleGroup Roles="Administrator">
                     <ContentTemplate>
                       Welcome,
-                      <asp:LoginName ID="LoginName1" runat="server" />.
-                      <asp:Image ID="AdminPicture" runat="server" CssClass="Display-pic" ImageUrl="~/img/admin-logo-1238680674-2_avatar.png"></asp:Image>
+                      <asp:LoginName ID="LoginName1" runat="server" />
+                      .
+                      <asp:Image ID="AdminPicture" runat="server" CssClass="Display-pic" ImageUrl="~/img/admin-logo-1238680674-2_avatar.png">
+                      </asp:Image>
+                      |
+                      <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Home.aspx" />
                     </ContentTemplate>
                   </asp:RoleGroup>
                   <asp:RoleGroup Roles="Student,Parent,Teacher">
                     <ContentTemplate>
                       Welcome,
-                      <asp:LoginName ID="LoginName1" runat="server" />.
-                      <asp:Image ID="UserPicture" runat="server" CssClass="Display-pic" ImageUrl="~/img/help_48.png"></asp:Image>
+                      <asp:LoginName ID="LoginName1" runat="server" />
+                      .
+                      <asp:Image ID="UserPicture" runat="server" CssClass="Display-pic" ImageUrl="~/img/help_48.png">
+                      </asp:Image>
+                      |
+                      <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Home.aspx" />
                     </ContentTemplate>
                   </asp:RoleGroup>
                 </RoleGroups>
-                  <AnonymousTemplate>
-                      Hello, guest.
-                  </AnonymousTemplate>
+                <AnonymousTemplate>
+                  Hello, guest.
+                      |
+                  <!-- Login Start -->
+                  <!-- Button trigger modal --><a data-toggle="modal" data-target="#myModalLogin" href="#">Login </a>
+                  <!-- Modal -->
+                  <div class="modal fade bs-modal-sm" id="myModalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                      <div class="modal-content">
+                        <div class="modal-header modal-header-custom">
+                          <div class="panel panel-custom panel-primary">
+                            <div class="panel-heading panel-heading-custom">
+                              <span class="glyphicon glyphicon-lock"></span>&nbsp;Login
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-body">
+                          <!-- Login Form Start -->
+                          <asp:Panel runat="Server" ID="AnonymousMessagePanel">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <asp:Login ID="Login1" runat="server" BackColor="White" Width="500px" CssClass="Home-Login2" DisplayRememberMe="False" Height="200px" TextLayout="TextOnTop">
+                                  <LayoutTemplate>
+                                    <!-- Login !-->
+                                    <div class="col-md-12">
+                                      <form class="form-horizontal" role="form">
+                                        <div class="row">
+                                          <div class="col-sm-12 col-sm-offset-1">
+                                            <h3>Educational Institute Management System</h3>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          &nbsp;</div>
+                                        <div class="row">
+                                          <div class="col-sm-6 col-sm-offset-3">
+                                            <asp:TextBox ID="UserName" class="form-control" placeholder="Username" runat="server"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-sm-6 col-sm-offset-3">
+                                            <asp:TextBox ID="Password" class="form-control" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                            <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-sm-offset-4 col-sm-8">
+                                            <div class="checkbox">
+                                              <label>
+                                              <input type="checkbox"/>
+                                              Remember me
+                                              </label>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-sm-offset-3 col-sm-6">
+                                            <asp:Button ID="LoginButton" runat="server" CommandName="Login" CssClass="btn btn-primary btn-block" Text="Log In" ValidationGroup="Login1" />
+                                          </div>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </LayoutTemplate>
+                                  <LoginButtonStyle CssClass="btn btn-primary" />
+                                </asp:Login>
+                              </div>
+                            </div>
+                          </asp:Panel>
+                          <!-- Login Form End -->
+                        </div>
+                        <div class="modal-footer panel-footer">
+                          <span style="float:left;">Not Registred?</span>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Login End -->
+                </AnonymousTemplate>
               </asp:LoginView>
-                |
-                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Home.aspx" />
+                
             </asp:ContentPlaceHolder>
             </p>
           </div>
@@ -130,10 +223,11 @@
       </div>
       <div class="row">
         <!-- Side Nav !-->
+        <asp:ContentPlaceHolder ID="SideNavigation" runat="server">
         <div class="col-md-2"> 
            <!-- Side Navigation-->
             <div id="navigation">
-                <asp:ContentPlaceHolder ID="SideNavigation" runat="server">
+                
                   <ul class="nav nav-list">
                     <li class="active"><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Home.aspx">Home</asp:HyperLink></li>
                     <li><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Dashboard.aspx">Department</asp:HyperLink></li>
@@ -146,9 +240,10 @@
                     <li><asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/Roles/ManageRoles.aspx">Manage Roles</asp:HyperLink></li>
                     <li><asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/Roles/UsersAndRoles.aspx">Users and Roles</asp:HyperLink></li>
                   </ul>
-                </asp:ContentPlaceHolder>
+
             </div>
         </div>
+        </asp:ContentPlaceHolder>
 
         <!-- Main Section !-->
         <div class="col-md-10 left-border">
@@ -235,47 +330,12 @@
 				<div class="col-md-10 col-md-offset-2">
 					<div class="col-md-2" style="width: 17%;">
 						<ul class="unstyled">
-							<li>GitHub</li>
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">Contact & support</a></li>
-							<li><a href="#">Enterprise</a></li>
-							<li><a href="#">Site status</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2" style="width: 17%;">
-						<ul class="unstyled">
-							<li>Applications</li>
-							<li><a href="#">Product for Mac</a></li>
-							<li><a href="#">Product for Windows</a></li>
-							<li><a href="#">Product for Eclipse</a></li>
-							<li><a href="#">Product mobile apps</a></li>							
-						</ul>
-					</div>
-					<div class="col-md-2" style="width: 17%;">
-						<ul class="unstyled">
-							<li>Services</li>
-							<li><a href="#">Web analytics</a></li>
-							<li><a href="#">Presentations</a></li>
-							<li><a href="#">Code snippets</a></li>
-							<li><a href="#">Job board</a></li>							
-						</ul>
-					</div>
-					<div class="col-md-2" style="width: 17%;">
-						<ul class="unstyled">
-							<li>Documentation</li>
-							<li><a href="#">Product Help</a></li>
-							<li><a href="#">Developer API</a></li>
-							<li><a href="#">Product Markdown</a></li>
-							<li><a href="#">Product Pages</a></li>							
-						</ul>
-					</div>	
-					<div class="col-md-2" style="width: 17%;">
-						<ul class="unstyled">
-							<li>More</li>
-							<li><a href="#">Training</a></li>
-							<li><a href="#">Students & teachers</a></li>
-							<li><a href="#">The Shop</a></li>
+							<li>GitHub					-2" style="width: 17%;">
+						>GitHub					-2" style="width: 17%;">
+						>
+						href="#">Trainingref="#">Students & teachersub					-2" style="width: 17%;">
+						>
+						href="#">Trainingref="#">Students & teachers#">Trainingref="#">Students & teachers/a>li>
 							<li><a href="#">Plans & pricing</a></li>
 							<li><a href="#">Contact us</a></li>
 						</ul>
