@@ -12,6 +12,8 @@
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
           <li data-target="#carousel-example-generic" data-slide-to="1"></li>
           <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="4"></li>
         </ol>
 
         <!-- Wrapper for slides -->
@@ -30,6 +32,18 @@
           </div>
           <div class="item">
             <asp:Image ID="Image3" runat="server" ImageUrl="~/img/students-around-laptop.jpg" Height="500px" Width="1200px" />
+            <div class="carousel-caption">
+              ...
+            </div>
+          </div>
+          <div class="item">
+            <asp:Image ID="Image4" runat="server" ImageUrl="~/img/Latino student group.jpg" Height="500px" Width="1200px" />
+            <div class="carousel-caption">
+              ...
+            </div>
+          </div>
+          <div class="item">
+            <asp:Image ID="Image5" runat="server" ImageUrl="~/img/Students-with-Laptop.jpg" Height="500px" Width="1200px" />
             <div class="carousel-caption">
               ...
             </div>
