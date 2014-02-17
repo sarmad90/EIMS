@@ -113,11 +113,31 @@ WHERE Attendance.StudentId = @StudentId">
               </div>
               <div id="collapseAttendance2" class="panel-collapse collapse">
                 <div class="panel-body">
+                  <!-- Modal -->
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                          ...
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <asp:GridView ID="StudentResultGrid" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="StudentResultDataSource">
                     <Columns>
                       <asp:TemplateField>
                         <ItemTemplate>
-                          <asp:HyperLink ID="HyperLink1" runat="server">Details</asp:HyperLink>
+                          <a data-toggle="modal" data-target="#myModal">
+                            Details
+                          </a>
                         </ItemTemplate>
                       </asp:TemplateField>
                       <asp:BoundField DataField="Status" HeaderText="Status" />
